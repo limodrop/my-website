@@ -1,4 +1,4 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 function HomepageJsonLd({ settings }: { settings: any }) {
   const data = {
@@ -27,10 +27,9 @@ function HomepageJsonLd({ settings }: { settings: any }) {
 }
 
 export default async function HomePage() {
-  const [homepage, blocks, settings] = await Promise.all([
-    api.getHomepage(),
-    api.getHomepageBlocks(),
-    api.getSettings(),
+  const [homepage, settings] = await Promise.all([
+    serverApi.getHomepage(),
+    serverApi.getSettings(),
   ])
 
   return (
