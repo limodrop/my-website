@@ -2,7 +2,8 @@ name: Deploy Website Image to GHCR
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "deploy-ghcr"]
+  workflow_dispatch:
 
 jobs:
   build-and-push:
@@ -18,13 +19,15 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: limodrop
-          password: ${{ secrets.GHCR_PAT }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build image
         run: |
           docker build -t ghcr.io/limodrop/website-www:latest .
+          docker tag ghcr.io/limodrop/website-www:latest ghcr.io/limodrop/website-www:sha-${{ github.sha }}
 
       - name: Push image
         run: |
           docker push ghcr.io/limodrop/website-www:latest
+          docker push ghcr.io/limodrop/website-www:sha-${{ github.sha }}
