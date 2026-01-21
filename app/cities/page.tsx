@@ -1,26 +1,10 @@
-import Link from "next/link"
+import CityList from "@/app/components/server/CityList"
 
 export default function CitiesPage() {
-  const cities = [
-    { slug: "portland", name: "Portland" },
-    { slug: "beaverton", name: "Beaverton" },
-    { slug: "hillsboro", name: "Hillsboro" },
-    { slug: "vancouver", name: "Vancouver" }
-  ]
-
   return (
-    <div className="space-y-4">
-      <h1 className="text-3xl font-bold">Cities We Serve</h1>
-
-      <ul className="space-y-2">
-        {cities.map((c) => (
-          <li key={c.slug}>
-            <Link href={`/cities/${c.slug}`} className="text-blue-600 underline">
-              {c.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="container mx-auto py-12">
+      <h1 className="text-4xl font-bold mb-8">Cities We Serve</h1>
+      <CityList />
     </div>
   )
 }
