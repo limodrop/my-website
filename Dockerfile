@@ -15,13 +15,16 @@ RUN npm run build
 FROM node:18-alpine
 WORKDIR /app
 
+# Copy package files and install production dependencies
+COPY --from=build /app/package*.json ./
+RUN npm install --omit=dev
+
 # Copy built files
-COPY --from=build /app/.next/standalone ./
-COPY --from=build /app/.next/static ./.next/static
+COPY --from=build /app/.next ./.next
 COPY --from=build /app/public ./public
 
 ENV NODE_ENV=production
 ENV PORT=3000
 
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
