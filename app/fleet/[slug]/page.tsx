@@ -5,6 +5,31 @@ interface Props {
   params: { slug: string }
 }
 
+function FleetJsonLd({ vehicle }: { vehicle: any }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: vehicle.name,
+    description: vehicle.description,
+    image: vehicle.image,
+    brand: "Oregon Town Car",
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Seats",
+        value: vehicle.seats,
+      },
+    ],
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
+
 export async function generateMetadata({ params }: Props) {
   const [seo, vehicle] = await Promise.all([
     api.getSEO(),
@@ -25,19 +50,20 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function FleetDetailPage({ params }: Props) {
-  const [vehicle, services, fleetServicesMap] = await Promise.all([
+  const [vehicle, services, rules] = await Promise.all([
     api.getVehicle(params.slug),
     api.getServices(),
-    api.getFleetServices(),
+    api.getLinkingRules(),
   ])
 
   if (!vehicle) return <div>Vehicle not found</div>
 
-  const serviceSlugs = fleetServicesMap[params.slug] || []
+  const serviceSlugs = rules.fleet[params.slug] || []
   const vehicleServices = services.filter(s => serviceSlugs.includes(s.slug))
 
   return (
     <div className="container mx-auto py-12">
+      <FleetJsonLd vehicle={vehicle} />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },

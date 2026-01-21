@@ -1,11 +1,41 @@
 import { api } from "@/lib/api/apiClient"
 
+function HomepageJsonLd({ settings }: { settings: any }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: settings.siteName,
+    description: settings.tagline,
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://oregontowncar.com",
+    image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://oregontowncar.com"}/images/og/homepage.jpg`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Portland",
+      addressRegion: "OR",
+      addressCountry: "US",
+    },
+    telephone: "(503) 123-4567",
+    openingHours: "Mo-Su 00:00-23:59",
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
+
 export default async function HomePage() {
-  const homepage = await api.getHomepage()
-  const blocks = await api.getHomepageBlocks()
+  const [homepage, blocks, settings] = await Promise.all([
+    api.getHomepage(),
+    api.getHomepageBlocks(),
+    api.getSettings(),
+  ])
 
   return (
     <div>
+      <HomepageJsonLd settings={settings} />
       {/* HERO SLIDER */}
       <section className="text-center py-20 bg-gray-100 space-y-10">
         {homepage.heroSlides.map((slide, idx) => (

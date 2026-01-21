@@ -15,6 +15,7 @@ import type {
   Promotion,
   ServiceArea,
   BookingUrl,
+  LinkingRules,
   CityServicesMap,
   FleetServicesMap
 } from "./models"
@@ -57,6 +58,7 @@ export const api = {
 
   getBookingUrl: () => fetchJSON<BookingUrl>("/api/booking-url"),
 
+  getLinkingRules: () => fetchJSON<LinkingRules>("/api/linking-rules"),
   getCityServices: () => fetchJSON<CityServicesMap>("/api/city-services"),
   getFleetServices: () => fetchJSON<FleetServicesMap>("/api/fleet-services"),
 }

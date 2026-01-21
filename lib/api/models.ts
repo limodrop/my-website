@@ -118,6 +118,21 @@ export interface BookingUrl {
   bookingUrl: string
 }
 
+export interface LinkingRules {
+  cities: {
+    [citySlug: string]: string[]
+  }
+  fleet: {
+    [vehicleSlug: string]: string[]
+  }
+  services: {
+    [serviceSlug: string]: {
+      cities: string[]
+      fleet: string[]
+    }
+  }
+}
+
 export interface CityServicesMap {
   [citySlug: string]: string[]
 }

@@ -5,6 +5,27 @@ interface Props {
   params: { slug: string }
 }
 
+function CityJsonLd({ city }: { city: any }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${city.name} Chauffeur Service`,
+    description: city.description,
+    areaServed: city.name,
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Oregon Town Car",
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
+
 export async function generateMetadata({ params }: Props) {
   const [seo, city] = await Promise.all([
     api.getSEO(),
@@ -25,19 +46,20 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function CityDetailPage({ params }: Props) {
-  const [city, services, cityServicesMap] = await Promise.all([
+  const [city, services, rules] = await Promise.all([
     api.getCity(params.slug),
     api.getServices(),
-    api.getCityServices(),
+    api.getLinkingRules(),
   ])
 
   if (!city) return <div>City not found</div>
 
-  const serviceSlugs = cityServicesMap[params.slug] || []
+  const serviceSlugs = rules.cities[params.slug] || []
   const cityServices = services.filter(s => serviceSlugs.includes(s.slug))
 
   return (
     <div className="container mx-auto py-12">
+      <CityJsonLd city={city} />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },

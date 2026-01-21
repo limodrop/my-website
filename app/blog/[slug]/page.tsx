@@ -11,7 +11,12 @@ function ArticleJsonLd({ post }: { post: any }) {
     "@type": "Article",
     headline: post.title,
     image: post.image,
+    articleBody: post.content,
     author: {
+      "@type": "Organization",
+      name: "Oregon Town Car",
+    },
+    publisher: {
       "@type": "Organization",
       name: "Oregon Town Car",
     },
