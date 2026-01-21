@@ -1,30 +1,8 @@
-# Build stage
-FROM node:18-alpine AS build
-WORKDIR /app
-
-# Install dependencies
-COPY package*.json ./
-RUN npm install
-
-# Copy source and build
-COPY . .
-ENV NODE_ENV=production
-RUN npm run build
-
-# Runtime stage
 FROM node:18-alpine
 WORKDIR /app
-
-# Copy package files and install production dependencies
-COPY --from=build /app/package*.json ./
-RUN npm install --omit=dev
-
-# Copy built files
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
-
-ENV NODE_ENV=production
-ENV PORT=3000
-
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 EXPOSE 3000
 CMD ["npm", "start"]
