@@ -20,9 +20,18 @@ import type {
   FleetServicesMap
 } from "./models"
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || ""
+// Use different API URLs for server-side vs client-side
+const getAPIUrl = () => {
+  // Server-side (SSR, SSG) - use internal URL
+  if (typeof window === "undefined") {
+    return process.env.INTERNAL_API_URL || "http://localhost:3000"
+  }
+  // Client-side - use public URL (empty string means same-origin)
+  return process.env.NEXT_PUBLIC_API_URL || ""
+}
 
 async function fetchJSON<T>(path: string): Promise<T> {
+  const API_URL = getAPIUrl()
   const res = await fetch(`${API_URL}${path}`, { cache: "no-store" })
   if (!res.ok) throw new Error(`API error: ${res.status}`)
   return res.json()
