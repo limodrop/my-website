@@ -1,10 +1,10 @@
 import "./globals.css"
 import Navigation from "./components/Navigation"
 import Footer from "./components/Footer"
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const settings = await api.getSettings()
+  const settings = await serverApi.getSettings()
 
   return (
     <html lang="en">

@@ -1,7 +1,7 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function Navigation() {
-  const items = await api.getNavigation()
+  const items = await serverApi.getNavigation()
 
   return (
     <nav className="w-full py-4 bg-white shadow">

@@ -22,9 +22,13 @@ import type {
 
 // Use different API URLs for server-side vs client-side
 const getAPIUrl = () => {
-  // Server-side (SSR, SSG) - use internal URL
+  // Server-side (SSR, SSG) - need absolute URL
   if (typeof window === "undefined") {
-    return process.env.INTERNAL_API_URL || "http://localhost:3000"
+    // In Docker/production, use the container's own URL
+    // VERCEL_URL is set automatically on Vercel
+    return process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.INTERNAL_API_URL || "http://127.0.0.1:3000"
   }
   // Client-side - use public URL (empty string means same-origin)
   return process.env.NEXT_PUBLIC_API_URL || ""
@@ -32,9 +36,20 @@ const getAPIUrl = () => {
 
 async function fetchJSON<T>(path: string): Promise<T> {
   const API_URL = getAPIUrl()
-  const res = await fetch(`${API_URL}${path}`, { cache: "no-store" })
-  if (!res.ok) throw new Error(`API error: ${res.status}`)
-  return res.json()
+  const url = `${API_URL}${path}`
+  
+  try {
+    const res = await fetch(url, { 
+      cache: "no-store",
+      // Add timeout for server-side requests
+      signal: typeof window === "undefined" ? AbortSignal.timeout(5000) : undefined
+    })
+    if (!res.ok) throw new Error(`API error: ${res.status}`)
+    return res.json()
+  } catch (error) {
+    console.error(`Failed to fetch ${url}:`, error)
+    throw error
+  }
 }
 
 export const api = {

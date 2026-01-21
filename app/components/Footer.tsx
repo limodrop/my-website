@@ -1,7 +1,7 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function Footer() {
-  const footer = await api.getFooter()
+  const footer = await serverApi.getFooter()
 
   return (
     <footer className="bg-gray-900 text-white py-12 mt-20">
