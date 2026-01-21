@@ -1,8 +1,8 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function ContactPage() {
-  const contact = await api.getContact()
-  const booking = await api.getBookingUrl()
+  const contact = await serverApi.getContact()
+  const booking = await serverApi.getBookingUrl()
 
   return (
     <div className="container mx-auto py-12 space-y-6">

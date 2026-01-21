@@ -1,4 +1,4 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs"
 
 interface Props {
@@ -32,8 +32,8 @@ function FleetJsonLd({ vehicle }: { vehicle: any }) {
 
 export async function generateMetadata({ params }: Props) {
   const [seo, vehicle] = await Promise.all([
-    api.getSEO(),
-    api.getVehicle(params.slug),
+    serverApi.getSeo(),
+    serverApi.getVehicle(params.slug),
   ])
 
   if (!vehicle) return { title: "Vehicle not found" }
@@ -51,9 +51,9 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function FleetDetailPage({ params }: Props) {
   const [vehicle, services, rules] = await Promise.all([
-    api.getVehicle(params.slug),
-    api.getServices(),
-    api.getLinkingRules(),
+    serverApi.getVehicle(params.slug),
+    serverApi.getServices(),
+    serverApi.getLinkingRules(),
   ])
 
   if (!vehicle) return <div>Vehicle not found</div>

@@ -1,7 +1,7 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function FleetList() {
-  const fleet = await api.getFleet()
+  const fleet = await serverApi.getFleet()
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

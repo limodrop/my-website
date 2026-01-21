@@ -1,4 +1,4 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs"
 
 interface Props {
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = await api.getBlogPost(params.slug)
+  const post = await serverApi.getBlogPost(params.slug)
 
   if (!post) return <div>Post not found</div>
 

@@ -1,13 +1,13 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://oregontowncar.com"
 
   const [services, cities, fleet, posts] = await Promise.all([
-    api.getServices(),
-    api.getCities(),
-    api.getFleet(),
-    api.getBlogPosts(),
+    serverApi.getServices(),
+    serverApi.getCities(),
+    serverApi.getFleet(),
+    serverApi.getBlogPosts(),
   ])
 
   const staticRoutes = ["", "/services", "/cities", "/fleet", "/contact", "/promotions"].map(

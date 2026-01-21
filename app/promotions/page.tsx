@@ -1,7 +1,7 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function PromotionsPage() {
-  const promotions = await api.getPromotions()
+  const promotions = await serverApi.getPromotions()
 
   return (
     <div className="container mx-auto py-12">

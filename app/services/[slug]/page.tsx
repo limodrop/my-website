@@ -1,4 +1,4 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs"
 
 interface Props {
@@ -28,8 +28,8 @@ function ServiceJsonLd({ service }: { service: any }) {
 
 export async function generateMetadata({ params }: Props) {
   const [seo, service] = await Promise.all([
-    api.getSEO(),
-    api.getService(params.slug),
+    serverApi.getSeo(),
+    serverApi.getService(params.slug),
   ])
 
   if (!service) return { title: "Service not found" }
@@ -47,10 +47,10 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const [service, cities, fleet, rules] = await Promise.all([
-    api.getService(params.slug),
-    api.getCities(),
-    api.getFleet(),
-    api.getLinkingRules(),
+    serverApi.getService(params.slug),
+    serverApi.getCities(),
+    serverApi.getFleet(),
+    serverApi.getLinkingRules(),
   ])
 
   if (!service) return <div>Service not found</div>

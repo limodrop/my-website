@@ -1,7 +1,7 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function BlogList() {
-  const posts = await api.getBlogPosts()
+  const posts = await serverApi.getBlogPosts()
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

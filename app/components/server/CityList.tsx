@@ -1,7 +1,7 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 
 export default async function CityList() {
-  const cities = await api.getCities()
+  const cities = await serverApi.getCities()
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

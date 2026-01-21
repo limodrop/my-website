@@ -1,4 +1,4 @@
-import { api } from "@/lib/api/apiClient"
+import { serverApi } from "@/lib/api/serverClient"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs"
 
 interface Props {
@@ -28,8 +28,8 @@ function CityJsonLd({ city }: { city: any }) {
 
 export async function generateMetadata({ params }: Props) {
   const [seo, city] = await Promise.all([
-    api.getSEO(),
-    api.getCity(params.slug),
+    serverApi.getSeo(),
+    serverApi.getCity(params.slug),
   ])
 
   if (!city) return { title: "City not found" }
@@ -47,9 +47,9 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function CityDetailPage({ params }: Props) {
   const [city, services, rules] = await Promise.all([
-    api.getCity(params.slug),
-    api.getServices(),
-    api.getLinkingRules(),
+    serverApi.getCity(params.slug),
+    serverApi.getServices(),
+    serverApi.getLinkingRules(),
   ])
 
   if (!city) return <div>City not found</div>
