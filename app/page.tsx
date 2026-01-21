@@ -6,16 +6,20 @@ export default async function HomePage() {
 
   return (
     <div>
-      {/* HERO */}
-      <section className="text-center py-20 bg-gray-100">
-        <h1 className="text-5xl font-bold">{homepage.hero.title}</h1>
-        <p className="text-xl mt-4">{homepage.hero.subtitle}</p>
-        <a
-          href="/booking"
-          className="mt-6 inline-block bg-black text-white px-6 py-3 rounded"
-        >
-          {homepage.hero.cta}
-        </a>
+      {/* HERO SLIDER */}
+      <section className="text-center py-20 bg-gray-100 space-y-10">
+        {homepage.heroSlides.map((slide, idx) => (
+          <div key={idx}>
+            <h1 className="text-5xl font-bold">{slide.title}</h1>
+            <p className="text-xl mt-4">{slide.subtitle}</p>
+            <a
+              href="/booking"
+              className="mt-6 inline-block bg-black text-white px-6 py-3 rounded"
+            >
+              {slide.cta}
+            </a>
+          </div>
+        ))}
       </section>
 
       {/* BLOCKS */}

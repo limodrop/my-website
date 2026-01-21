@@ -14,7 +14,9 @@ import type {
   Review,
   Promotion,
   ServiceArea,
-  BookingUrl
+  BookingUrl,
+  CityServicesMap,
+  FleetServicesMap
 } from "./models"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || ""
@@ -54,4 +56,7 @@ export const api = {
   getServiceArea: () => fetchJSON<ServiceArea>("/api/service-area"),
 
   getBookingUrl: () => fetchJSON<BookingUrl>("/api/booking-url"),
+
+  getCityServices: () => fetchJSON<CityServicesMap>("/api/city-services"),
+  getFleetServices: () => fetchJSON<FleetServicesMap>("/api/fleet-services"),
 }

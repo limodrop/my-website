@@ -24,11 +24,11 @@ export interface FleetVehicle {
 }
 
 export interface HomepageData {
-  hero: {
+  heroSlides: Array<{
     title: string
     subtitle: string
     cta: string
-  }
+  }>
   featuredServices: string[]
   featuredCities: string[]
   featuredFleet: string[]
@@ -116,4 +116,12 @@ export interface ServiceArea {
 
 export interface BookingUrl {
   bookingUrl: string
+}
+
+export interface CityServicesMap {
+  [citySlug: string]: string[]
+}
+
+export interface FleetServicesMap {
+  [vehicleSlug: string]: string[]
 }
