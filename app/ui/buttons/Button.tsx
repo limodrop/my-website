@@ -21,18 +21,18 @@ export function Button({
   className = "",
   onClick
 }: ButtonProps) {
-  const baseClasses = "inline-block px-5 py-2.5 font-medium transition-colors duration-200"
+  const baseClasses = "inline-flex items-center justify-center px-5 py-2.5 font-medium transition-colors duration-200"
   
   const variantStyles: Record<ButtonVariant, { className: string; style?: React.CSSProperties }> = {
     primary: {
-      className: `${baseClasses} text-white`,
+      className: `${baseClasses} text-white ${className}`,
       style: {
         backgroundColor: theme.colors.primary,
         borderRadius: theme.radius.button,
       }
     },
     secondary: {
-      className: `${baseClasses} hover:bg-[#E6F0FA]`,
+      className: `${baseClasses} hover:bg-[#E6F0FA] ${className}`,
       style: {
         border: `1px solid ${theme.colors.primary}`,
         color: theme.colors.primary,
@@ -40,7 +40,7 @@ export function Button({
       }
     },
     ghost: {
-      className: `${baseClasses} bg-transparent hover:underline`,
+      className: `${baseClasses} bg-transparent hover:underline ${className}`,
       style: {
         color: theme.colors.primary,
       }
@@ -48,18 +48,17 @@ export function Button({
   }
 
   const { className: variantClass, style: variantStyle } = variantStyles[variant]
-  const finalClass = `${variantClass} ${className}`
 
   if (as === "a" && href) {
     return (
-      <a href={href} className={finalClass} style={variantStyle}>
+      <a href={href} className={variantClass} style={variantStyle}>
         {children}
       </a>
     )
   }
 
   return (
-    <button onClick={onClick} className={finalClass} style={variantStyle}>
+    <button onClick={onClick} className={variantClass} style={variantStyle}>
       {children}
     </button>
   )

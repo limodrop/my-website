@@ -21,6 +21,7 @@ export function PageShell({ children, className = "" }: PageShellProps) {
           backgroundColor: theme.colors.surface,
           borderRadius: theme.radius.card,
           border: `1px solid ${theme.colors.border}`,
+          boxShadow: theme.shadow.card,
         }}
       >
         {children}
