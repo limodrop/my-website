@@ -12,7 +12,7 @@ export default async function CityList() {
           href={`/cities/${city.slug}`}
           className="border rounded-lg p-4 hover:shadow-lg transition"
         >
-          <SmartImage src={city.image} alt={city.name} className="rounded mb-3" />
+          <SmartImage src={city.image} alt={city.name} className="w-full max-w-full rounded mb-3 object-cover" />
           <h3 className="text-xl font-semibold">{city.name}</h3>
           <p className="text-gray-600">{city.description}</p>
         </a>

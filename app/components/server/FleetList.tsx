@@ -12,7 +12,7 @@ export default async function FleetList() {
           href={`/fleet/${vehicle.slug}`}
           className="border rounded-lg p-4 hover:shadow-lg transition"
         >
-          <SmartImage src={vehicle.image} alt={vehicle.name} className="rounded mb-3" />
+          <SmartImage src={vehicle.image} alt={vehicle.name} className="w-full max-w-full rounded mb-3 object-cover" />
           <h3 className="text-xl font-semibold">{vehicle.name}</h3>
           <p className="text-gray-600">{vehicle.description}</p>
         </a>

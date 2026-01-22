@@ -11,7 +11,7 @@ interface TableProps {
 
 export function Table({ columns, data }: TableProps) {
   return (
-    <div className="overflow-x-auto -mx-4 sm:mx-0">
+    <div className="overflow-x-auto w-full">
       <table className="w-full border-collapse min-w-[600px] sm:min-w-full">
         <thead>
           <tr className="bg-[var(--surface)] border-b border-[var(--border)]">

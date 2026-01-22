@@ -12,7 +12,7 @@ export default async function BlogList() {
           href={`/blog/${post.slug}`}
           className="border rounded-lg p-4 hover:shadow-lg transition"
         >
-          <SmartImage src={post.image} alt={post.title} className="rounded mb-3" />
+          <SmartImage src={post.image} alt={post.title} className="w-full max-w-full rounded mb-3 object-cover" />
           <h3 className="text-xl font-semibold">{post.title}</h3>
           <p className="text-gray-600">{post.excerpt}</p>
         </a>

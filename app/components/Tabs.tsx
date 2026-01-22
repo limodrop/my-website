@@ -17,7 +17,7 @@ export function Tabs({ tabs, defaultTab = 0 }: TabsProps) {
 
   return (
     <div>
-      <div className="flex gap-2 sm:gap-4 border-b border-[var(--border)] mb-4 sm:mb-6 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="flex gap-2 sm:gap-4 border-b border-[var(--border)] mb-4 sm:mb-6 overflow-x-auto w-full">
         {tabs.map((tab, i) => (
           <button
             key={i}

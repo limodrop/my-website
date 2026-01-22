@@ -35,11 +35,11 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
   const slide = slides[currentSlide]
 
   return (
-    <div className="relative w-screen -mx-4 sm:-mx-6 mb-10 sm:mb-[var(--space-section)]">
+    <div className="relative w-full mb-10 sm:mb-[var(--space-section)] overflow-hidden rounded-lg">
       {slide.image && (
         <SmartImage
           src={slide.image}
-          className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
+          className="w-full max-w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
           alt={slide.title}
         />
       )}
