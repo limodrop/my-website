@@ -30,7 +30,7 @@ export default async function ServicesPage({ params }: { params: { lang: Locale 
         Premium chauffeur services designed for airport travel, corporate needs, and point-to-point transportation worldwide.
       </p>
 
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid-responsive">
         {services.map((service) => (
           <ServiceCard
             key={service.id}

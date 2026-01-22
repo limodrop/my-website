@@ -1,46 +1,56 @@
+import { SmartImage } from "@/app/components/SmartImage";
+import { Tag } from "@/app/components/Tag";
+import { Button } from "@/app/ui/buttons/Button";
+import { Icons } from "@/app/components/Icons";
+
 interface FleetCardProps {
-  name: string
-  slug: string
-  capacity?: string
-  luggage?: string
-  icon?: string
-  locale: string
+  name: string;
+  slug: string;
+  capacity?: string;
+  luggage?: string;
+  locale: string;
 }
 
-export function FleetCard({ name, slug, capacity, luggage, icon = "🚗", locale }: FleetCardProps) {
+export function FleetCard({ name, slug, capacity, luggage, locale }: FleetCardProps) {
+  const Icon = Icons.car;
+  const fleetImage = `https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&q=80`;
+
   return (
-    <a
-      href={`/${locale}/fleet/${slug}`}
+    <article
       className="
-        block rounded-lg overflow-hidden
-        border border-[#D1D1D1]
-        bg-white
-        shadow-sm
+        rounded-lg overflow-hidden
+        bg-[var(--surface)]
+        border border-[var(--border)]
+        shadow-sm flex flex-col
         transition-all duration-200
-        hover:-translate-y-1 hover:shadow-md hover:border-[#0067B8]
+        hover:-translate-y-1 hover:shadow-md hover:border-[var(--primary)]
       "
     >
-      <div className="h-48 bg-gradient-to-br from-[#0067B8] to-[#005A9E] flex items-center justify-center text-6xl">
-        {icon}
-      </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-3 text-[#1B1B1B]">
-          {name}
-        </h3>
-        {capacity && (
-          <p className="text-sm text-[#5A5A5A] mb-1">
-            {capacity}
-          </p>
-        )}
-        {luggage && (
-          <p className="text-sm text-[#5A5A5A]">
-            {luggage}
-          </p>
-        )}
-        <div className="mt-4 text-[#0067B8] font-semibold text-sm">
-          View Vehicle →
+      <SmartImage src={fleetImage} alt={name} className="h-40" />
+
+      <div className="p-5 flex flex-col gap-3 flex-1">
+        <div className="flex items-center gap-2">
+          <Icon className="w-5 h-5 text-[var(--primary)]" />
+          <h3 className="text-base font-semibold text-[var(--text)]">
+            {name}
+          </h3>
         </div>
+
+        <div className="flex flex-wrap gap-2 text-xs">
+          {capacity && <Tag>{capacity}</Tag>}
+          {luggage && <Tag>{luggage}</Tag>}
+        </div>
+
+        <Button
+          variant="ghost"
+          as="a"
+          href={`/${locale}/fleet/${slug}`}
+          className="mt-auto justify-start gap-2 px-0"
+        >
+          View Details
+          <Icons.arrow className="w-4 h-4" />
+        </Button>
       </div>
-    </a>
-  )
+    </article>
+  );
 }

@@ -1,36 +1,48 @@
+import { Button } from "@/app/ui/buttons/Button";
+import { Icons } from "@/app/components/Icons";
+
 interface CityCardProps {
-  name: string
-  slug: string
-  country?: string
-  locale: string
+  name: string;
+  slug: string;
+  country?: string;
+  locale: string;
 }
 
 export function CityCard({ name, slug, country, locale }: CityCardProps) {
+  const Icon = Icons.city;
+
   return (
-    <a
-      href={`/${locale}/cities/${slug}`}
+    <article
       className="
-        block rounded-lg overflow-hidden
-        border border-[#D1D1D1]
-        bg-white
-        shadow-sm
+        p-5 rounded-lg
+        bg-[var(--surface)]
+        border border-[var(--border)]
+        shadow-sm flex flex-col gap-3
         transition-all duration-200
-        hover:-translate-y-1 hover:shadow-md hover:border-[#0067B8]
-        text-center
+        hover:-translate-y-1 hover:shadow-md hover:border-[var(--primary)]
       "
     >
-      <div className="p-6">
-        <div className="text-3xl mb-3">📍</div>
-        <h3 className="text-lg font-semibold text-[#1B1B1B]">
-          {name}
-        </h3>
-        {country && (
-          <p className="text-sm text-[#5A5A5A] mt-1">{country}</p>
-        )}
-        <div className="mt-3 text-[#0067B8] font-semibold text-sm">
-          View City →
+      <div className="flex items-center gap-3">
+        <Icon className="w-5 h-5 text-[var(--primary)]" />
+        <div>
+          <h3 className="text-base font-semibold text-[var(--text)]">
+            {name}
+          </h3>
+          {country && (
+            <p className="text-xs text-[var(--textMuted)]">{country}</p>
+          )}
         </div>
       </div>
-    </a>
-  )
+
+      <Button
+        variant="ghost"
+        as="a"
+        href={`/${locale}/cities/${slug}`}
+        className="mt-auto justify-start gap-2 px-0"
+      >
+        View City
+        <Icons.arrow className="w-4 h-4" />
+      </Button>
+    </article>
+  );
 }

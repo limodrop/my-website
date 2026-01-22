@@ -30,7 +30,7 @@ export default async function CitiesPage({ params }: { params: { lang: Locale } 
         Find premium chauffeur service in major cities across the U.S. and worldwide.
       </p>
 
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid-responsive">
         {cities.map((city) => (
           <CityCard
             key={city.id}
