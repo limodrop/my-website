@@ -113,8 +113,9 @@ export default function Navigation({ locale = "en", dict }: NavigationProps) {
                     key={lang.code}
                     onClick={() => {
                       setLangOpen(false);
-                      // In a real implementation, this would change the locale
-                      // For now, just close the dropdown
+                      // Note: In a full implementation with i18n routing,
+                      // this would navigate to /${lang.code} to switch locale.
+                      // Current implementation uses a default locale.
                     }}
                     className="
                       px-3 py-2 text-sm text-left

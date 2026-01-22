@@ -8,6 +8,10 @@ export function useTheme() {
 
   useEffect(() => {
     setMounted(true);
+    
+    // Only run on client side
+    if (typeof window === "undefined") return;
+    
     // Check for saved theme preference or default to 'light'
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
     if (savedTheme) {
@@ -23,7 +27,7 @@ export function useTheme() {
   }, []);
 
   const setThemeMode = (newMode: "light" | "dark") => {
-    if (!mounted) return;
+    if (!mounted || typeof window === "undefined") return;
     setMode(newMode);
     localStorage.setItem("theme", newMode);
     document.documentElement.setAttribute("data-theme", newMode);
