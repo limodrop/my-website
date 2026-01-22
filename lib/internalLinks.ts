@@ -38,11 +38,14 @@ export interface InternalLinks {
 
 export function internalLinks({ cities, countries, services, fleet }: InternalLinksParams): InternalLinks {
   return {
-    cityLinks: cities.map((c) => ({
-      city: c.name,
-      country: countries.find((x) => x.name === c.country)?.slug,
-      url: `/cities/${c.slug}`,
-    })),
+    cityLinks: cities.map((c) => {
+      const matchedCountry = countries.find((x) => x.name === c.country);
+      return {
+        city: c.name,
+        country: matchedCountry?.slug,
+        url: `/cities/${c.slug}`,
+      };
+    }),
 
     countryLinks: countries.map((c) => ({
       country: c.name,

@@ -5,12 +5,21 @@ import { useState, useEffect } from "react";
 export default function AdminRegions() {
   const [regions, setRegions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/admin/regions")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error("Failed to fetch regions");
+        return r.json();
+      })
       .then((data) => {
         setRegions(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -22,29 +31,55 @@ export default function AdminRegions() {
   };
 
   const save = () => {
+    setSaveStatus("Saving...");
     fetch("/api/admin/regions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(regions),
-    }).then(() => {
-      alert("Regions saved successfully!");
-    });
+    })
+      .then((r) => {
+        if (!r.ok) throw new Error("Failed to save regions");
+        return r.json();
+      })
+      .then(() => {
+        setSaveStatus("Saved successfully!");
+        setTimeout(() => setSaveStatus(null), 3000);
+      })
+      .catch((err) => {
+        setSaveStatus(`Error: ${err.message}`);
+        setTimeout(() => setSaveStatus(null), 5000);
+      });
   };
 
   if (loading) {
     return <div className="p-4">Loading regions...</div>;
   }
 
+  if (error) {
+    return (
+      <div className="p-4 bg-red-50 border border-red-200 rounded text-red-800">
+        Error loading regions: {error}
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Manage Regions</h2>
-        <button
-          onClick={save}
-          className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
-        >
-          Save Changes
-        </button>
+        <div className="flex items-center gap-3">
+          {saveStatus && (
+            <span className={`text-sm ${saveStatus.includes("Error") ? "text-red-600" : "text-green-600"}`}>
+              {saveStatus}
+            </span>
+          )}
+          <button
+            onClick={save}
+            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
+          >
+            Save Changes
+          </button>
+        </div>
       </div>
 
       {regions.map((r, i) => (
