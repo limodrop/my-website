@@ -104,8 +104,9 @@ export default async function TermsPage({ params }: { params: { lang: Locale } }
           </p>
           <div className="mt-4 p-4 bg-[var(--surface)] border border-[var(--border)] rounded-lg">
             <p className="text-[var(--text)] font-medium">Oregon Town Car</p>
-            <p className="text-[var(--textMuted)]">Email: info@oregontowncar.com</p>
-            <p className="text-[var(--textMuted)]">Phone: +1 (503) 555-0100</p>
+            <p className="text-[var(--textMuted)]">4260 SW 110th Ave, Beaverton, OR 97005</p>
+            <p className="text-[var(--textMuted)]">Email: hello@oregontowncar.com</p>
+            <p className="text-[var(--textMuted)]">Phone: +1 (503) 353-7755</p>
           </div>
         </section>
       </div>
