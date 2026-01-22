@@ -53,8 +53,16 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
               shadow-sm flex flex-col
               transition-all duration-200
               hover:-translate-y-1 hover:shadow-md hover:border-[var(--primary)]
+              relative
             "
           >
+            {/* Most Popular Badge for Black SUV */}
+            {index === 1 && (
+              <div className="absolute top-4 right-4 z-10 bg-[var(--primary)] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                Most Popular
+              </div>
+            )}
+            
             <SmartImage
               src={vehicle.image}
               alt={vehicle.name}
@@ -83,7 +91,7 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
                 href="https://book.oregontowncar.com"
                 className="mt-auto w-full justify-center"
               >
-                Book This Vehicle
+                Book Now
               </Button>
             </div>
           </article>

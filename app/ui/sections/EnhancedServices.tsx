@@ -84,10 +84,10 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
                 <Button
                   variant="ghost"
                   as="a"
-                  href={service.link}
+                  href="/contact"
                   className="flex-1 justify-center text-xs sm:text-sm"
                 >
-                  Learn More
+                  Get a Quote
                 </Button>
                 <Button
                   variant="primary"

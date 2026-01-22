@@ -117,6 +117,7 @@ export const Icons = {
 
   // Status & Feedback
   success: CheckCircle,
+  checkCircle: CheckCircle,
   warning: AlertCircle,
   info: Info,
   star: Star,

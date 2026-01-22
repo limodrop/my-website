@@ -18,7 +18,7 @@ export function PrimaryCTA() {
             href="https://book.oregontowncar.com"
             className="w-full sm:w-auto bg-white text-[var(--text)] hover:bg-white/90 !px-8 !py-3 text-base sm:text-lg font-semibold"
           >
-            Book a Ride
+            Book Now
           </Button>
           <Button
             variant="ghost"

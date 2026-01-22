@@ -1,13 +1,14 @@
 import { Locale } from "@/lib/i18n/types"
 import { getDictionary } from "@/app/i18n"
-import { HeroSlider } from "@/app/ui/hero/HeroSlider"
+import { StaticHero } from "@/app/ui/hero/StaticHero"
 import { ClarityBlock } from "@/app/ui/sections/ClarityBlock"
 import { TrustSignals } from "@/app/ui/sections/TrustSignals"
 import { EnhancedServices } from "@/app/ui/sections/EnhancedServices"
 import { Differentiators } from "@/app/ui/sections/Differentiators"
+import { SocialProof } from "@/app/ui/sections/SocialProof"
 import { FleetPreview } from "@/app/ui/sections/FleetPreview"
 import { PrimaryCTA } from "@/app/ui/sections/PrimaryCTA"
-import { serverApi } from "@/lib/api/serverClient"
+import { MobileStickyBar } from "@/app/components/MobileStickyBar"
 
 export default async function LangHome({
   params
@@ -16,11 +17,10 @@ export default async function LangHome({
 }) {
   const locale = params.lang
   const dict = await getDictionary(locale)
-  const homepage = await serverApi.getHomepage()
 
   return (
     <>
-      <HeroSlider slides={homepage.heroSlides} />
+      <StaticHero />
       
       <ClarityBlock />
       
@@ -30,9 +30,13 @@ export default async function LangHome({
       
       <Differentiators />
       
+      <SocialProof />
+      
       <FleetPreview locale={locale} />
       
       <PrimaryCTA />
+      
+      <MobileStickyBar />
     </>
   )
 }

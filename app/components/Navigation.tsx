@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
 import MobileMenu from "./MobileMenu";
 import { Button } from "@/app/ui/buttons/Button";
+import { Icons } from "./Icons";
 
 interface NavigationProps {
   locale: string;
@@ -59,6 +60,13 @@ export default function Navigation({ locale, dict }: NavigationProps) {
               {item.label}
             </Link>
           ))}
+          <a
+            href="tel:5033537755"
+            className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--primary)] transition font-medium"
+          >
+            <Icons.phone className="w-4 h-4" />
+            <span className="hidden lg:inline">(503) 353-7755</span>
+          </a>
           <Button
             variant="primary"
             as="a"
@@ -73,7 +81,7 @@ export default function Navigation({ locale, dict }: NavigationProps) {
             href="https://login.oregontowncar.com"
             className="!py-2 !px-4"
           >
-            Login
+            Client Portal
           </Button>
           <LanguageSwitcher currentLocale={locale} />
         </div>

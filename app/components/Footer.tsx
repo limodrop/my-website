@@ -178,44 +178,38 @@ export default function Footer({ locale, dict }: FooterProps) {
             </ul>
           </FooterSection>
 
-          <FooterSection title="Global Coverage">
+          <FooterSection title="Local Service Areas">
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href={`/${locale}/cities`}
-                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
-                >
-                  Cities
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/countries`}
-                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
-                >
-                  Countries
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/worldwide`}
-                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
-                >
-                  {dict.nav.worldwide}
-                </Link>
-              </li>
+              <li className="text-[var(--textMuted)]">Portland</li>
+              <li className="text-[var(--textMuted)]">Beaverton</li>
+              <li className="text-[var(--textMuted)]">Lake Oswego</li>
+              <li className="text-[var(--textMuted)]">Tigard</li>
+              <li className="text-[var(--textMuted)]">Hillsboro</li>
+              <li className="text-[var(--textMuted)]">Vancouver, WA</li>
+              <li className="text-[var(--textMuted)]">Willamette Valley</li>
             </ul>
           </FooterSection>
 
-          <FooterSection title={dict.nav.services}>
+          <FooterSection title="Contact">
             <ul className="space-y-2 text-sm">
               <li>
-                <Link
-                  href={`/${locale}/services`}
+                <a
+                  href="tel:5033537755"
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
-                  All Services
-                </Link>
+                  (503) 353-7755
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@oregontowncar.com"
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  info@oregontowncar.com
+                </a>
+              </li>
+              <li className="text-[var(--textMuted)] text-xs pt-2">
+                Licensed & Insured
               </li>
             </ul>
           </FooterSection>
@@ -244,8 +238,11 @@ export default function Footer({ locale, dict }: FooterProps) {
 
         {/* GLOBAL COVERAGE MESSAGE */}
         <div className="text-center pt-6 sm:pt-8 border-t border-[var(--border)]">
-          <p className="text-[var(--textMuted)] text-xs sm:text-sm">
-            {dict.footer?.globalMessage || "Oregon Town Car — Premium Transportation Worldwide"}
+          <p className="text-[var(--textMuted)] text-xs sm:text-sm mb-2">
+            Oregon Town Car — Premium Chauffeur Service
+          </p>
+          <p className="text-[var(--textMuted)] text-xs">
+            Serving clients worldwide — 50 U.S. states + 13 countries
           </p>
         </div>
       </div>

@@ -164,7 +164,7 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: any
               "
               onClick={() => setOpen(false)}
             >
-              Login
+              Client Portal
             </a>
           </div>
         </div>
