@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { getDictionary } from "@/app/i18n";
 
-export default function Footer({ locale, dict }) {
+export default async function Footer({ locale }: { locale: string }) {
+  const dict = await getDictionary(locale);
+  
   return (
     <footer className="border-t border-gray-800 bg-black py-10 mt-20">
       <div className="max-w-7xl mx-auto px-6 text-gray-400">

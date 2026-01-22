@@ -1,11 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { getDictionary } from "@/app/i18n";
 
-export default function Navigation({ locale, dict }) {
-  const pathname = usePathname();
+export default async function Navigation({ locale }: { locale: string }) {
+  const dict = await getDictionary(locale);
 
   const navItems = [
     { href: "", label: dict.nav.home },
@@ -28,9 +26,7 @@ export default function Navigation({ locale, dict }) {
             <Link
               key={item.href}
               href={`/${locale}/${item.href}`}
-              className={`text-sm hover:text-yellow-400 transition ${
-                pathname === `/${locale}/${item.href}` ? "text-yellow-400" : "text-gray-300"
-              }`}
+              className="text-sm hover:text-yellow-400 transition text-gray-300"
             >
               {item.label}
             </Link>
