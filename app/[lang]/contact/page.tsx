@@ -1,7 +1,7 @@
 import { getDictionary } from "@/app/i18n";
 import { Locale } from "@/lib/i18n/types";
 import { PageShell } from "@/app/ui/layout/PageShell";
-import BookingForm from "@/app/components/BookingForm";
+import { BookingForm } from "@/app/components/BookingForm";
 
 export default async function ContactPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang;
