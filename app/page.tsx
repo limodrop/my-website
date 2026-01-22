@@ -1,4 +1,6 @@
 import { serverClient } from "@/app/lib/serverClient";
+import Link from "next/link";
+import Button from "@/app/components/Button";
 
 export default async function HomePage() {
   const homepage = await serverClient.homepage();
@@ -12,11 +14,10 @@ export default async function HomePage() {
           {homepage.heroSlides[0].subtitle}
         </p>
 
-        <a
-          href="https://book.oregontowncar.com"
-          className="inline-block px-6 py-3 bg-black text-white rounded"
-        >
-          {homepage.heroSlides[0].cta}
+        <a href="https://book.oregontowncar.com">
+          <Button variant="primary">
+            {homepage.heroSlides[0].cta}
+          </Button>
         </a>
       </section>
 
