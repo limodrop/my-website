@@ -9,7 +9,7 @@ export default function NotFound() {
         The page you're looking for doesn't exist.
       </p>
 
-      <Link href="/en">
+      <Link href="/">
         <Button variant="primary">Go Home</Button>
       </Link>
     </div>
