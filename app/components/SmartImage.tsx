@@ -13,7 +13,7 @@ export function SmartImage({
   src, 
   alt, 
   className = "",
-  fallback = "/images/fallback.jpg" 
+  fallback = "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=800&q=80" 
 }: SmartImageProps) {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
