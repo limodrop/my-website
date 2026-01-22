@@ -1,6 +1,7 @@
 import { serverClient } from "@/app/lib/serverClient";
 import { notFound } from "next/navigation";
 import BookButton from "@/components/BookButton";
+import { siteConfig } from "@/app/lib/config";
 
 interface Props {
   params: { slug: string };
@@ -17,9 +18,9 @@ export default async function FleetDetailPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "Vehicle",
     "name": vehicle.name,
-    "image": `https://oregontowncar.com${vehicle.image}`,
+    "image": `${siteConfig.baseUrl}${vehicle.image}`,
     "seatingCapacity": vehicle.seatingCapacity,
-    "url": `https://oregontowncar.com/fleet/${vehicle.slug}`,
+    "url": `${siteConfig.baseUrl}/fleet/${vehicle.slug}`,
     "description": vehicle.description
   };
 

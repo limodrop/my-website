@@ -2,6 +2,7 @@ import "./globals.css"
 import { ReactNode } from "react"
 import Link from "next/link"
 import { serverClient } from "@/app/lib/serverClient"
+import { siteConfig } from "@/app/lib/config"
 
 export const metadata = {
   title: "Oregon Town Car",
@@ -14,8 +15,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Oregon Town Car",
-    "url": "https://oregontowncar.com",
+    "name": siteConfig.name,
+    "url": siteConfig.baseUrl,
     "sameAs": [],
     "areaServed": countries.map(c => ({
       "@type": "Country",

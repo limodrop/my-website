@@ -101,7 +101,7 @@ export const countries: Country[] = [
     slug: "france",
     name: "France",
     region: "europe",
-    tagline: "Élégance and Sophistication in French Transportation",
+    tagline: "Elegance and Sophistication in French Transportation",
     seoDescription: "Luxury chauffeur services in Paris and throughout France, providing premium ground transportation for business and leisure.",
     primaryAirports: ["CDG - Paris Charles de Gaulle", "ORY - Paris Orly", "NCE - Nice"]
   },
