@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
@@ -9,13 +9,16 @@ import ThemeToggle from "./ThemeToggle";
 export default function Navigation() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handler = () => {
+      if (!navRef.current) return;
+      
       if (window.scrollY > 20) {
-        document.querySelector("nav")?.classList.add("scrolled");
+        navRef.current.classList.add("scrolled");
       } else {
-        document.querySelector("nav")?.classList.remove("scrolled");
+        navRef.current.classList.remove("scrolled");
       }
     };
     window.addEventListener("scroll", handler);
@@ -24,6 +27,7 @@ export default function Navigation() {
 
   return (
     <nav
+      ref={navRef}
       className={`
         sticky top-0 z-50 w-full px-6 py-4 border-b
         ${isHome ? "bg-transparent border-transparent" : "bg-[var(--surface)] border-[var(--border)]"}
