@@ -251,13 +251,62 @@ export default function Footer({ locale, dict }: FooterProps) {
 
           <FooterSection title="Local Service Areas">
             <ul className="space-y-2 text-sm">
-              <li className="text-[var(--textMuted)]">Portland</li>
-              <li className="text-[var(--textMuted)]">Beaverton</li>
-              <li className="text-[var(--textMuted)]">Lake Oswego</li>
-              <li className="text-[var(--textMuted)]">Tigard</li>
-              <li className="text-[var(--textMuted)]">Hillsboro</li>
-              <li className="text-[var(--textMuted)]">Vancouver, WA</li>
-              <li className="text-[var(--textMuted)]">Willamette Valley</li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/portland`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Portland
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/beaverton`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Beaverton
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/lake-oswego`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Lake Oswego
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/tigard`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Tigard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/hillsboro`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Hillsboro
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/vancouver-wa`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Vancouver, WA
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/willamette-valley`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Willamette Valley
+                </Link>
+              </li>
             </ul>
           </FooterSection>
 
