@@ -5,6 +5,19 @@ import { FleetCard } from "@/app/ui/cards/FleetCard"
 import { PageShell } from "@/app/ui/layout/PageShell"
 import { getDictionary } from "@/app/i18n"
 
+export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+  const locale = params.lang
+
+  return {
+    title: "Luxury Fleet — Oregon Town Car",
+    description:
+      "Browse our fleet of luxury sedans, SUVs, Sprinter vans, and executive vehicles for every occasion.",
+    alternates: {
+      canonical: `https://oregontowncar.com/${locale}/fleet`,
+    },
+  }
+}
+
 export default async function FleetPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang
   const dict = await getDictionary(locale)

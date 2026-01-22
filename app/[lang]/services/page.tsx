@@ -5,6 +5,19 @@ import { ServiceCard } from "@/app/ui/cards/ServiceCard"
 import { PageShell } from "@/app/ui/layout/PageShell"
 import { getDictionary } from "@/app/i18n"
 
+export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+  const locale = params.lang
+
+  return {
+    title: "Chauffeur Services — Oregon Town Car",
+    description:
+      "Explore premium chauffeur services, airport transfers, corporate travel, and point-to-point rides worldwide.",
+    alternates: {
+      canonical: `https://oregontowncar.com/${locale}/services`,
+    },
+  }
+}
+
 export default async function ServicesPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang
   const dict = await getDictionary(locale)

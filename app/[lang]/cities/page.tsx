@@ -5,6 +5,19 @@ import { CityCard } from "@/app/ui/cards/CityCard"
 import { PageShell } from "@/app/ui/layout/PageShell"
 import { getDictionary } from "@/app/i18n"
 
+export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+  const locale = params.lang
+
+  return {
+    title: "Cities We Serve — Oregon Town Car",
+    description:
+      "Find premium chauffeur service in major cities across the U.S. and worldwide.",
+    alternates: {
+      canonical: `https://oregontowncar.com/${locale}/cities`,
+    },
+  }
+}
+
 export default async function CitiesPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang
   const dict = await getDictionary(locale)
