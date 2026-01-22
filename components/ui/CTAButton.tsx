@@ -17,8 +17,10 @@ export function CTAButton({
   locale = "en",
   className = "inline-block px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition-colors"
 }: CTAButtonProps) {
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     trackCTAClick(location, locale);
+    // For external URLs, tracking completes immediately as it's synchronous
+    // If async tracking is needed, consider adding a delay or using navigator.sendBeacon
   };
 
   return (

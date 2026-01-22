@@ -2,9 +2,16 @@
  * Analytics tracking layer
  */
 
-interface TrackingEvent {
-  [key: string]: any;
+interface CTAClickEvent {
+  location: string;
+  locale: string;
 }
+
+interface BookingSubmitEvent {
+  locale: string;
+}
+
+export type TrackingEvent = CTAClickEvent | BookingSubmitEvent | Record<string, string | number | boolean>;
 
 /**
  * Track an analytics event

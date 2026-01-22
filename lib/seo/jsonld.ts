@@ -139,6 +139,6 @@ export function generateCitySchema(
 /**
  * Render JSON-LD script tag
  */
-export function renderJsonLd(schema: any): string {
+export function renderJsonLd(schema: Organization | ServiceList | Vehicle | Place): string {
   return JSON.stringify(schema);
 }
