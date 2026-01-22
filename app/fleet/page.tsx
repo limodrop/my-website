@@ -1,25 +1,28 @@
-import Link from "next/link"
+import PageShell from "@/app/components/PageShell";
+import Heading from "@/app/components/Heading";
+import Text from "@/app/components/Text";
+import FleetCard from "@/app/components/FleetCard";
+import { serverClient } from "@/app/lib/serverClient";
+import { getDictionary } from "@/app/i18n";
 
-export default function FleetPage() {
-  const fleet = [
-    { slug: "sedan", name: "Luxury Sedan" },
-    { slug: "suv", name: "Premium SUV" },
-    { slug: "sprinter", name: "Mercedes Sprinter" }
-  ]
+export default async function FleetPage() {
+  const locale = "en"; // Default locale - can be extended with params later
+  const dict = await getDictionary(locale);
+  const fleet = await serverClient.fleet();
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-3xl font-bold">Our Fleet</h1>
+    <PageShell>
+      <Heading level={1}>{dict.nav.fleet}</Heading>
+      <Text muted className="mb-10">
+        Luxury sedans, SUVs, Sprinters, and executive vehicles — all driven by professional
+        chauffeurs.
+      </Text>
 
-      <ul className="space-y-2">
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {fleet.map((f) => (
-          <li key={f.slug}>
-            <Link href={`/fleet/${f.slug}`} className="text-blue-600 underline">
-              {f.name}
-            </Link>
-          </li>
+          <FleetCard key={f.slug} {...f} locale={locale} />
         ))}
-      </ul>
-    </div>
-  )
+      </div>
+    </PageShell>
+  );
 }

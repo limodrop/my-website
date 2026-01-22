@@ -1,26 +1,28 @@
-import Link from "next/link"
+import PageShell from "@/app/components/PageShell";
+import Heading from "@/app/components/Heading";
+import Text from "@/app/components/Text";
+import ServiceCard from "@/app/components/ServiceCard";
+import { serverClient } from "@/app/lib/serverClient";
+import { getDictionary } from "@/app/i18n";
 
-export default function ServicesPage() {
-  const services = [
-    { slug: "airport", name: "Airport Transportation" },
-    { slug: "corporate", name: "Corporate Travel" },
-    { slug: "wine", name: "Wine Tours" },
-    { slug: "long_distance", name: "Long Distance" }
-  ]
+export default async function ServicesPage() {
+  const locale = "en"; // Default locale - can be extended with params later
+  const dict = await getDictionary(locale);
+  const services = await serverClient.services();
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-3xl font-bold">Our Services</h1>
+    <PageShell>
+      <Heading level={1}>{dict.nav.services}</Heading>
+      <Text muted className="mb-10">
+        Premium chauffeur services designed for airport travel, corporate needs, and
+        point‑to‑point transportation worldwide.
+      </Text>
 
-      <ul className="space-y-2">
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => (
-          <li key={s.slug}>
-            <Link href={`/services/${s.slug}`} className="text-blue-600 underline">
-              {s.name}
-            </Link>
-          </li>
+          <ServiceCard key={s.slug} {...s} locale={locale} />
         ))}
-      </ul>
-    </div>
-  )
+      </div>
+    </PageShell>
+  );
 }
