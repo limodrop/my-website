@@ -11,9 +11,18 @@ interface ModalProps {
 export function Modal({ open, onClose, children }: ModalProps) {
   useEffect(() => {
     if (!open) return;
+    
+    // Lock body scroll
+    document.body.style.overflow = "hidden";
+    
+    // Escape key handler
     const handler = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handler);
+    };
   }, [open, onClose]);
 
   if (!open) return null;
@@ -22,16 +31,17 @@ export function Modal({ open, onClose, children }: ModalProps) {
     <div
       className="
         fixed inset-0 z-50 flex items-center justify-center
-        bg-black/40 backdrop-blur-sm
+        bg-black/40 backdrop-blur-sm p-4
       "
       onClick={onClose}
     >
       <div
         className="
-          p-6 rounded-lg shadow-lg
+          p-4 sm:p-6 rounded-lg shadow-lg
           bg-[var(--surface)]
           border border-[var(--border)]
-          max-w-lg w-full mx-4
+          max-w-lg w-full
+          max-h-[90vh] overflow-y-auto
           fade-in
         "
         onClick={(e) => e.stopPropagation()}

@@ -26,7 +26,7 @@ export function Accordion({ items, allowMultiple = false }: AccordionProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {items.map((item, i) => {
         const isOpen = openItems.includes(i);
 
@@ -42,12 +42,12 @@ export function Accordion({ items, allowMultiple = false }: AccordionProps) {
             <button
               onClick={() => toggleItem(i)}
               className="
-                w-full text-left px-4 py-3
-                text-[var(--text)]
+                w-full text-left px-3 py-3 sm:px-4 sm:py-3
+                text-[var(--text)] text-sm sm:text-base
                 font-medium
                 flex items-center justify-between
                 hover:bg-[var(--background)]
-                transition
+                transition min-h-[44px]
               "
             >
               <span>{item.title}</span>
@@ -61,7 +61,7 @@ export function Accordion({ items, allowMultiple = false }: AccordionProps) {
             </button>
 
             {isOpen && (
-              <div className="px-4 pb-4 text-[var(--textMuted)] animate-fade">
+              <div className="px-3 pb-3 sm:px-4 sm:pb-4 text-[var(--textMuted)] text-sm sm:text-base animate-fade">
                 {item.content}
               </div>
             )}

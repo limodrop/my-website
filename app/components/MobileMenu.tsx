@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Icons } from "./Icons";
 
 export default function MobileMenu({ locale, dict }: { locale: string; dict: any }) {
   const [open, setOpen] = useState(false);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+  const touchCurrentX = useRef(0);
 
   // Lock body scroll when drawer is open
   useEffect(() => {
@@ -19,6 +22,38 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: any
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Swipe-to-close gesture handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchCurrentX.current = e.touches[0].clientX;
+    const diff = touchCurrentX.current - touchStartX.current;
+    
+    // Only allow swipe right (positive diff)
+    if (diff > 0 && drawerRef.current) {
+      drawerRef.current.style.transform = `translateX(${diff}px)`;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchCurrentX.current - touchStartX.current;
+    
+    // Close if swiped more than 100px to the right
+    if (diff > 100) {
+      setOpen(false);
+    }
+    
+    // Reset transform
+    if (drawerRef.current) {
+      drawerRef.current.style.transform = "";
+    }
+    
+    touchStartX.current = 0;
+    touchCurrentX.current = 0;
+  };
 
   const navItems = [
     { href: "", label: dict.nav.home },
@@ -50,6 +85,10 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: any
 
       {/* Drawer - Slide in from right */}
       <div
+        ref={drawerRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         className={`
           fixed top-0 right-0 h-full w-[280px] max-w-[85vw]
           bg-[var(--surface)] shadow-2xl z-50

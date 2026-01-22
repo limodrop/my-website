@@ -35,6 +35,17 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   const filtered = commands.filter((c) =>
     c.label.toLowerCase().includes(query.toLowerCase())
   );
@@ -64,7 +75,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
     <div
       className="
         fixed inset-0 bg-black/40 backdrop-blur-sm z-50
-        flex items-start justify-center pt-20
+        flex items-start justify-center pt-12 sm:pt-20 p-2 sm:p-4
       "
       onClick={() => setOpen(false)}
     >
@@ -72,18 +83,18 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
         className="
           w-full max-w-lg rounded-lg shadow-lg
           bg-[var(--surface)] border border-[var(--border)]
-          p-4 animate-scale
+          p-3 sm:p-4 animate-scale
         "
         onClick={(e) => e.stopPropagation()}
       >
         <input
           autoFocus
-          placeholder="Type a command or search..."
+          placeholder="Type a command..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           className="
-            w-full px-3 py-2 mb-3 rounded-md
+            w-full px-3 py-2 mb-2 sm:mb-3 rounded-md text-sm sm:text-base
             bg-[var(--background)]
             border border-[var(--border)]
             text-[var(--text)]
@@ -93,7 +104,8 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
         />
 
         <div className="text-xs text-[var(--textMuted)] mb-2 px-1">
-          Use ↑↓ to navigate, Enter to select, Esc to close
+          <span className="hidden sm:inline">Use ↑↓ to navigate, Enter to select, Esc to close</span>
+          <span className="sm:hidden">↑↓ navigate • Enter select</span>
         </div>
 
         <div className="max-h-64 overflow-auto">

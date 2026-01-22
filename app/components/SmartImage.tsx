@@ -7,13 +7,17 @@ interface SmartImageProps {
   alt: string;
   className?: string;
   fallback?: string;
+  priority?: boolean;
+  sizes?: string;
 }
 
 export function SmartImage({ 
   src, 
   alt, 
   className = "",
-  fallback = "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=800&q=80" 
+  fallback = "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=800&q=80",
+  priority = false,
+  sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 }: SmartImageProps) {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -23,6 +27,8 @@ export function SmartImage({
       <img
         src={error ? fallback : src}
         alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        sizes={sizes}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
         className={`

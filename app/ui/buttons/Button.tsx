@@ -54,7 +54,17 @@ export function Button({
 
   if (as === "a" && href) {
     return (
-      <a href={href} className={classes}>
+      <a 
+        href={href} 
+        className={classes}
+        onMouseEnter={() => {
+          // Prefetch link on hover for better performance
+          const link = document.createElement('link')
+          link.rel = 'prefetch'
+          link.href = href
+          document.head.appendChild(link)
+        }}
+      >
         {children}
       </a>
     )

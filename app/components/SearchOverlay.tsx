@@ -52,25 +52,36 @@ export function SearchOverlay({ onSearch }: SearchOverlayProps) {
     setResults([]);
   };
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <>
       <button
         onClick={() => setOpen(true)}
         className="
-          px-3 py-2 rounded-md border border-[var(--border)]
+          px-2 py-2 sm:px-3 rounded-md border border-[var(--border)]
           bg-[var(--surface)] text-[var(--text)]
           hover:bg-[var(--background)]
-          transition
+          transition text-sm
         "
       >
-        🔍 Search
+        🔍 <span className="hidden sm:inline">Search</span>
       </button>
 
       {open && (
         <div
           className="
             fixed inset-0 bg-black/40 backdrop-blur-sm z-50
-            flex items-center justify-center p-4
+            flex items-start sm:items-center justify-center p-2 sm:p-4
           "
           onClick={handleClose}
         >
@@ -78,15 +89,15 @@ export function SearchOverlay({ onSearch }: SearchOverlayProps) {
             className="
               w-full max-w-2xl rounded-lg shadow-lg
               bg-[var(--surface)] border border-[var(--border)]
-              p-6 animate-scale
-              max-h-[80vh] overflow-auto
+              p-3 sm:p-6 animate-scale mt-16 sm:mt-0
+              max-h-[85vh] sm:max-h-[80vh] overflow-auto
             "
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex gap-3 mb-4">
+            <div className="flex gap-2 sm:gap-3 mb-3 sm:mb-4">
               <input
                 autoFocus
-                placeholder="Search services, fleet, cities, pages..."
+                placeholder="Search..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => {
@@ -94,7 +105,7 @@ export function SearchOverlay({ onSearch }: SearchOverlayProps) {
                   if (e.key === "Escape") handleClose();
                 }}
                 className="
-                  flex-1 px-4 py-3 rounded-md
+                  flex-1 px-3 py-2 sm:px-4 sm:py-3 rounded-md text-sm sm:text-base
                   bg-[var(--background)]
                   border border-[var(--border)]
                   text-[var(--text)]

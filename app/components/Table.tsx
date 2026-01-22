@@ -11,15 +11,15 @@ interface TableProps {
 
 export function Table({ columns, data }: TableProps) {
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
+    <div className="overflow-x-auto -mx-4 sm:mx-0">
+      <table className="w-full border-collapse min-w-[600px] sm:min-w-full">
         <thead>
           <tr className="bg-[var(--surface)] border-b border-[var(--border)]">
             {columns.map((col) => (
               <th
                 key={col.key}
                 className={`
-                  px-4 py-3 text-[var(--textMuted)] text-sm font-semibold
+                  px-3 py-2 sm:px-4 sm:py-3 text-[var(--textMuted)] text-xs sm:text-sm font-semibold
                   text-${col.align || "left"}
                 `}
               >
@@ -43,7 +43,7 @@ export function Table({ columns, data }: TableProps) {
                 <td
                   key={col.key}
                   className={`
-                    px-4 py-3 text-[var(--text)]
+                    px-3 py-2 sm:px-4 sm:py-3 text-[var(--text)] text-xs sm:text-sm
                     text-${col.align || "left"}
                   `}
                 >
