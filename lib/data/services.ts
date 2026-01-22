@@ -9,6 +9,14 @@ export async function getServices() {
       features: ["Flight tracking", "Meet and greet", "Luggage assistance", "24/7 availability"]
     },
     {
+      slug: "vip-arrival",
+      name: "VIP Arrival Service",
+      description: "Meet & greet, guided airport arrivals, luggage assistance, and luxury chauffeur pickup.",
+      icon: "👤",
+      price: "From $125",
+      features: ["Meet and greet", "Guided arrivals", "Luggage assistance", "Luxury pickup"]
+    },
+    {
       slug: "corporate-travel",
       name: "Corporate Travel",
       description: "Executive transportation for business meetings, conferences, and events.",
