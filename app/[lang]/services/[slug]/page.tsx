@@ -55,14 +55,14 @@ export default async function ServiceDetailPage({ params }: Props) {
   ])
 
   if (!service) {
-    return <div className="max-w-7xl mx-auto px-6 py-12">Service not found</div>
+    return <div>Service not found</div>
   }
 
   const relevantCities = rules.cityServices[params.slug] || []
   const relevantFleet = rules.serviceFleet[params.slug] || []
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
+    <div className="space-y-8">
       <ServiceJsonLd service={service} />
       <Breadcrumbs
         items={[

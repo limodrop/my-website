@@ -6,9 +6,9 @@ export default async function Footer({ locale }: { locale: string }) {
   
   return (
     <footer 
-      className="mt-20 py-14 border-t bg-[var(--surface)] text-[var(--text)] border-[var(--border)]"
+      className="py-[var(--space-footer)]"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           <div>

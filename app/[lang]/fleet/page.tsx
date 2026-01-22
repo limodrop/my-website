@@ -1,7 +1,6 @@
 import { serverApi } from "@/lib/api/serverClient"
 import { Locale } from "@/lib/i18n/types"
 import { FleetCard } from "@/app/ui/cards/FleetCard"
-import { PageShell } from "@/app/ui/layout/PageShell"
 import { getDictionary } from "@/app/i18n"
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }) {
@@ -23,7 +22,7 @@ export default async function FleetPage({ params }: { params: { lang: Locale } }
   const fleet = await serverApi.getFleet()
 
   return (
-    <PageShell>
+    <>
       <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
         {dict.nav.fleet}
       </h1>
@@ -42,6 +41,6 @@ export default async function FleetPage({ params }: { params: { lang: Locale } }
           />
         ))}
       </div>
-    </PageShell>
+    </>
   )
 }

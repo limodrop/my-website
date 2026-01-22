@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import { theme } from "@/app/ui/theme"
 
 interface SectionProps {
   children: ReactNode
@@ -15,32 +14,23 @@ export function Section({
   className = ""
 }: SectionProps) {
   return (
-    <section className={`w-full mb-12 ${className}`}>
+    <section className={`w-full mb-[var(--space-section)] ${className}`}>
       {(title || subtitle) && (
         <div className="mb-6">
           {title && (
-            <h2 className="text-3xl font-semibold mb-2" style={{ color: theme.colors.text }}>
+            <h2 className="text-3xl font-semibold mb-2 text-[var(--text)]">
               {title}
             </h2>
           )}
           {subtitle && (
-            <p className="text-lg" style={{ color: theme.colors.textMuted }}>
+            <p className="text-lg text-[var(--textMuted)]">
               {subtitle}
             </p>
           )}
         </div>
       )}
 
-      <div
-        className="rounded-lg p-6"
-        style={{
-          backgroundColor: theme.colors.surface,
-          border: `1px solid ${theme.colors.border}`,
-          boxShadow: theme.shadow.card,
-        }}
-      >
-        {children}
-      </div>
+      {children}
     </section>
   )
 }

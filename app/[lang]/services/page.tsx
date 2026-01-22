@@ -1,7 +1,6 @@
 import { serverApi } from "@/lib/api/serverClient"
 import { Locale } from "@/lib/i18n/types"
 import { ServiceCard } from "@/app/ui/cards/ServiceCard"
-import { PageShell } from "@/app/ui/layout/PageShell"
 import { getDictionary } from "@/app/i18n"
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }) {
@@ -23,7 +22,7 @@ export default async function ServicesPage({ params }: { params: { lang: Locale 
   const services = await serverApi.getServices()
 
   return (
-    <PageShell>
+    <>
       <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
         {dict.nav.services}
       </h1>
@@ -42,6 +41,6 @@ export default async function ServicesPage({ params }: { params: { lang: Locale 
           />
         ))}
       </div>
-    </PageShell>
+    </>
   )
 }

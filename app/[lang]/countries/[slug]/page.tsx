@@ -1,6 +1,5 @@
 import { serverApi } from "@/lib/api/serverClient"
 import { notFound } from "next/navigation"
-import { PageShell } from "@/app/ui/layout/PageShell"
 import BookingCTA from "@/app/components/BookingCTA"
 
 interface Props {
@@ -17,7 +16,7 @@ export default async function CountryDetailPage({ params }: Props) {
   if (!country) notFound()
 
   return (
-    <PageShell>
+    <>
       <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
         {country.name}
       </h1>
@@ -25,7 +24,7 @@ export default async function CountryDetailPage({ params }: Props) {
         Premium chauffeur service across {country.cities}+ cities
       </p>
 
-      <section className="mb-12">
+      <section className="mb-[var(--space-section)]">
         <h2 className="text-2xl font-semibold text-[var(--text)] mb-6">
           Services Available in {country.name}
         </h2>
@@ -53,6 +52,6 @@ export default async function CountryDetailPage({ params }: Props) {
       </section>
 
       <BookingCTA locale={params.lang} />
-    </PageShell>
+    </>
   )
 }

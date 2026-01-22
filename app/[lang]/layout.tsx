@@ -59,12 +59,33 @@ export default async function LangLayout({
 }) {
   const dict = await getDictionary(params.lang);
 
+  // Layout variant: "boxed" (default), "wide", or "full"
+  const variant = "boxed";
+  const containerClass =
+    variant === "boxed"
+      ? "max-w-7xl mx-auto px-6"
+      : variant === "wide"
+      ? "max-w-screen-xl mx-auto px-6"
+      : "px-6";
+
   return (
     <html lang={params.lang}>
-      <body className="bg-[#F3F3F3] text-[#1B1B1B]">
-        <Navigation locale={params.lang} dict={dict} />
-        <main className="min-h-screen">{children}</main>
-        <Footer locale={params.lang} />
+      <body className="min-h-screen bg-[var(--background)] text-[var(--text)]">
+        <header className="bg-[var(--surface)] border-b border-[var(--border)]">
+          <div className={containerClass}>
+            <Navigation locale={params.lang} dict={dict} />
+          </div>
+        </header>
+
+        <main className={`${containerClass} py-10 min-h-screen`}>
+          {children}
+        </main>
+
+        <footer className="bg-[var(--surface)] border-t border-[var(--border)] mt-20">
+          <div className={containerClass}>
+            <Footer locale={params.lang} />
+          </div>
+        </footer>
       </body>
     </html>
   )

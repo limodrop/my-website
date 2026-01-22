@@ -1,6 +1,5 @@
 import { getDictionary } from "@/app/i18n";
 import { Locale } from "@/lib/i18n/types";
-import { PageShell } from "@/app/ui/layout/PageShell";
 import BookingCTA from "@/app/components/BookingCTA";
 
 export default async function AboutPage({ params }: { params: { lang: Locale } }) {
@@ -8,7 +7,7 @@ export default async function AboutPage({ params }: { params: { lang: Locale } }
   const dict = await getDictionary(locale);
 
   return (
-    <PageShell>
+    <>
       <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
         About Oregon Town Car
       </h1>
@@ -50,6 +49,6 @@ export default async function AboutPage({ params }: { params: { lang: Locale } }
       </div>
 
       <BookingCTA locale={locale} />
-    </PageShell>
+    </>
   );
 }

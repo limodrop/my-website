@@ -1,6 +1,5 @@
 import { getDictionary } from "@/app/i18n";
 import { Locale } from "@/lib/i18n/types";
-import { PageShell } from "@/app/ui/layout/PageShell";
 import { BookingForm } from "@/app/components/BookingForm";
 
 export default async function ContactPage({ params }: { params: { lang: Locale } }) {
@@ -8,7 +7,7 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
   const dict = await getDictionary(locale);
 
   return (
-    <PageShell>
+    <>
       <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
         Contact Us
       </h1>
@@ -41,6 +40,6 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
         <h2 className="text-2xl font-semibold text-[var(--text)] mb-4">Request a Quote</h2>
         <BookingForm locale={locale} />
       </div>
-    </PageShell>
+    </>
   );
 }

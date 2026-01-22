@@ -6,7 +6,6 @@ import { Section } from "@/app/ui/layout/Section"
 import { ServiceCard } from "@/app/ui/cards/ServiceCard"
 import { FleetCard } from "@/app/ui/cards/FleetCard"
 import { CityCard } from "@/app/ui/cards/CityCard"
-import { PageShell } from "@/app/ui/layout/PageShell"
 
 export default async function LangHome({
   params
@@ -23,7 +22,7 @@ export default async function LangHome({
   ])
 
   return (
-    <PageShell>
+    <>
       <HeroSlider slides={homepage.heroSlides} />
 
       <Section title={dict.nav.services}>
@@ -75,7 +74,7 @@ export default async function LangHome({
           ))}
         </div>
       </Section>
-    </PageShell>
+    </>
   )
 }
 

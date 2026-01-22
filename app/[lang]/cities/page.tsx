@@ -1,7 +1,6 @@
 import { serverApi } from "@/lib/api/serverClient"
 import { Locale } from "@/lib/i18n/types"
 import { CityCard } from "@/app/ui/cards/CityCard"
-import { PageShell } from "@/app/ui/layout/PageShell"
 import { getDictionary } from "@/app/i18n"
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }) {
@@ -23,7 +22,7 @@ export default async function CitiesPage({ params }: { params: { lang: Locale } 
   const cities = await serverApi.getCities()
 
   return (
-    <PageShell>
+    <>
       <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
         {dict.nav.cities}
       </h1>
@@ -41,6 +40,6 @@ export default async function CitiesPage({ params }: { params: { lang: Locale } 
           />
         ))}
       </div>
-    </PageShell>
+    </>
   )
 }

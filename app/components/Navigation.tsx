@@ -34,12 +34,11 @@ export default function Navigation({ locale, dict }: NavigationProps) {
   return (
     <nav
       className={`
-        sticky top-0 z-50 w-full px-6 py-4 border-b header-animate
-        bg-[var(--surface)] border-[var(--border)]
+        sticky top-0 z-50 w-full py-[var(--space-header)] header-animate
         ${scrolled ? "header-scrolled shadow-md" : "shadow-sm"}
       `}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="flex items-center justify-between">
         {/* LOGO */}
         <Link
           href={`/${locale}`}

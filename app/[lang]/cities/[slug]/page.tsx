@@ -54,13 +54,13 @@ export default async function CityDetailPage({ params }: Props) {
   ])
 
   if (!city) {
-    return <div className="max-w-7xl mx-auto px-6 py-12">City not found</div>
+    return <div>City not found</div>
   }
 
   const relevantServices = rules.cityServices[params.slug] || []
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
+    <div className="space-y-8">
       <CityJsonLd city={city} />
       <Breadcrumbs
         items={[

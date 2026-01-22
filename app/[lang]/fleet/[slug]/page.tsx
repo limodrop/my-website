@@ -59,7 +59,7 @@ export default async function FleetDetailPage({ params }: Props) {
   ])
 
   if (!vehicle) {
-    return <div className="max-w-7xl mx-auto px-6 py-12">Vehicle not found</div>
+    return <div>Vehicle not found</div>
   }
 
   const relevantServices = rules.serviceFleet
@@ -71,7 +71,7 @@ export default async function FleetDetailPage({ params }: Props) {
   const relevantCities = rules.cityFleet[params.slug] || []
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
+    <div className="space-y-8">
       <FleetJsonLd vehicle={vehicle} />
       <Breadcrumbs
         items={[
