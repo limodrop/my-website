@@ -1,4 +1,5 @@
 import { serverClient } from "@/app/lib/serverClient";
+import BookButton from "@/components/BookButton";
 
 export default async function HomePage() {
   const homepage = await serverClient.homepage();
@@ -12,12 +13,12 @@ export default async function HomePage() {
           {homepage.heroSlides[0].subtitle}
         </p>
 
-        <a
-          href="https://book.oregontowncar.com"
+        <BookButton
+          location="hero"
           className="inline-block px-6 py-3 bg-black text-white rounded"
         >
           {homepage.heroSlides[0].cta}
-        </a>
+        </BookButton>
       </section>
 
       {/* Featured Services */}
