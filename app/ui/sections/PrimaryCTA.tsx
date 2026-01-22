@@ -20,7 +20,7 @@ export function PrimaryCTA() {
                 variant="primary"
                 as="a"
                 href="https://book.oregontowncar.com"
-                className="w-full sm:w-auto bg-white text-blue-700 hover:bg-white/90 !px-8 !py-3 text-base sm:text-lg font-semibold shadow-md"
+                className="w-full sm:w-auto bg-[#1f5188] text-[#F2F6FB] hover:bg-[#17406D] hover:text-white focus:ring-2 focus:ring-[#8FB6E3] !px-8 !py-3.5 !rounded-[12px] text-base sm:text-lg !font-semibold shadow-md tracking-[0.2px]"
               >
                 Book Now
               </Button>

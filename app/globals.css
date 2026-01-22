@@ -8,8 +8,10 @@
   --surface: #FFFFFF;
   --text: #1B1B1B;
   --textMuted: #5A5A5A;
-  --primary: #0067B8;
-  --primaryHover: #005A9E;
+  --primary: #1f5188;
+  --primaryHover: #17406D;
+  --primaryText: #F2F6FB;
+  --primaryRing: #8FB6E3;
   --border: #D1D1D1;
   --shadow: rgba(0, 0, 0, 0.08);
   
