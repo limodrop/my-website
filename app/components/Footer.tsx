@@ -161,7 +161,7 @@ export default function Footer({ locale, dict }: FooterProps) {
         </div>
 
         {/* DESKTOP: Grid Layout */}
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 mb-10">
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8 mb-10">
           <FooterSection title="Quick Links">
             <ul className="space-y-2 text-sm">
               <li>
@@ -215,6 +215,35 @@ export default function Footer({ locale, dict }: FooterProps) {
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
                   VIP Arrival Service
+                </Link>
+              </li>
+            </ul>
+          </FooterSection>
+
+          <FooterSection title="Global Coverage">
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href={`/${locale}/cities`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Cities
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/countries`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Countries
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/worldwide`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  {dict.nav.worldwide}
                 </Link>
               </li>
             </ul>
