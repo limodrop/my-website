@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
 import MobileMenu from "./MobileMenu";
+import { Button } from "@/app/ui/buttons/Button";
 
 interface NavigationProps {
   locale: string;
@@ -58,6 +59,22 @@ export default function Navigation({ locale, dict }: NavigationProps) {
               {item.label}
             </Link>
           ))}
+          <Button
+            variant="primary"
+            as="a"
+            href="https://book.oregontowncar.com"
+            className="!py-2 !px-4"
+          >
+            Book Now
+          </Button>
+          <Button
+            variant="ghost"
+            as="a"
+            href="https://login.oregontowncar.com"
+            className="!py-2 !px-4"
+          >
+            Login
+          </Button>
           <LanguageSwitcher currentLocale={locale} />
         </div>
 

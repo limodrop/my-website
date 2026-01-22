@@ -141,7 +141,7 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: any
           </div>
 
           {/* CTA */}
-          <div className="pt-4">
+          <div className="pt-4 space-y-3">
             <a
               href="https://book.oregontowncar.com"
               className="
@@ -153,6 +153,18 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: any
               onClick={() => setOpen(false)}
             >
               Book Now
+            </a>
+            <a
+              href="https://login.oregontowncar.com"
+              className="
+                block w-full px-4 py-3 rounded-lg text-center
+                border border-[var(--border)] text-[var(--text)] font-semibold
+                hover:bg-[var(--background)]
+                transition-colors
+              "
+              onClick={() => setOpen(false)}
+            >
+              Login
             </a>
           </div>
         </div>

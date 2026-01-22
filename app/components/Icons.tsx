@@ -44,6 +44,8 @@ import {
   SortAsc,
   Grid,
   Map,
+  Wine,
+  DollarSign,
 } from "lucide-react";
 
 /**
@@ -87,10 +89,12 @@ export const Icons = {
   contact: Phone,
   mail: Mail,
   language: Languages,
+  phone: Phone,
 
   // Time & Scheduling
   time: Clock,
   date: Calendar,
+  clock: Clock,
 
   // People & Business
   user: User,
@@ -118,12 +122,15 @@ export const Icons = {
   star: Star,
   heart: Heart,
   award: Award,
+  wine: Wine,
+  dollarSign: DollarSign,
 
   // Admin & Settings
   settings: Settings,
   analytics: BarChart3,
   document: FileText,
   security: Shield,
+  shield: Shield,
 };
 
 // Type for icon components
