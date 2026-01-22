@@ -1,44 +1,29 @@
-"use client"
+"use client";
 
-import { usePathname } from "next/navigation"
-import Link from "next/link"
-import { languages } from "@/i18n.config"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-interface LanguageSwitcherProps {
-  currentLocale: string
-}
+const languages = ["en", "es", "fr", "ar", "zh"];
 
-export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
-  const pathname = usePathname()
-  
-  // Remove the current locale from pathname to get the base path
-  const pathWithoutLocale = pathname?.replace(`/${currentLocale}`, "") || ""
+export default function LanguageSwitcher({ currentLocale }) {
+  const pathname = usePathname();
 
-  const languageNames: Record<string, string> = {
-    en: "EN",
-    es: "ES",
-    fr: "FR",
-    ar: "AR",
-    zh: "中文",
-  }
+  // Remove the current locale from the path
+  const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
 
   return (
-    <div className="flex items-center gap-2">
-      {languages.map((lang, index) => (
-        <span key={lang} className="flex items-center">
-          {index > 0 && <span className="text-gray-600 mx-1">|</span>}
-          <Link
-            href={`/${lang}${pathWithoutLocale}`}
-            className={`text-sm transition-colors ${
-              currentLocale === lang
-                ? "text-yellow-400 font-semibold"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            {languageNames[lang] || lang.toUpperCase()}
-          </Link>
-        </span>
+    <div className="flex items-center gap-3 text-sm">
+      {languages.map((lang) => (
+        <Link
+          key={lang}
+          href={`/${lang}${pathWithoutLocale}`}
+          className={`uppercase transition ${
+            lang === currentLocale ? "text-yellow-400" : "text-gray-400 hover:text-yellow-300"
+          }`}
+        >
+          {lang}
+        </Link>
       ))}
     </div>
-  )
+  );
 }

@@ -70,8 +70,8 @@ export default async function LangHome({
 
       {/* FEATURED SERVICES */}
       <Section 
-        title={dict.pages.services.title}
-        subtitle={dict.pages.services.subtitle}
+        title="Premium Services"
+        subtitle="Luxury transportation tailored to your needs"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.slice(0, 4).map((service, idx) => (
@@ -89,8 +89,8 @@ export default async function LangHome({
 
       {/* FEATURED FLEET */}
       <Section 
-        title={dict.pages.fleet.title}
-        subtitle={dict.pages.fleet.subtitle}
+        title="Our Premium Fleet"
+        subtitle="Luxury vehicles for every occasion"
         className="bg-gray-50"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -109,8 +109,8 @@ export default async function LangHome({
 
       {/* FEATURED CITIES */}
       <Section 
-        title={dict.pages.cities.title}
-        subtitle={dict.pages.cities.subtitle}
+        title="Global Coverage"
+        subtitle="We serve major cities worldwide"
       >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {cities.slice(0, 10).map((city) => (

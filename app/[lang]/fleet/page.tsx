@@ -1,20 +1,18 @@
 import { serverApi } from "@/lib/api/serverClient"
-import { getDictionary } from "@/app/i18n"
 import { Locale } from "@/lib/i18n/types"
 import { Section } from "@/app/ui/layout/Section"
 import { FleetCard } from "@/app/ui/cards/FleetCard"
 
 export default async function FleetPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang
-  const dict = await getDictionary(locale)
   const fleet = await serverApi.getFleet()
   const fleetIcons = ["🚗", "🚙", "🚐", "🚕", "🚘", "🚍"]
 
   return (
     <div>
       <Section 
-        title={dict.pages.fleet.title}
-        subtitle={dict.pages.fleet.subtitle}
+        title="Our Premium Fleet"
+        subtitle="Luxury vehicles for every occasion"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {fleet.map((vehicle, idx) => (

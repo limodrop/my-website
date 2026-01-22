@@ -1,20 +1,18 @@
 import { serverApi } from "@/lib/api/serverClient"
-import { getDictionary } from "@/app/i18n"
 import { Locale } from "@/lib/i18n/types"
 import { Section } from "@/app/ui/layout/Section"
 import { ServiceCard } from "@/app/ui/cards/ServiceCard"
 
 export default async function ServicesPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang
-  const dict = await getDictionary(locale)
   const services = await serverApi.getServices()
   const serviceIcons = ["✈️", "💼", "🍷", "🎉", "🚗", "🏨"]
 
   return (
     <div>
       <Section 
-        title={dict.pages.services.title}
-        subtitle={dict.pages.services.subtitle}
+        title="Our Premium Services"
+        subtitle="Luxury transportation tailored to your needs"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, idx) => (
