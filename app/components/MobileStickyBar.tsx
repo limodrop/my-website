@@ -11,7 +11,7 @@ export function MobileStickyBar() {
           variant="primary"
           as="a"
           href="https://book.oregontowncar.com"
-          className="flex-1 justify-center gap-2"
+          className="flex-[2] justify-center gap-2 !font-semibold"
         >
           <span>Book Now</span>
         </Button>
@@ -19,10 +19,10 @@ export function MobileStickyBar() {
           variant="ghost"
           as="a"
           href="tel:5033537755"
-          className="flex-1 justify-center gap-2"
+          className="flex-1 justify-center gap-1.5 text-xs"
         >
           <Icons.phone className="w-4 h-4" />
-          <span>Call</span>
+          <span>Call Concierge</span>
         </Button>
       </div>
     </div>

@@ -30,14 +30,17 @@ export function StaticHero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">
-            <Button
-              variant="primary"
-              as="a"
-              href="https://book.oregontowncar.com"
-              className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
-            >
-              Book Now
-            </Button>
+            <div className="flex flex-col gap-1.5">
+              <Button
+                variant="primary"
+                as="a"
+                href="https://book.oregontowncar.com"
+                className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
+              >
+                Book Now
+              </Button>
+              <span className="text-white/70 text-xs text-center sm:text-left">Book online in under 60 seconds</span>
+            </div>
             <a
               href="/contact"
               className="
@@ -52,6 +55,24 @@ export function StaticHero() {
               <span>Get a Quote</span>
               <Icons.arrow className="w-4 h-4" />
             </a>
+          </div>
+
+          {/* Booking Reassurance */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-white/80 mb-3">
+            <div className="flex items-center gap-1.5">
+              <Icons.checkCircle className="w-3.5 h-3.5" />
+              <span>Instant confirmation</span>
+            </div>
+            <span className="text-white/40">•</span>
+            <div className="flex items-center gap-1.5">
+              <Icons.checkCircle className="w-3.5 h-3.5" />
+              <span>Fixed pricing</span>
+            </div>
+            <span className="text-white/40">•</span>
+            <div className="flex items-center gap-1.5">
+              <Icons.checkCircle className="w-3.5 h-3.5" />
+              <span>Flight tracking included</span>
+            </div>
           </div>
 
           {/* Support Line */}

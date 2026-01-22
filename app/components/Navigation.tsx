@@ -60,13 +60,6 @@ export default function Navigation({ locale, dict }: NavigationProps) {
               {item.label}
             </Link>
           ))}
-          <a
-            href="tel:5033537755"
-            className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--primary)] transition font-medium"
-          >
-            <Icons.phone className="w-4 h-4" />
-            <span className="hidden lg:inline">(503) 353-7755</span>
-          </a>
           <Button
             variant="primary"
             as="a"

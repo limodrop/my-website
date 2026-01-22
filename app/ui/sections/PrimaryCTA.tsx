@@ -11,9 +11,10 @@ export function PrimaryCTA() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
               Ready to Book or Need Help?
             </h2>
-            <p className="text-base sm:text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-white/90 mb-2 max-w-2xl mx-auto">
               Book your chauffeur-driven ride or speak with our concierge for a custom request.
             </p>
+            <p className="text-sm text-white/70 mb-8">Instant online booking — fastest way to reserve your ride</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
@@ -42,12 +43,12 @@ export function PrimaryCTA() {
 
             <div className="mt-6 flex items-center justify-center gap-2 text-white/90 text-sm">
               <Icons.phone className="w-4 h-4" />
-              <span>Or call:</span>
+              <span>Need help?</span>
               <a
                 href={`tel:${COMPANY_PHONE_FORMATTED.replace(/[^0-9]/g, '')}`}
                 className="font-semibold hover:text-white transition-colors"
               >
-                {COMPANY_PHONE_FORMATTED}
+                Call Concierge {COMPANY_PHONE_FORMATTED}
               </a>
             </div>
           </div>
