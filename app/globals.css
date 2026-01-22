@@ -1,3 +1,25 @@
+:root {
+  /* Light theme colors */
+  --primary: #0078d4;
+  --primaryHover: #006cbe;
+  --background: #ffffff;
+  --surface: #f3f2f1;
+  --border: #e1dfdd;
+  --text: #323130;
+  --textMuted: #605e5c;
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --primary: #4dabf7;
+  --primaryHover: #339af0;
+  --background: #1a1a1a;
+  --surface: #2d2d2d;
+  --border: #3f3f3f;
+  --text: #f0f0f0;
+  --textMuted: #a0a0a0;
+}
+
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
