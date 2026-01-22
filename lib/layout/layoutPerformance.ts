@@ -7,6 +7,7 @@ interface LayoutVariant {
   layout: HomepageBlock[]
   impressions: number
   conversions: number
+  cr?: number
 }
 
 const variants: LayoutVariant[] = []
