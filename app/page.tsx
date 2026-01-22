@@ -1,4 +1,6 @@
 import { serverClient } from "@/app/lib/serverClient";
+import Hero from "@/app/components/Hero";
+import BookingCTA from "@/app/components/BookingCTA";
 
 export default async function HomePage() {
   const homepage = await serverClient.homepage();
@@ -6,19 +8,7 @@ export default async function HomePage() {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <section className="space-y-6">
-        <h1 className="text-4xl font-bold">{homepage.heroSlides[0].title}</h1>
-        <p className="text-lg text-gray-700">
-          {homepage.heroSlides[0].subtitle}
-        </p>
-
-        <a
-          href="https://book.oregontowncar.com"
-          className="inline-block px-6 py-3 bg-black text-white rounded"
-        >
-          {homepage.heroSlides[0].cta}
-        </a>
-      </section>
+      <Hero locale="en" />
 
       {/* Featured Services */}
       <section>
@@ -27,7 +17,7 @@ export default async function HomePage() {
           {homepage.featuredServices.map((service) => (
             <li
               key={service}
-              className="p-4 border rounded shadow-sm bg-white"
+              className="p-4 border border-[var(--border)] rounded shadow-sm bg-[var(--surface)]"
             >
               {service}
             </li>
@@ -42,7 +32,7 @@ export default async function HomePage() {
           {homepage.featuredCities.map((city) => (
             <li
               key={city}
-              className="p-4 border rounded shadow-sm bg-white"
+              className="p-4 border border-[var(--border)] rounded shadow-sm bg-[var(--surface)]"
             >
               {city}
             </li>
@@ -57,13 +47,16 @@ export default async function HomePage() {
           {homepage.featuredFleet.map((vehicle) => (
             <li
               key={vehicle}
-              className="p-4 border rounded shadow-sm bg-white"
+              className="p-4 border border-[var(--border)] rounded shadow-sm bg-[var(--surface)]"
             >
               {vehicle}
             </li>
           ))}
         </ul>
       </section>
+
+      {/* Booking CTA */}
+      <BookingCTA locale="en" />
     </div>
   );
 }

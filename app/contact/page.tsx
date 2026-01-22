@@ -1,10 +1,18 @@
+import PageShell from "@/app/components/PageShell";
+import Heading from "@/app/components/Heading";
+import BookingForm from "@/app/components/BookingForm";
+
 export default function ContactPage() {
   return (
-    <div className="space-y-4">
-      <h1 className="text-3xl font-bold">Contact Us</h1>
+    <PageShell>
+      <Heading level={1}>Contact Us</Heading>
 
-      <p>Email: info@oregontowncar.com</p>
-      <p>Phone: (503) 123-4567</p>
-    </div>
-  )
+      <p className="text-[var(--textMuted)] mb-6">
+        Reach out for bookings, corporate accounts, or general inquiries.
+      </p>
+
+      <BookingForm locale="en" />
+    </PageShell>
+  );
 }
+
