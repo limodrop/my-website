@@ -13,7 +13,7 @@ export default function Breadcrumbs({
         <span key={i}>
           {item.href ? (
             <Link
-              href={`/${locale}${item.href}`}
+              href={item.href}
               className="hover:text-[var(--primary)]"
             >
               {item.label}

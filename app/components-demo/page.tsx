@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@/app/components/Button";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 import { Input, TextArea } from "@/app/components/FormComponents";
@@ -9,10 +9,12 @@ import { Skeleton } from "@/app/components/Skeleton";
 export default function ComponentsDemoPage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
@@ -35,7 +37,7 @@ export default function ComponentsDemoPage() {
         <Breadcrumbs
           locale="en"
           items={[
-            { label: "Home", href: "" },
+            { label: "Home", href: "/" },
             { label: "Services", href: "/services" },
             { label: "Airport Transportation" },
           ]}
