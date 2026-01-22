@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -47,10 +48,14 @@ export default function Navigation() {
           <Link href="/contact" className="text-[var(--text)] hover:opacity-70">
             Contact
           </Link>
+          <ThemeToggle />
         </div>
 
         {/* Mobile Navigation */}
-        <MobileMenu />
+        <div className="flex md:hidden items-center gap-3">
+          <ThemeToggle />
+          <MobileMenu />
+        </div>
       </div>
     </nav>
   );

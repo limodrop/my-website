@@ -6,15 +6,15 @@ export default async function HomePage() {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <section className="space-y-6">
-        <h1 className="text-4xl font-bold">{homepage.heroSlides[0].title}</h1>
-        <p className="text-lg text-gray-700">
+      <section className="space-y-6 py-12">
+        <h1 className="text-4xl font-bold text-[var(--text)]">{homepage.heroSlides[0].title}</h1>
+        <p className="text-lg text-[var(--textMuted)]">
           {homepage.heroSlides[0].subtitle}
         </p>
 
         <a
           href="https://book.oregontowncar.com"
-          className="inline-block px-6 py-3 bg-black text-white rounded"
+          className="inline-block px-6 py-3 bg-[var(--text)] text-[var(--surface)] rounded hover:opacity-90 transition-opacity"
         >
           {homepage.heroSlides[0].cta}
         </a>
@@ -22,12 +22,12 @@ export default async function HomePage() {
 
       {/* Featured Services */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Featured Services</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-[var(--text)]">Featured Services</h2>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {homepage.featuredServices.map((service) => (
             <li
               key={service}
-              className="p-4 border rounded shadow-sm bg-white"
+              className="p-4 border rounded shadow-sm bg-[var(--surface)] border-[var(--border)]"
             >
               {service}
             </li>
@@ -37,12 +37,12 @@ export default async function HomePage() {
 
       {/* Featured Cities */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Popular Cities</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-[var(--text)]">Popular Cities</h2>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {homepage.featuredCities.map((city) => (
             <li
               key={city}
-              className="p-4 border rounded shadow-sm bg-white"
+              className="p-4 border rounded shadow-sm bg-[var(--surface)] border-[var(--border)]"
             >
               {city}
             </li>
@@ -52,12 +52,12 @@ export default async function HomePage() {
 
       {/* Featured Fleet */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Featured Fleet</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-[var(--text)]">Featured Fleet</h2>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {homepage.featuredFleet.map((vehicle) => (
             <li
               key={vehicle}
-              className="p-4 border rounded shadow-sm bg-white"
+              className="p-4 border rounded shadow-sm bg-[var(--surface)] border-[var(--border)]"
             >
               {vehicle}
             </li>
