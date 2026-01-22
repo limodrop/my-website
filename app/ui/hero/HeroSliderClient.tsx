@@ -81,7 +81,5 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
         </div>
       )}
     </div>
-      </div>
-    </section>
   )
 }
