@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "@/app/hooks/useTheme";
 import type { Dictionary, Locale } from "@/lib/dictionaries";
 
@@ -15,6 +15,21 @@ export default function Navigation({ locale = "en", dict }: NavigationProps) {
   const pathname = usePathname();
   const { mode, setMode } = useTheme();
   const [langOpen, setLangOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setLangOpen(false);
+      }
+    }
+
+    if (langOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [langOpen]);
 
   const navItems = [
     { href: "", label: dict.nav.home },
@@ -66,9 +81,12 @@ export default function Navigation({ locale = "en", dict }: NavigationProps) {
         <div className="flex items-center gap-4 relative">
 
           {/* LANGUAGE DROPDOWN */}
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setLangOpen(!langOpen)}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setLangOpen(false);
+              }}
               className="
                 text-sm px-3 py-1 rounded
                 border border-[var(--border)]

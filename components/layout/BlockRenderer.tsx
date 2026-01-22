@@ -8,10 +8,15 @@ interface BlockRendererProps {
 export function BlockRenderer({ block }: BlockRendererProps) {
   // Simple block renderer - can be extended later
   return (
-    <div className="p-4 border rounded bg-gray-50">
-      <div className="text-sm font-medium">Block Type: {block.type}</div>
+    <div className="p-4 border rounded" style={{ 
+      backgroundColor: "var(--background)",
+      borderColor: "var(--border)"
+    }}>
+      <div className="text-sm font-medium" style={{ color: "var(--text)" }}>
+        Block Type: {block.type}
+      </div>
       {block.props && (
-        <div className="text-xs text-gray-600 mt-2">
+        <div className="text-xs mt-2" style={{ color: "var(--text-secondary)" }}>
           Props: {JSON.stringify(block.props)}
         </div>
       )}
