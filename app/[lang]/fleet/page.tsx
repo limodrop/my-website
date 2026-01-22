@@ -1,6 +1,5 @@
 import { serverApi } from "@/lib/api/serverClient"
 import { Locale } from "@/lib/i18n/types"
-import { Section } from "@/app/ui/layout/Section"
 import { FleetCard } from "@/app/ui/cards/FleetCard"
 import { PageShell } from "@/app/ui/layout/PageShell"
 import { getDictionary } from "@/app/i18n"
@@ -25,19 +24,24 @@ export default async function FleetPage({ params }: { params: { lang: Locale } }
 
   return (
     <PageShell>
-      <Section title={dict.nav.fleet}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {fleet.map((vehicle) => (
-            <FleetCard
-              key={vehicle.id}
-              name={vehicle.name}
-              slug={vehicle.slug}
-              capacity={vehicle.seats ? `${vehicle.seats} passengers` : undefined}
-              locale={locale}
-            />
-          ))}
-        </div>
-      </Section>
+      <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
+        {dict.nav.fleet}
+      </h1>
+      <p className="text-lg text-[var(--textMuted)] mb-10">
+        Luxury sedans, SUVs, Sprinter vans, and executive vehicles — all driven by professional chauffeurs.
+      </p>
+
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {fleet.map((vehicle) => (
+          <FleetCard
+            key={vehicle.id}
+            name={vehicle.name}
+            slug={vehicle.slug}
+            capacity={vehicle.seats ? `${vehicle.seats} passengers` : undefined}
+            locale={locale}
+          />
+        ))}
+      </div>
     </PageShell>
   )
 }

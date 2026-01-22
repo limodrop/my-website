@@ -53,13 +53,13 @@ export default async function CityDetailPage({ params }: Props) {
   ])
 
   if (!city) {
-    return <div className="container mx-auto py-12">City not found</div>
+    return <div className="max-w-7xl mx-auto px-6 py-12">City not found</div>
   }
 
   const relevantServices = rules.cityServices[params.slug] || []
 
   return (
-    <div className="container mx-auto py-12 space-y-8">
+    <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
       <CityJsonLd city={city} />
       <Breadcrumbs
         items={[
@@ -69,25 +69,43 @@ export default async function CityDetailPage({ params }: Props) {
         ]}
       />
 
-      <h1 className="text-4xl font-bold">{city.name}</h1>
-      <img src={city.image} alt={city.name} className="rounded-lg w-full max-w-2xl" />
-      <p className="text-lg">{city.description}</p>
+      <h1 className="text-4xl font-semibold text-[var(--text)]">{city.name}</h1>
+      
+      {city.image && (
+        <img 
+          src={city.image} 
+          alt={city.name} 
+          className="rounded-lg w-full max-w-2xl shadow-sm" 
+        />
+      )}
+      
+      <p className="text-lg text-[var(--textMuted)] leading-relaxed">{city.description}</p>
 
       {relevantServices.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Services available in {city.name}</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold text-[var(--text)] mb-6">
+            Services available in {city.name}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {relevantServices.map((serviceSlug) => {
               const service = services.find((s) => s.slug === serviceSlug)
               return service ? (
-                <li key={serviceSlug} className="border rounded-lg p-4">
-                  <a href={`/services/${serviceSlug}`} className="text-blue-600 hover:underline">
-                    {service.name}
-                  </a>
-                </li>
+                <a
+                  key={serviceSlug}
+                  href={`/services/${serviceSlug}`}
+                  className="
+                    p-4 rounded-lg
+                    bg-[var(--surface)]
+                    border border-[var(--border)]
+                    hover:border-[var(--primary)]
+                    transition
+                  "
+                >
+                  <h3 className="font-medium text-[var(--text)]">{service.name}</h3>
+                </a>
               ) : null
             })}
-          </ul>
+          </div>
         </section>
       )}
     </div>
