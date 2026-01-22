@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "../buttons/Button"
+import { theme } from "../theme"
 
 type HeroSlide = {
   title: string
   subtitle: string
   cta: string
   ctaLink?: string
+  image?: string
 }
 
 interface HeroSliderClientProps {
@@ -20,7 +22,7 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000) // Auto-advance every 5 seconds
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [slides.length])
@@ -30,54 +32,55 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
   const slide = slides[currentSlide]
 
   return (
-    <section className="relative bg-gradient-to-br from-black via-gray-900 to-black text-white py-32 px-4 overflow-hidden">
-      {/* Background animation */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-600/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-600/20 rounded-full blur-3xl animate-pulse delay-1000" />
+    <div
+      className="w-full rounded-lg overflow-hidden mb-10 relative"
+      style={{
+        backgroundColor: theme.colors.surface,
+        border: `1px solid ${theme.colors.border}`,
+        boxShadow: theme.shadow.card,
+      }}
+    >
+      {slide.image && (
+        <img
+          src={slide.image}
+          className="w-full h-[420px] object-cover"
+          alt={slide.title}
+        />
+      )}
+
+      <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-10">
+        <h2 className="text-4xl font-semibold text-white mb-4">
+          {slide.title}
+        </h2>
+
+        <Button
+          variant="primary"
+          as="a"
+          href={slide.ctaLink || "https://book.oregontowncar.com"}
+        >
+          {slide.cta}
+        </Button>
       </div>
 
-      <div className="container mx-auto text-center space-y-8 relative z-10">
-        <div className="inline-block px-4 py-2 bg-yellow-600 text-black text-sm font-semibold rounded-full mb-4 animate-fade-in">
-          ✨ Premium Worldwide Service
-        </div>
-        
-        <h1 className="text-6xl md:text-7xl font-bold tracking-tight animate-fade-in">
-          {slide.title.split(" — ").map((part, idx) => (
-            <span key={idx} className={idx === 1 ? "block text-yellow-500 mt-2" : "block"}>
-              {part}
-            </span>
+      {/* Slide indicators */}
+      {slides.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              className="transition-all rounded-full"
+              style={{
+                width: idx === currentSlide ? "32px" : "8px",
+                height: "8px",
+                backgroundColor: idx === currentSlide ? theme.colors.primary : "rgba(255, 255, 255, 0.5)",
+              }}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
           ))}
-        </h1>
-        
-        <p className="text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto animate-fade-in delay-200">
-          {slide.subtitle}
-        </p>
-        
-        <div className="flex gap-4 justify-center flex-wrap animate-fade-in delay-300">
-          <Button variant="primary" as="a" href={slide.ctaLink || "https://book.oregontowncar.com"}>
-            📍 {slide.cta}
-          </Button>
-          <Button variant="ghost" as="a" href="/en/worldwide">
-            🌍 View Coverage
-          </Button>
         </div>
-
-        {/* Slide indicators */}
-        {slides.length > 1 && (
-          <div className="flex gap-2 justify-center mt-8">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  idx === currentSlide ? "bg-yellow-600 w-8" : "bg-white/30"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-        )}
+      )}
+    </div>
       </div>
     </section>
   )

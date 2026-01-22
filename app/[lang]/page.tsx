@@ -1,4 +1,3 @@
-import { messages } from "@/lib/i18n/messages"
 import { Locale } from "@/lib/i18n/types"
 import { serverApi } from "@/lib/api/serverClient"
 import { getDictionary } from "@/app/i18n"
@@ -7,8 +6,7 @@ import { Section } from "@/app/ui/layout/Section"
 import { ServiceCard } from "@/app/ui/cards/ServiceCard"
 import { FleetCard } from "@/app/ui/cards/FleetCard"
 import { CityCard } from "@/app/ui/cards/CityCard"
-import { WorldwideMapSection } from "@/app/ui/worldwide/WorldwideMapSection"
-import { Button } from "@/app/ui/buttons/Button"
+import { PageShell } from "@/app/ui/layout/PageShell"
 
 export default async function LangHome({
   params
@@ -17,125 +15,58 @@ export default async function LangHome({
 }) {
   const locale = params.lang
   const dict = await getDictionary(locale)
-  const t = messages[params.lang]
-  const [homepage, serviceArea, promotions, services, fleet, cities] = await Promise.all([
+  const [homepage, services, fleet, cities] = await Promise.all([
     serverApi.getHomepage(),
-    serverApi.getServiceArea(),
-    serverApi.getPromotions(),
     serverApi.getServices(),
     serverApi.getFleet(),
     serverApi.getCities(),
   ])
 
-  const serviceIcons = ["✈️", "💼", "🍷", "🎉"]
-  const fleetIcons = ["🚗", "🚙", "🚐"]
-
   return (
-    <div>
-      {/* HERO SLIDER */}
+    <PageShell>
       <HeroSlider slides={homepage.heroSlides} />
 
-      {/* PROMOTIONS BANNER */}
-      {promotions.length > 0 && (
-        <section className="bg-yellow-600 text-black py-4 px-4">
-          <div className="container mx-auto text-center">
-            <p className="text-lg font-semibold">
-              🎉 {promotions[0].title} - {promotions[0].description}
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* STATS SECTION */}
-      <Section background="dark">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
-          <div>
-            <div className="text-4xl font-bold text-yellow-500">{serviceArea.countries.length}</div>
-            <div className="text-sm text-gray-400 mt-1">Countries</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-yellow-500">50</div>
-            <div className="text-sm text-gray-400 mt-1">U.S. States</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-yellow-500">{serviceArea.majorCities.length}+</div>
-            <div className="text-sm text-gray-400 mt-1">Major Cities</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-yellow-500">24/7</div>
-            <div className="text-sm text-gray-400 mt-1">Availability</div>
-          </div>
-        </div>
-      </Section>
-
-      {/* FEATURED SERVICES */}
-      <Section 
-        title="Premium Services"
-        subtitle="Luxury transportation tailored to your needs"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.slice(0, 4).map((service, idx) => (
+      <Section title={dict.nav.services}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((s) => (
             <ServiceCard
-              key={service.id}
-              name={service.name}
-              slug={service.slug}
-              description={service.description}
-              icon={serviceIcons[idx]}
+              key={s.id}
+              name={s.name}
+              slug={s.slug}
+              description={s.description}
               locale={locale}
             />
           ))}
         </div>
       </Section>
 
-      {/* FEATURED FLEET */}
-      <Section 
-        title="Our Premium Fleet"
-        subtitle="Luxury vehicles for every occasion"
-        className="bg-gray-50"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {fleet.slice(0, 3).map((vehicle, idx) => (
+      <Section title={dict.nav.fleet}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {fleet.map((f) => (
             <FleetCard
-              key={vehicle.id}
-              name={vehicle.name}
-              slug={vehicle.slug}
-              capacity={vehicle.seats ? `${vehicle.seats} passengers` : undefined}
-              icon={fleetIcons[idx]}
+              key={f.id}
+              name={f.name}
+              slug={f.slug}
+              capacity={f.seats ? `${f.seats} passengers` : undefined}
               locale={locale}
             />
           ))}
         </div>
       </Section>
 
-      {/* FEATURED CITIES */}
-      <Section 
-        title="Global Coverage"
-        subtitle="We serve major cities worldwide"
-      >
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-          {cities.slice(0, 10).map((city) => (
+      <Section title={dict.nav.cities}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {cities.map((c) => (
             <CityCard
-              key={city.id}
-              name={city.name}
-              slug={city.slug}
+              key={c.id}
+              name={c.name}
+              slug={c.slug}
               locale={locale}
             />
           ))}
         </div>
-        
-        <div className="text-center">
-          <Button variant="secondary" as="a" href={`/${locale}/cities`}>
-            View All Locations →
-          </Button>
-        </div>
       </Section>
-
-      {/* WORLDWIDE SERVICE MAP */}
-      <WorldwideMapSection 
-        countries={serviceArea.countries}
-        cities={serviceArea.majorCities.map((name) => ({ name }))}
-      />
-    </div>
+    </PageShell>
   )
 }
 

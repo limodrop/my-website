@@ -2,31 +2,29 @@ import { serverApi } from "@/lib/api/serverClient"
 import { Locale } from "@/lib/i18n/types"
 import { Section } from "@/app/ui/layout/Section"
 import { FleetCard } from "@/app/ui/cards/FleetCard"
+import { PageShell } from "@/app/ui/layout/PageShell"
+import { getDictionary } from "@/app/i18n"
 
 export default async function FleetPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang
+  const dict = await getDictionary(locale)
   const fleet = await serverApi.getFleet()
-  const fleetIcons = ["🚗", "🚙", "🚐", "🚕", "🚘", "🚍"]
 
   return (
-    <div>
-      <Section 
-        title="Our Premium Fleet"
-        subtitle="Luxury vehicles for every occasion"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {fleet.map((vehicle, idx) => (
+    <PageShell>
+      <Section title={dict.nav.fleet}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {fleet.map((vehicle) => (
             <FleetCard
               key={vehicle.id}
               name={vehicle.name}
               slug={vehicle.slug}
               capacity={vehicle.seats ? `${vehicle.seats} passengers` : undefined}
-              icon={fleetIcons[idx % fleetIcons.length]}
               locale={locale}
             />
           ))}
         </div>
       </Section>
-    </div>
+    </PageShell>
   )
 }
