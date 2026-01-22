@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from "react"
 
 type ButtonVariant = "primary" | "secondary" | "ghost"
