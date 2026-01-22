@@ -10,21 +10,21 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
   const vehicles = [
     {
       name: "Luxury Sedan",
-      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80",
+      image: "/images/fleet/sedan.jpg",
       passengers: "3 passengers",
       luggage: "3 large bags",
       slug: "luxury-sedan"
     },
     {
       name: "Black SUV",
-      image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=80",
+      image: "/images/fleet/suv.jpg",
       passengers: "6 passengers",
       luggage: "6 large bags",
       slug: "black-suv"
     },
     {
       name: "Executive Van",
-      image: "https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=800&q=80",
+      image: "/images/fleet/van.jpg",
       passengers: "14 passengers",
       luggage: "10 large bags",
       slug: "executive-van"
