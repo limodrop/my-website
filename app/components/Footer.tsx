@@ -88,6 +88,27 @@ export default function Footer({ locale, dict }: FooterProps) {
             </ul>
           </FooterSection>
 
+          <FooterSection title="Services" isMobile>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href={`/${locale}/services`}
+                  className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1"
+                >
+                  All Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/services/vip-arrival`}
+                  className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1"
+                >
+                  VIP Arrival Service
+                </Link>
+              </li>
+            </ul>
+          </FooterSection>
+
           <FooterSection title="Global Coverage" isMobile>
             <ul className="space-y-2 text-sm">
               <li>
@@ -140,7 +161,7 @@ export default function Footer({ locale, dict }: FooterProps) {
         </div>
 
         {/* DESKTOP: Grid Layout */}
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10 mb-10">
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 mb-10">
           <FooterSection title="Quick Links">
             <ul className="space-y-2 text-sm">
               <li>
@@ -173,6 +194,27 @@ export default function Footer({ locale, dict }: FooterProps) {
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
                   {dict.nav.about}
+                </Link>
+              </li>
+            </ul>
+          </FooterSection>
+
+          <FooterSection title="Services">
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href={`/${locale}/services`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  All Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/services/vip-arrival`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  VIP Arrival Service
                 </Link>
               </li>
             </ul>

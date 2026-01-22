@@ -14,6 +14,12 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
       link: `/${locale}/services/airport-transfers`
     },
     {
+      icon: Icons.user,
+      title: "VIP Arrival Service",
+      description: "Meet & greet, guided arrivals, luxury pickup",
+      link: `/${locale}/services/vip-arrival`
+    },
+    {
       icon: Icons.briefcase,
       title: "Corporate Transportation",
       description: "Meetings, executives, roadshows",
