@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { theme } from "@/app/ui/theme"
 
 type ButtonVariant = "primary" | "secondary" | "ghost"
 type ButtonAs = "button" | "a"
@@ -20,25 +21,45 @@ export function Button({
   className = "",
   onClick
 }: ButtonProps) {
-  const variantClasses = {
-    primary: "bg-[#0067B8] text-white hover:bg-[#005A9E] font-bold shadow-lg",
-    secondary: "bg-white text-[#0067B8] hover:bg-[#E6F0FA] font-bold border-2 border-[#0067B8]",
-    ghost: "bg-transparent text-[#0067B8] hover:underline font-semibold"
+  const baseClasses = "inline-block px-5 py-2.5 font-medium transition-colors duration-200"
+  
+  const variantStyles: Record<ButtonVariant, { className: string; style?: React.CSSProperties }> = {
+    primary: {
+      className: `${baseClasses} text-white`,
+      style: {
+        backgroundColor: theme.colors.primary,
+        borderRadius: theme.radius.button,
+      }
+    },
+    secondary: {
+      className: `${baseClasses} hover:bg-[#E6F0FA]`,
+      style: {
+        border: `1px solid ${theme.colors.primary}`,
+        color: theme.colors.primary,
+        borderRadius: theme.radius.button,
+      }
+    },
+    ghost: {
+      className: `${baseClasses} bg-transparent hover:underline`,
+      style: {
+        color: theme.colors.primary,
+      }
+    },
   }
 
-  const baseClasses = "inline-block px-8 py-4 rounded-lg transition-all"
-  const finalClass = `${baseClasses} ${variantClasses[variant]} ${className}`
+  const { className: variantClass, style: variantStyle } = variantStyles[variant]
+  const finalClass = `${variantClass} ${className}`
 
   if (as === "a" && href) {
     return (
-      <a href={href} className={finalClass}>
+      <a href={href} className={finalClass} style={variantStyle}>
         {children}
       </a>
     )
   }
 
   return (
-    <button onClick={onClick} className={finalClass}>
+    <button onClick={onClick} className={finalClass} style={variantStyle}>
       {children}
     </button>
   )
