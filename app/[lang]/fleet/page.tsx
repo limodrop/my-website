@@ -37,6 +37,7 @@ export default async function FleetPage({ params }: { params: { lang: Locale } }
             name={vehicle.name}
             slug={vehicle.slug}
             capacity={vehicle.seats ? `${vehicle.seats} passengers` : undefined}
+            image={vehicle.image}
             locale={locale}
           />
         ))}

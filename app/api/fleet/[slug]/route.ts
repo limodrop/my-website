@@ -19,7 +19,7 @@ export async function GET(_: Request, { params }: { params: { slug: string } }) 
       name: "Sprinter Van",
       seats: 14,
       description: "Perfect for wine tours and group events.",
-      image: "/images/fleet/sprinter.jpg"
+      image: "/images/fleet/van.jpg"
     }
   }
 

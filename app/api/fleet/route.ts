@@ -21,7 +21,7 @@ export async function GET() {
       name: "Sprinter Van",
       slug: "sprinter-van",
       seats: 14,
-      image: "/images/fleet/sprinter.jpg",
+      image: "/images/fleet/van.jpg",
       description: "Perfect for wine tours and group events."
     }
   ])

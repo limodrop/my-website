@@ -9,11 +9,12 @@ interface FleetCardProps {
   capacity?: string;
   luggage?: string;
   locale: string;
+  image?: string;
 }
 
-export function FleetCard({ name, slug, capacity, luggage, locale }: FleetCardProps) {
+export function FleetCard({ name, slug, capacity, luggage, locale, image }: FleetCardProps) {
   const Icon = Icons.car;
-  const fleetImage = `https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&q=80`;
+  const fleetImage = image || `/images/fleet/${slug}.jpg`;
 
   return (
     <article
