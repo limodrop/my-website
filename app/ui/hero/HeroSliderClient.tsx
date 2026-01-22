@@ -35,12 +35,7 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
 
   return (
     <div
-      className="w-full rounded-lg overflow-hidden mb-10 relative"
-      style={{
-        backgroundColor: theme.colors.surface,
-        border: `1px solid ${theme.colors.border}`,
-        boxShadow: theme.shadow.card,
-      }}
+      className="w-full rounded-lg overflow-hidden mb-10 relative bg-[var(--surface)] border border-[var(--border)] shadow-sm"
     >
       {slide.image && (
         <img
@@ -50,10 +45,14 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
         />
       )}
 
-      <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-10">
-        <h2 className="text-4xl font-semibold text-white mb-4">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-10">
+        <h1 className="text-4xl md:text-5xl font-semibold text-white mb-3">
           {slide.title}
-        </h2>
+        </h1>
+
+        <p className="text-lg text-white/90 mb-6 max-w-2xl">
+          {slide.subtitle}
+        </p>
 
         <Button
           variant="primary"
@@ -71,12 +70,11 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
-              className="transition-all rounded-full cursor-pointer"
-              style={{
-                width: idx === currentSlide ? "32px" : "12px",
-                height: "12px",
-                backgroundColor: idx === currentSlide ? theme.colors.primary : "rgba(255, 255, 255, 0.5)",
-              }}
+              className={`
+                transition-all rounded-full cursor-pointer
+                ${idx === currentSlide ? "w-8 bg-[var(--primary)]" : "w-3 bg-white/50"}
+                h-3
+              `}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
@@ -86,7 +84,7 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
       {/* Play/Pause control */}
       <button
         onClick={() => setPlaying(!playing)}
-        className="absolute top-4 right-4 px-3 py-1 rounded bg-white/80 text-black text-sm font-medium hover:bg-white transition"
+        className="absolute top-4 right-4 px-3 py-1 rounded bg-white/90 text-[var(--text)] text-sm font-medium hover:bg-white transition"
       >
         {playing ? "Pause" : "Play"}
       </button>

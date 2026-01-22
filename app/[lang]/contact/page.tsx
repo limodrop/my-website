@@ -1,53 +1,28 @@
-import { serverApi } from "@/lib/api/serverClient"
+import { getDictionary } from "@/app/i18n";
+import { Locale } from "@/lib/i18n/types";
+import { PageShell } from "@/app/ui/layout/PageShell";
+import BookingForm from "@/app/components/BookingForm";
 
-export default async function ContactPage() {
-  const [contact, booking, serviceArea] = await Promise.all([
-    serverApi.getContact(),
-    serverApi.getBookingUrl(),
-    serverApi.getServiceArea(),
-  ])
+export default async function ContactPage({ params }: { params: { lang: Locale } }) {
+  const locale = params.lang;
+  const dict = await getDictionary(locale);
 
   return (
-    <div className="space-y-0">
-      {/* HERO */}
-      <section className="bg-gradient-to-br from-black via-gray-900 to-black text-white py-24 px-4">
-        <div className="container mx-auto text-center space-y-6">
-          <div className="text-6xl mb-4">📞</div>
-          <h1 className="text-5xl md:text-6xl font-bold">Contact Us</h1>
-          <p className="text-2xl text-gray-300">
-            24/7 Worldwide Support - We're Here to Help
-          </p>
-        </div>
-      </section>
+    <PageShell>
+      <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
+        Contact Us
+      </h1>
 
-      {/* CONTACT INFO */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Contact Details */}
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
-            
-            <div className="flex items-start gap-4">
-              <div className="text-3xl">📱</div>
-              <div>
-                <h3 className="font-bold text-lg mb-1">Phone</h3>
-                <a href={`tel:${contact.phone}`} className="text-yellow-600 hover:underline text-lg">
-                  {contact.phone}
-                </a>
-              </div>
-            </div>
+      <p className="text-lg text-[var(--textMuted)] mb-8">
+        Reach out for bookings, corporate accounts, or general inquiries.
+      </p>
 
-            <div className="flex items-start gap-4">
-              <div className="text-3xl">✉️</div>
-              <div>
-                <h3 className="font-bold text-lg mb-1">Email</h3>
-                <a href={`mailto:${contact.email}`} className="text-yellow-600 hover:underline text-lg">
-                  {contact.email}
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
+      <div className="max-w-2xl">
+        <BookingForm locale={locale} />
+      </div>
+    </PageShell>
+  );
+}
               <div className="text-3xl">📍</div>
               <div>
                 <h3 className="font-bold text-lg mb-1">Headquarters</h3>

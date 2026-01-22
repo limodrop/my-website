@@ -11,6 +11,16 @@
   --primary: #0067B8;
   --border: #D1D1D1;
   --shadow: rgba(0, 0, 0, 0.08);
+  
+  /* Typography Scale */
+  --font-xs: 0.85rem;
+  --font-sm: 0.95rem;
+  --font-base: 1rem;
+  --font-lg: 1.15rem;
+  --font-xl: 1.4rem;
+  --font-2xl: 1.8rem;
+  --font-3xl: 2.2rem;
+  --font-4xl: 2.8rem;
 }
 
 /* GLOBAL RESET */
