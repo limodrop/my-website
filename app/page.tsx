@@ -1,4 +1,5 @@
 import { serverClient } from "@/app/lib/serverClient";
+import { CTAButton } from "@/components/ui/CTAButton";
 
 export default async function HomePage() {
   const homepage = await serverClient.homepage();
@@ -12,12 +13,13 @@ export default async function HomePage() {
           {homepage.heroSlides[0].subtitle}
         </p>
 
-        <a
+        <CTAButton
           href="https://book.oregontowncar.com"
-          className="inline-block px-6 py-3 bg-black text-white rounded"
+          location="hero"
+          locale="en"
         >
           {homepage.heroSlides[0].cta}
-        </a>
+        </CTAButton>
       </section>
 
       {/* Featured Services */}

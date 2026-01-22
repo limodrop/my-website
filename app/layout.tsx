@@ -1,6 +1,7 @@
 import "./globals.css"
 import { ReactNode } from "react"
 import Link from "next/link"
+import { generateOrganizationSchema } from "@/lib/seo/jsonld"
 
 export const metadata = {
   title: "Oregon Town Car",
@@ -8,8 +9,18 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const organizationSchema = generateOrganizationSchema();
+  
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-gray-50 text-gray-900">
         <header className="p-4 bg-white shadow">
           <nav className="flex gap-6">

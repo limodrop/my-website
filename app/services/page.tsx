@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { generateServiceListSchema } from "@/lib/seo/jsonld"
 
 export default function ServicesPage() {
   const services = [
@@ -8,19 +9,30 @@ export default function ServicesPage() {
     { slug: "long_distance", name: "Long Distance" }
   ]
 
+  const serviceListSchema = generateServiceListSchema();
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceListSchema)
+        }}
+      />
+
       <h1 className="text-3xl font-bold">Our Services</h1>
 
-      <ul className="space-y-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {services.map((s) => (
-          <li key={s.slug}>
-            <Link href={`/services/${s.slug}`} className="text-blue-600 underline">
-              {s.name}
-            </Link>
-          </li>
+          <Link 
+            key={s.slug}
+            href={`/services/${s.slug}`}
+            className="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition-shadow"
+          >
+            <h2 className="text-xl font-semibold text-blue-600">{s.name}</h2>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
