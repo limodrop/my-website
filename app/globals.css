@@ -34,6 +34,27 @@
   /* Container System */
   --container-max: 1280px;
   --container-padding: 1.5rem;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.12);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.16);
+
+  /* Easing Curves */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
 }
 
 /* GLOBAL RESET */
@@ -49,6 +70,7 @@ html {
   color: #1B1B1B;
   background: #F3F3F3;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* prevents anchor links from hiding under sticky header */
 }
 
 body {
@@ -80,15 +102,28 @@ button {
   background: none;
 }
 
+/* ACCESSIBILITY */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* NAVIGATION SMOOTH TRANSITIONS */
 nav {
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 /* SMOOTH ANIMATIONS */
-.fade-in {
+.fade-in,
+.animate-fade {
   opacity: 0;
-  animation: fadeIn 0.6s ease forwards;
+  animation: fadeIn 0.6s var(--ease-out) forwards;
 }
 
 @keyframes fadeIn {
@@ -97,10 +132,11 @@ nav {
   }
 }
 
-.slide-up {
+.slide-up,
+.animate-slide-up {
   opacity: 0;
   transform: translateY(20px);
-  animation: slideUp 0.6s ease forwards;
+  animation: slideUp 0.6s var(--ease-out) forwards;
 }
 
 @keyframes slideUp {
@@ -112,7 +148,7 @@ nav {
 
 .reveal {
   opacity: 0;
-  animation: reveal 0.8s ease forwards;
+  animation: reveal 0.8s var(--ease-out) forwards;
 }
 
 @keyframes reveal {
@@ -123,6 +159,19 @@ nav {
   100% {
     opacity: 1;
     clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: scaleIn 0.4s var(--ease-out) forwards;
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
