@@ -22,7 +22,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build image
+      - name: Build and tag image
         run: |
           docker build -t ghcr.io/limodrop/website-www:latest .
           docker tag ghcr.io/limodrop/website-www:latest ghcr.io/limodrop/website-www:sha-${{ github.sha }}
