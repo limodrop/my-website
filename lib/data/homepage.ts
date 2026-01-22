@@ -4,21 +4,21 @@ export async function getHomepageData() {
       {
         title: "Premium Chauffeur Service in Oregon",
         subtitle: "Airport, corporate, wine tours, and special events",
-        image: "/images/hero-1.jpg",
+        image: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1920&q=85",
         cta: "Book Now",
         ctaLink: "https://book.oregontowncar.com"
       },
       {
         title: "On-Time Airport Transportation",
         subtitle: "Professional drivers with flight tracking",
-        image: "/images/hero-2.jpg",
+        image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1920&q=85",
         cta: "Reserve Your Ride",
         ctaLink: "https://book.oregontowncar.com"
       },
       {
         title: "Luxury Wine Tours",
         subtitle: "Explore Oregon's finest wineries in comfort",
-        image: "/images/hero-3.jpg",
+        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=85",
         cta: "Plan Your Tour",
         ctaLink: "/services/wine-tours"
       }
