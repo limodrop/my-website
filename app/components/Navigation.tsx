@@ -19,7 +19,7 @@ export default async function Navigation({ locale }: { locale: string }) {
 
   return (
     <nav
-      className="w-full border-b px-6 py-4"
+      className="sticky top-0 z-50 w-full border-b px-6 py-4 shadow-sm"
       style={{
         backgroundColor: theme.colors.surface,
         borderColor: theme.colors.border,

@@ -90,28 +90,18 @@ export default async function Footer({ locale }: { locale: string }) {
               className="font-semibold mb-3"
               style={{ color: theme.colors.text }}
             >
-              {dict.nav.about}
+              Worldwide Coverage
             </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  href={`/${locale}/about`} 
-                  className="hover:underline"
-                  style={{ color: theme.colors.textMuted }}
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href={`/${locale}/contact`} 
-                  className="hover:underline"
-                  style={{ color: theme.colors.textMuted }}
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
+            <p 
+              className="text-sm mb-3"
+              style={{ color: theme.colors.textMuted }}
+            >
+              Serving 50 U.S. states + 13 countries.
+            </p>
+            <div className="text-xs space-y-1" style={{ color: theme.colors.textMuted }}>
+              <div>🇺🇸 United States (All 50 States)</div>
+              <div>🌍 13 Countries Worldwide</div>
+            </div>
           </div>
         </div>
 

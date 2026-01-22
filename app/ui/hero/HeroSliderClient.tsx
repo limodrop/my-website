@@ -18,14 +18,16 @@ interface HeroSliderClientProps {
 
 export function HeroSliderClient({ slides }: HeroSliderClientProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [playing, setPlaying] = useState(true)
 
   useEffect(() => {
+    if (!playing) return
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [slides.length])
+  }, [playing, slides.length])
 
   if (slides.length === 0) return null
 
@@ -69,10 +71,10 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
-              className="transition-all rounded-full"
+              className="transition-all rounded-full cursor-pointer"
               style={{
-                width: idx === currentSlide ? "32px" : "8px",
-                height: "8px",
+                width: idx === currentSlide ? "32px" : "12px",
+                height: "12px",
                 backgroundColor: idx === currentSlide ? theme.colors.primary : "rgba(255, 255, 255, 0.5)",
               }}
               aria-label={`Go to slide ${idx + 1}`}
@@ -80,6 +82,14 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
           ))}
         </div>
       )}
+
+      {/* Play/Pause control */}
+      <button
+        onClick={() => setPlaying(!playing)}
+        className="absolute top-4 right-4 px-3 py-1 rounded bg-white/80 text-black text-sm font-medium hover:bg-white transition"
+      >
+        {playing ? "Pause" : "Play"}
+      </button>
     </div>
   )
 }
