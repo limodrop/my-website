@@ -4,12 +4,13 @@ interface FleetCardProps {
   capacity?: string
   luggage?: string
   icon?: string
+  locale: string
 }
 
-export function FleetCard({ name, slug, capacity, luggage, icon = "🚗" }: FleetCardProps) {
+export function FleetCard({ name, slug, capacity, luggage, icon = "🚗", locale }: FleetCardProps) {
   return (
     <a
-      href={`/en/fleet/${slug}`}
+      href={`/${locale}/fleet/${slug}`}
       className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all"
     >
       <div className="h-48 bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-6xl">

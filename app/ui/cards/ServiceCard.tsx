@@ -3,12 +3,13 @@ interface ServiceCardProps {
   slug: string
   description?: string
   icon?: string
+  locale: string
 }
 
-export function ServiceCard({ name, slug, description, icon = "✈️" }: ServiceCardProps) {
+export function ServiceCard({ name, slug, description, icon = "✈️", locale }: ServiceCardProps) {
   return (
     <a
-      href={`/en/services/${slug}`}
+      href={`/${locale}/services/${slug}`}
       className="group p-8 border-2 border-gray-200 rounded-xl bg-white hover:border-yellow-600 hover:shadow-xl transition-all"
     >
       <div className="text-4xl mb-4">{icon}</div>

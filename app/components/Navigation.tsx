@@ -1,60 +1,46 @@
 "use client"
 
-import { serverApi } from "@/lib/api/serverClient"
-import { usePathname } from "next/navigation"
-import { languages } from "@/i18n.config"
+import Link from "next/link"
+import LanguageSwitcher from "./LanguageSwitcher"
+import type { Dictionary } from "@/app/i18n"
 
 interface NavigationProps {
-  locale?: string
+  locale: string
+  dict: Dictionary
 }
 
-export default function Navigation({ locale = "en" }: NavigationProps) {
-  const pathname = usePathname()
-  const currentPath = pathname?.replace(/^\/(en|es|fr|ar|zh)/, "") || "/"
-
+export default function Navigation({ locale, dict }: NavigationProps) {
   return (
     <nav className="w-full py-4 bg-white shadow">
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex gap-6">
-          <a href={`/${locale}`} className="text-gray-800 hover:text-black font-medium">
-            Home
-          </a>
-          <a href={`/${locale}/services`} className="text-gray-800 hover:text-black font-medium">
-            Services
-          </a>
-          <a href={`/${locale}/fleet`} className="text-gray-800 hover:text-black font-medium">
-            Fleet
-          </a>
-          <a href={`/${locale}/cities`} className="text-gray-800 hover:text-black font-medium">
-            Cities
-          </a>
-          <a href={`/${locale}/worldwide`} className="text-gray-800 hover:text-black font-medium">
-            Worldwide
-          </a>
-          <a href={`/${locale}/about`} className="text-gray-800 hover:text-black font-medium">
-            About
-          </a>
-          <a href={`/${locale}/contact`} className="text-gray-800 hover:text-black font-medium">
-            Contact
-          </a>
+          <Link href={`/${locale}`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.home}
+          </Link>
+          <Link href={`/${locale}/services`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.services}
+          </Link>
+          <Link href={`/${locale}/fleet`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.fleet}
+          </Link>
+          <Link href={`/${locale}/cities`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.cities}
+          </Link>
+          <Link href={`/${locale}/countries`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.countries}
+          </Link>
+          <Link href={`/${locale}/worldwide`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.worldwide}
+          </Link>
+          <Link href={`/${locale}/about`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.about}
+          </Link>
+          <Link href={`/${locale}/contact`} className="text-gray-800 hover:text-black font-medium">
+            {dict.nav.contact}
+          </Link>
         </div>
 
-        {/* Language Switcher */}
-        <div className="flex gap-2 text-sm">
-          {languages.map((lang) => (
-            <a
-              key={lang}
-              href={`/${lang}${currentPath}`}
-              className={`px-2 py-1 rounded ${
-                locale === lang
-                  ? "bg-yellow-600 text-black font-bold"
-                  : "text-gray-600 hover:text-black"
-              }`}
-            >
-              {lang.toUpperCase()}
-            </a>
-          ))}
-        </div>
+        <LanguageSwitcher currentLocale={locale} />
       </div>
     </nav>
   )

@@ -1,6 +1,7 @@
 import { messages } from "@/lib/i18n/messages"
 import { Locale } from "@/lib/i18n/types"
 import { serverApi } from "@/lib/api/serverClient"
+import { getDictionary } from "@/app/i18n"
 import { HeroSlider } from "@/app/ui/hero/HeroSlider"
 import { Section } from "@/app/ui/layout/Section"
 import { ServiceCard } from "@/app/ui/cards/ServiceCard"
@@ -14,6 +15,8 @@ export default async function LangHome({
 }: {
   params: { lang: Locale }
 }) {
+  const locale = params.lang
+  const dict = await getDictionary(locale)
   const t = messages[params.lang]
   const [homepage, serviceArea, promotions, services, fleet, cities] = await Promise.all([
     serverApi.getHomepage(),
@@ -67,8 +70,8 @@ export default async function LangHome({
 
       {/* FEATURED SERVICES */}
       <Section 
-        title="Premium Services" 
-        subtitle="Luxury transportation tailored to your needs"
+        title={dict.pages.services.title}
+        subtitle={dict.pages.services.subtitle}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.slice(0, 4).map((service, idx) => (
@@ -78,6 +81,7 @@ export default async function LangHome({
               slug={service.slug}
               description={service.description}
               icon={serviceIcons[idx]}
+              locale={locale}
             />
           ))}
         </div>
@@ -85,8 +89,8 @@ export default async function LangHome({
 
       {/* FEATURED FLEET */}
       <Section 
-        title="Our Premium Fleet" 
-        subtitle="Luxury vehicles for every occasion"
+        title={dict.pages.fleet.title}
+        subtitle={dict.pages.fleet.subtitle}
         className="bg-gray-50"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -97,6 +101,7 @@ export default async function LangHome({
               slug={vehicle.slug}
               capacity={vehicle.seats ? `${vehicle.seats} passengers` : undefined}
               icon={fleetIcons[idx]}
+              locale={locale}
             />
           ))}
         </div>
@@ -104,8 +109,8 @@ export default async function LangHome({
 
       {/* FEATURED CITIES */}
       <Section 
-        title="Global Coverage" 
-        subtitle="We serve major cities worldwide"
+        title={dict.pages.cities.title}
+        subtitle={dict.pages.cities.subtitle}
       >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {cities.slice(0, 10).map((city) => (
@@ -113,12 +118,13 @@ export default async function LangHome({
               key={city.id}
               name={city.name}
               slug={city.slug}
+              locale={locale}
             />
           ))}
         </div>
         
         <div className="text-center">
-          <Button variant="secondary" as="a" href="/en/cities">
+          <Button variant="secondary" as="a" href={`/${locale}/cities`}>
             View All Locations →
           </Button>
         </div>

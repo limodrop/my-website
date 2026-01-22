@@ -2,12 +2,13 @@ interface CityCardProps {
   name: string
   slug: string
   country?: string
+  locale: string
 }
 
-export function CityCard({ name, slug, country }: CityCardProps) {
+export function CityCard({ name, slug, country, locale }: CityCardProps) {
   return (
     <a
-      href={`/en/cities/${slug}`}
+      href={`/${locale}/cities/${slug}`}
       className="group p-6 border-2 border-gray-200 rounded-xl bg-white hover:border-yellow-600 hover:shadow-lg transition-all text-center"
     >
       <div className="text-3xl mb-3">📍</div>
