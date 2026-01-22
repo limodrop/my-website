@@ -138,3 +138,96 @@ export interface NavigationLayout {
   generatedAt: number
   source: "rule"
 }
+
+export interface ABTestContext extends BaseContext {
+  sessionId: string
+}
+
+export interface ABTestResult {
+  id: string
+  context: ABTestContext
+  variant: string
+  reason: string
+  generatedAt: number
+  source: "rule"
+}
+
+export interface PriceMessagingContext extends BaseContext {
+  city: string
+  service: string
+  fleet: string
+}
+
+export interface PriceMessagingResult {
+  id: string
+  context: PriceMessagingContext
+  messages: string[]
+  label: string
+  generatedAt: number
+  source: "rule"
+}
+
+export interface SocialContext {
+  city: string
+  service: string
+  fleet: string
+  season: "winter" | "spring" | "summer" | "fall"
+  lang: string
+}
+
+export interface ScheduledPost {
+  id: string
+  platform: "instagram" | "facebook" | "email"
+  lang: string
+  scheduledFor: number
+  content: string
+  tags: string[]
+  context: SocialContext
+  source: "rule"
+}
+
+export interface Promotion {
+  id: string
+  title: string
+  message: string
+  city?: string
+  service?: string
+  fleet?: string
+  season?: string
+  lang?: string
+  active: boolean
+  expiresAt?: number
+}
+
+export interface PromotionContext {
+  city: string
+  service: string
+  fleet: string
+  season: string
+  lang: string
+}
+
+export interface RuleTrace {
+  ruleId: string
+  matched: boolean
+  reason: string
+  output?: any
+}
+
+export interface PricingContext {
+  city: string
+  service: string
+  fleet: string
+  season: string
+}
+
+export interface PricingResult {
+  id: string
+  context: PricingContext
+  basePrice: number
+  currency: string
+  reason: string
+  generatedAt: number
+  source: string
+  ruleTrace?: RuleTrace[]
+}
