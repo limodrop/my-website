@@ -11,11 +11,16 @@ export function StaticHero() {
         alt="Professional chauffeur opening luxury car door for client in Portland"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex items-center">
+      {/* Left-to-right gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/20"></div>
+
+      {/* Content Container */}
+      <div className="absolute inset-0 flex items-center">
         <div className="w-full px-4 sm:px-6">
-          {/* Main Headline */}
+          {/* Main Headline with intentional line break */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4">
-            Luxury Chauffeur Service in Portland & Oregon
+            Luxury Chauffeur Service<br />
+            in Portland & Oregon
           </h1>
 
           {/* Subheadline */}
@@ -29,18 +34,24 @@ export function StaticHero() {
               variant="primary"
               as="a"
               href="https://book.oregontowncar.com"
-              className="w-full sm:w-auto !px-8 !py-3 text-base sm:text-lg"
+              className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
             >
               Book Now
             </Button>
-            <Button
-              variant="ghost"
-              as="a"
+            <a
               href="/contact"
-              className="w-full sm:w-auto border-white text-white hover:bg-white/10 !px-8 !py-3 text-base sm:text-lg"
+              className="
+                w-full sm:w-auto
+                inline-flex items-center justify-center gap-2
+                text-white/90 hover:text-white
+                font-medium text-base sm:text-lg
+                transition-colors
+                px-8 py-3.5
+              "
             >
-              Get a Quote
-            </Button>
+              <span>Get a Quote</span>
+              <Icons.arrow className="w-4 h-4" />
+            </a>
           </div>
 
           {/* Support Line */}
