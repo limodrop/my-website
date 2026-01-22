@@ -17,7 +17,7 @@ export default async function Navigation({ locale }: { locale: string }) {
   ];
 
   return (
-    <nav className="w-full border-b border-gray-800 bg-black/60 backdrop-blur-md">
+    <nav className="w-full border-b border-[#D1D1D1] bg-white">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
         
         {/* Left side navigation */}
@@ -26,7 +26,7 @@ export default async function Navigation({ locale }: { locale: string }) {
             <Link
               key={item.href}
               href={`/${locale}/${item.href}`}
-              className="text-sm hover:text-yellow-400 transition text-gray-300"
+              className="text-sm hover:text-[#0067B8] transition text-[#1B1B1B] font-medium"
             >
               {item.label}
             </Link>

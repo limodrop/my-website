@@ -17,8 +17,8 @@ export default function LanguageSwitcher({ currentLocale }) {
         <Link
           key={lang}
           href={`/${lang}${pathWithoutLocale}`}
-          className={`uppercase transition ${
-            lang === currentLocale ? "text-yellow-400" : "text-gray-400 hover:text-yellow-300"
+          className={`uppercase transition font-medium ${
+            lang === currentLocale ? "text-[#0067B8]" : "text-[#5A5A5A] hover:text-[#0067B8]"
           }`}
         >
           {lang}

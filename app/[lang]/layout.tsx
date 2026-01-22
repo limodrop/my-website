@@ -23,7 +23,7 @@ export default async function LangLayout({
 }) {
   return (
     <html lang={params.lang}>
-      <body className="bg-black text-white">
+      <body className="bg-[#F3F3F3] text-[#1B1B1B]">
         <Navigation locale={params.lang} />
         <main className="min-h-screen">{children}</main>
         <Footer locale={params.lang} />

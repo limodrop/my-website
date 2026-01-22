@@ -21,9 +21,9 @@ export function Button({
   onClick
 }: ButtonProps) {
   const variantClasses = {
-    primary: "bg-yellow-600 text-black hover:bg-yellow-500 font-bold shadow-lg",
-    secondary: "bg-black text-white hover:bg-gray-900 font-bold",
-    ghost: "bg-white/10 text-white hover:bg-white/20 backdrop-blur border border-white/20 font-semibold"
+    primary: "bg-[#0067B8] text-white hover:bg-[#005A9E] font-bold shadow-lg",
+    secondary: "bg-white text-[#0067B8] hover:bg-[#E6F0FA] font-bold border-2 border-[#0067B8]",
+    ghost: "bg-transparent text-[#0067B8] hover:underline font-semibold"
   }
 
   const baseClasses = "inline-block px-8 py-4 rounded-lg transition-all"
