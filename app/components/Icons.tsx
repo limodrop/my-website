@@ -33,6 +33,7 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
   Plus,
   Minus,
   Edit,
@@ -41,6 +42,8 @@ import {
   Upload,
   Filter,
   SortAsc,
+  Grid,
+  Map,
 } from "lucide-react";
 
 /**
@@ -65,6 +68,8 @@ export const Icons = {
   search: Search,
   filter: Filter,
   sort: SortAsc,
+  grid: Grid,
+  map: Map,
 
   // Services & Transportation
   airport: Plane,
@@ -91,12 +96,14 @@ export const Icons = {
   user: User,
   users: Users,
   business: Briefcase,
+  briefcase: Briefcase,
 
   // UI Actions
   arrow: ArrowRight,
   chevronRight: ChevronRight,
   chevronDown: ChevronDown,
   chevronUp: ChevronUp,
+  chevronLeft: ChevronLeft,
   plus: Plus,
   minus: Minus,
   edit: Edit,
