@@ -1,4 +1,6 @@
-import { serverApi } from "@/lib/api/serverClient";
+import { getServices } from "@/lib/data/services";
+import { getCities } from "@/lib/data/cities";
+import { getFleet } from "@/lib/data/fleet";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -6,9 +8,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://oregontowncar.com";
 
   const [services, fleet, cities] = await Promise.all([
-    serverApi.getServices(),
-    serverApi.getFleet(),
-    serverApi.getCities(),
+    getServices(),
+    getFleet(),
+    getCities(),
   ]);
 
   const urls: MetadataRoute.Sitemap = [];
@@ -30,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     });
 
-    services.forEach((s) => {
+    services.forEach((s: any) => {
       urls.push({
         url: `${baseUrl}/${locale}/services/${s.slug}`,
         lastModified: new Date(),
@@ -47,7 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     });
 
-    fleet.forEach((f) => {
+    fleet.forEach((f: any) => {
       urls.push({
         url: `${baseUrl}/${locale}/fleet/${f.slug}`,
         lastModified: new Date(),
@@ -64,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     });
 
-    cities.forEach((c) => {
+    cities.forEach((c: any) => {
       urls.push({
         url: `${baseUrl}/${locale}/cities/${c.slug}`,
         lastModified: new Date(),
@@ -83,25 +85,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   return urls;
-}
-    url: `${baseUrl}/services/${s.slug}`,
-    lastModified: new Date().toISOString(),
-  }))
-
-  const cityRoutes = cities.map(c => ({
-    url: `${baseUrl}/cities/${c.slug}`,
-    lastModified: new Date().toISOString(),
-  }))
-
-  const fleetRoutes = fleet.map(v => ({
-    url: `${baseUrl}/fleet/${v.slug}`,
-    lastModified: new Date().toISOString(),
-  }))
-
-  const blogRoutes = posts.map(p => ({
-    url: `${baseUrl}/blog/${p.slug}`,
-    lastModified: new Date().toISOString(),
-  }))
-
-  return [...staticRoutes, ...serviceRoutes, ...cityRoutes, ...fleetRoutes, ...blogRoutes]
 }
