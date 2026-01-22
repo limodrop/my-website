@@ -19,8 +19,9 @@ export default async function FleetDetailPage({ params }: Props) {
 
       <img
         src={vehicle.image}
-        alt={vehicle.name}
+        alt={`${vehicle.name} - Luxury vehicle for premium transportation`}
         className="w-full rounded-lg mb-10"
+        loading="lazy"
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">

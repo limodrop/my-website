@@ -23,9 +23,9 @@ export default function Button({
   const baseStyles = "inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-200";
   
   const variantStyles = {
-    primary: "bg-black text-white hover:bg-gray-800",
-    secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300",
-    outline: "border-2 border-black text-black hover:bg-black hover:text-white"
+    primary: "bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200",
+    secondary: "bg-[var(--surface)] text-[var(--text)] border border-[var(--border)] hover:opacity-80",
+    outline: "border-2 border-[var(--text)] text-[var(--text)] hover:bg-[var(--text)] hover:text-[var(--surface)]"
   };
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${className}`;

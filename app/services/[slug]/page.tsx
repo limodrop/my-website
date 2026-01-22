@@ -19,8 +19,9 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <img
         src={service.image}
-        alt={service.title}
+        alt={`${service.title} - Premium chauffeur service`}
         className="w-full rounded-lg mb-10"
+        loading="lazy"
       />
 
       <Heading level={3}>Overview</Heading>
