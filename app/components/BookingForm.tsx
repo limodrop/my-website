@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/app/ui/buttons/Button";
+import { Input } from "@/app/components/Input";
+import { TextArea } from "@/app/components/TextArea";
 
 export function BookingForm({ locale }: { locale: string }) {
   const [submitting, setSubmitting] = useState(false);
@@ -16,65 +18,17 @@ export function BookingForm({ locale }: { locale: string }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-lg p-6 bg-white border border-[#D1D1D1] shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4"
+      className="rounded-lg p-6 bg-[var(--surface)] border border-[var(--border)] shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4"
     >
-      <div className="flex flex-col gap-1">
-        <label className="text-sm text-[#5A5A5A]">Name</label>
-        <input
-          className="rounded-md px-3 py-2 bg-[#F3F3F3] border border-[#D1D1D1] text-[#1B1B1B] outline-none focus:border-[#0067B8]"
-          required
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-sm text-[#5A5A5A]">Email</label>
-        <input
-          type="email"
-          className="rounded-md px-3 py-2 bg-[#F3F3F3] border border-[#D1D1D1] text-[#1B1B1B] outline-none focus:border-[#0067B8]"
-          required
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-sm text-[#5A5A5A]">Pickup City</label>
-        <input
-          className="rounded-md px-3 py-2 bg-[#F3F3F3] border border-[#D1D1D1] text-[#1B1B1B] outline-none focus:border-[#0067B8]"
-          required
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-sm text-[#5A5A5A]">Dropoff City</label>
-        <input
-          className="rounded-md px-3 py-2 bg-[#F3F3F3] border border-[#D1D1D1] text-[#1B1B1B] outline-none focus:border-[#0067B8]"
-          required
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-sm text-[#5A5A5A]">Date</label>
-        <input
-          type="date"
-          className="rounded-md px-3 py-2 bg-[#F3F3F3] border border-[#D1D1D1] text-[#1B1B1B] outline-none focus:border-[#0067B8]"
-          required
-        />
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label className="text-sm text-[#5A5A5A]">Time</label>
-        <input
-          type="time"
-          className="rounded-md px-3 py-2 bg-[#F3F3F3] border border-[#D1D1D1] text-[#1B1B1B] outline-none focus:border-[#0067B8]"
-          required
-        />
-      </div>
-
-      <div className="flex flex-col gap-1 md:col-span-2">
-        <label className="text-sm text-[#5A5A5A]">Notes</label>
-        <textarea
-          rows={3}
-          className="rounded-md px-3 py-2 bg-[#F3F3F3] border border-[#D1D1D1] text-[#1B1B1B] outline-none focus:border-[#0067B8]"
-        />
+      <Input label="Name" required />
+      <Input label="Email" type="email" required />
+      <Input label="Pickup City" required />
+      <Input label="Dropoff City" required />
+      <Input label="Date" type="date" required />
+      <Input label="Time" type="time" required />
+      
+      <div className="md:col-span-2">
+        <TextArea label="Notes" rows={3} />
       </div>
 
       <div className="md:col-span-2 flex justify-end mt-2">

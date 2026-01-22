@@ -1,18 +1,29 @@
+import Link from "next/link"
+
 type Crumb = { label: string; href?: string }
 
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
+interface BreadcrumbsProps {
+  items: Crumb[]
+  locale?: string
+}
+
+export function Breadcrumbs({ items, locale }: BreadcrumbsProps) {
   return (
-    <nav className="text-sm text-gray-500 mb-4">
-      {items.map((item, idx) => (
-        <span key={idx}>
-          {idx > 0 && <span className="mx-1">/</span>}
+    <nav className="text-sm text-[var(--textMuted)] mb-6">
+      {items.map((item, i) => (
+        <span key={i}>
           {item.href ? (
-            <a href={item.href} className="hover:underline">
+            <Link
+              href={locale ? `/${locale}${item.href}` : item.href}
+              className="hover:text-[var(--primary)] transition"
+            >
               {item.label}
-            </a>
+            </Link>
           ) : (
-            <span>{item.label}</span>
+            <span className="text-[var(--text)]">{item.label}</span>
           )}
+
+          {i < items.length - 1 && <span className="mx-2">/</span>}
         </span>
       ))}
     </nav>
