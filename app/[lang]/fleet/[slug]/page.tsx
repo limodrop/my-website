@@ -58,7 +58,7 @@ export default async function FleetDetailPage({ params }: Props) {
   ])
 
   if (!vehicle) {
-    return <div className="container mx-auto py-12">Vehicle not found</div>
+    return <div className="max-w-7xl mx-auto px-6 py-12">Vehicle not found</div>
   }
 
   const relevantServices = rules.serviceFleet
@@ -70,7 +70,7 @@ export default async function FleetDetailPage({ params }: Props) {
   const relevantCities = rules.cityFleet[params.slug] || []
 
   return (
-    <div className="container mx-auto py-12 space-y-8">
+    <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
       <FleetJsonLd vehicle={vehicle} />
       <Breadcrumbs
         items={[
@@ -80,36 +80,62 @@ export default async function FleetDetailPage({ params }: Props) {
         ]}
       />
 
-      <h1 className="text-4xl font-bold">{vehicle.name}</h1>
-      <img src={vehicle.image} alt={vehicle.name} className="rounded-lg w-full max-w-2xl" />
-      <p className="text-lg">{vehicle.description}</p>
+      <h1 className="text-4xl font-semibold text-[var(--text)]">{vehicle.name}</h1>
+      
+      {vehicle.image && (
+        <img 
+          src={vehicle.image} 
+          alt={vehicle.name} 
+          className="rounded-lg w-full max-w-2xl shadow-sm" 
+        />
+      )}
+      
+      <p className="text-lg text-[var(--textMuted)] leading-relaxed">{vehicle.description}</p>
 
-      {vehicle.features && (
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Features</h2>
-          <ul className="list-disc list-inside">
-            {vehicle.features.map((feature: string, idx: number) => (
-              <li key={idx}>{feature}</li>
-            ))}
-          </ul>
-        </section>
+      {vehicle.seats && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+          <div className="p-6 rounded-lg bg-[var(--surface)] border border-[var(--border)] shadow-sm">
+            <h3 className="text-xl font-semibold text-[var(--text)] mb-2">Capacity</h3>
+            <p className="text-[var(--textMuted)]">{vehicle.seats} passengers</p>
+          </div>
+          {vehicle.features && vehicle.features.length > 0 && (
+            <div className="p-6 rounded-lg bg-[var(--surface)] border border-[var(--border)] shadow-sm">
+              <h3 className="text-xl font-semibold text-[var(--text)] mb-2">Features</h3>
+              <ul className="list-disc ml-6 text-[var(--textMuted)]">
+                {vehicle.features.slice(0, 3).map((feature: string, idx: number) => (
+                  <li key={idx}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       )}
 
       {relevantServices.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Ideal for these services</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold text-[var(--text)] mb-6">
+            Ideal for these services
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relevantServices.map((serviceSlug) => {
-              const service = services.find((s) => s.slug === serviceSlug)
+              const service = services.find((s: any) => s.slug === serviceSlug)
               return service ? (
-                <li key={serviceSlug} className="border rounded-lg p-4">
-                  <a href={`/services/${serviceSlug}`} className="text-blue-600 hover:underline">
-                    {service.name}
-                  </a>
-                </li>
+                <a
+                  key={serviceSlug}
+                  href={`/services/${serviceSlug}`}
+                  className="
+                    p-4 rounded-lg
+                    bg-[var(--surface)]
+                    border border-[var(--border)]
+                    hover:border-[var(--primary)]
+                    transition
+                  "
+                >
+                  <h3 className="font-medium text-[var(--text)]">{service.name}</h3>
+                </a>
               ) : null
             })}
-          </ul>
+          </div>
         </section>
       )}
     </div>

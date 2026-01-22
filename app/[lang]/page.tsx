@@ -27,7 +27,10 @@ export default async function LangHome({
       <HeroSlider slides={homepage.heroSlides} />
 
       <Section title={dict.nav.services}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <p className="text-lg text-[var(--textMuted)] mb-6">
+          Explore our premium chauffeur services designed for airport travel, corporate needs, and point-to-point transportation.
+        </p>
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <ServiceCard
               key={s.id}
@@ -41,7 +44,10 @@ export default async function LangHome({
       </Section>
 
       <Section title={dict.nav.fleet}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <p className="text-lg text-[var(--textMuted)] mb-6">
+          Luxury sedans, SUVs, Sprinter vans, and executive vehicles — all driven by professional chauffeurs.
+        </p>
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {fleet.map((f) => (
             <FleetCard
               key={f.id}
@@ -55,7 +61,10 @@ export default async function LangHome({
       </Section>
 
       <Section title={dict.nav.cities}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <p className="text-lg text-[var(--textMuted)] mb-6">
+          Chauffeur service in major cities across the U.S. and worldwide.
+        </p>
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {cities.map((c) => (
             <CityCard
               key={c.id}

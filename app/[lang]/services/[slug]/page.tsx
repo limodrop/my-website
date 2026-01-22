@@ -54,14 +54,14 @@ export default async function ServiceDetailPage({ params }: Props) {
   ])
 
   if (!service) {
-    return <div className="container mx-auto py-12">Service not found</div>
+    return <div className="max-w-7xl mx-auto px-6 py-12">Service not found</div>
   }
 
   const relevantCities = rules.cityServices[params.slug] || []
   const relevantFleet = rules.serviceFleet[params.slug] || []
 
   return (
-    <div className="container mx-auto py-12 space-y-8">
+    <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
       <ServiceJsonLd service={service} />
       <Breadcrumbs
         items={[
@@ -71,43 +71,71 @@ export default async function ServiceDetailPage({ params }: Props) {
         ]}
       />
 
-      <h1 className="text-4xl font-bold">{service.name}</h1>
-      <img src={service.image} alt={service.name} className="rounded-lg w-full max-w-2xl" />
-      <p className="text-lg">{service.description}</p>
+      <h1 className="text-4xl font-semibold text-[var(--text)]">{service.name}</h1>
+      
+      {service.image && (
+        <img 
+          src={service.image} 
+          alt={service.name} 
+          className="rounded-lg w-full max-w-2xl shadow-sm" 
+        />
+      )}
+      
+      <p className="text-lg text-[var(--textMuted)] leading-relaxed">{service.description}</p>
 
       {relevantCities.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Available in these cities</h2>
-          <ul className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {relevantCities.map((citySlug) => {
-              const city = cities.find((c) => c.slug === citySlug)
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold text-[var(--text)] mb-6">
+            Available in these cities
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {relevantCities.map((citySlug: string) => {
+              const city = cities.find((c: any) => c.slug === citySlug)
               return city ? (
-                <li key={citySlug}>
-                  <a href={`/cities/${citySlug}`} className="text-blue-600 hover:underline">
-                    {city.name}
-                  </a>
-                </li>
+                <a
+                  key={citySlug}
+                  href={`/cities/${citySlug}`}
+                  className="
+                    p-4 rounded-lg text-center
+                    bg-[var(--surface)]
+                    border border-[var(--border)]
+                    hover:border-[var(--primary)]
+                    transition
+                  "
+                >
+                  <span className="font-medium text-[var(--text)]">{city.name}</span>
+                </a>
               ) : null
             })}
-          </ul>
+          </div>
         </section>
       )}
 
       {relevantFleet.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Recommended vehicles</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {relevantFleet.map((vehicleSlug) => {
-              const vehicle = fleet.find((v) => v.slug === vehicleSlug)
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold text-[var(--text)] mb-6">
+            Recommended vehicles
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {relevantFleet.map((vehicleSlug: string) => {
+              const vehicle = fleet.find((v: any) => v.slug === vehicleSlug)
               return vehicle ? (
-                <li key={vehicleSlug} className="border rounded-lg p-4">
-                  <a href={`/fleet/${vehicleSlug}`} className="text-blue-600 hover:underline">
-                    {vehicle.name}
-                  </a>
-                </li>
+                <a
+                  key={vehicleSlug}
+                  href={`/fleet/${vehicleSlug}`}
+                  className="
+                    p-4 rounded-lg
+                    bg-[var(--surface)]
+                    border border-[var(--border)]
+                    hover:border-[var(--primary)]
+                    transition
+                  "
+                >
+                  <h3 className="font-medium text-[var(--text)]">{vehicle.name}</h3>
+                </a>
               ) : null
             })}
-          </ul>
+          </div>
         </section>
       )}
     </div>
