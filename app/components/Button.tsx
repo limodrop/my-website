@@ -20,7 +20,7 @@ export default function Button({
 
   const variantClasses =
     variant === "primary"
-      ? "bg-[var(--primary)] text-white hover:opacity-90"
+      ? "bg-[var(--primary)] text-[var(--background)] hover:opacity-90"
       : "bg-[var(--surface)] text-[var(--text)] border border-[var(--border)] hover:border-[var(--primary)]";
 
   const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";

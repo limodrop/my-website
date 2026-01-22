@@ -15,8 +15,7 @@ export default function CityCard({ name, slug, image }: CityCardProps) {
         border border-[var(--border)]
         bg-[var(--surface)]
         shadow-sm
-        transition-transform transition-shadow transition-colors
-        duration-200
+        transition-all duration-200
         hover:-translate-y-1 hover:shadow-md hover:border-[var(--primary)]
       "
     >
