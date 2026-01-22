@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "../buttons/Button"
+import { SmartImage } from "@/app/components/SmartImage"
 import { theme } from "../theme"
 
 type HeroSlide = {
@@ -38,7 +39,7 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
       className="w-full rounded-lg overflow-hidden mb-10 relative bg-[var(--surface)] border border-[var(--border)] shadow-sm"
     >
       {slide.image && (
-        <img
+        <SmartImage
           src={slide.image}
           className="w-full h-[420px] object-cover"
           alt={slide.title}

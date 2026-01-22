@@ -1,5 +1,6 @@
 import { serverApi } from "@/lib/api/serverClient"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs"
+import { SmartImage } from "@/app/components/SmartImage"
 
 interface Props {
   params: { slug: string; lang: string }
@@ -72,7 +73,7 @@ export default async function CityDetailPage({ params }: Props) {
       <h1 className="text-4xl font-semibold text-[var(--text)]">{city.name}</h1>
       
       {city.image && (
-        <img 
+        <SmartImage 
           src={city.image} 
           alt={city.name} 
           className="rounded-lg w-full max-w-2xl shadow-sm" 

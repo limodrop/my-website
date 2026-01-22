@@ -1,4 +1,5 @@
 import { serverApi } from "@/lib/api/serverClient"
+import { SmartImage } from "@/app/components/SmartImage"
 
 export default async function CityList() {
   const cities = await serverApi.getCities()
@@ -11,7 +12,7 @@ export default async function CityList() {
           href={`/cities/${city.slug}`}
           className="border rounded-lg p-4 hover:shadow-lg transition"
         >
-          <img src={city.image} alt={city.name} className="rounded mb-3" />
+          <SmartImage src={city.image} alt={city.name} className="rounded mb-3" />
           <h3 className="text-xl font-semibold">{city.name}</h3>
           <p className="text-gray-600">{city.description}</p>
         </a>

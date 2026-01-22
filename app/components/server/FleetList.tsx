@@ -1,4 +1,5 @@
 import { serverApi } from "@/lib/api/serverClient"
+import { SmartImage } from "@/app/components/SmartImage"
 
 export default async function FleetList() {
   const fleet = await serverApi.getFleet()
@@ -11,7 +12,7 @@ export default async function FleetList() {
           href={`/fleet/${vehicle.slug}`}
           className="border rounded-lg p-4 hover:shadow-lg transition"
         >
-          <img src={vehicle.image} alt={vehicle.name} className="rounded mb-3" />
+          <SmartImage src={vehicle.image} alt={vehicle.name} className="rounded mb-3" />
           <h3 className="text-xl font-semibold">{vehicle.name}</h3>
           <p className="text-gray-600">{vehicle.description}</p>
         </a>
