@@ -15,7 +15,7 @@ export default async function Footer({ locale }: { locale: string }) {
     >
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-10">
           <div>
             <h4 
               className="font-semibold mb-3"
@@ -61,7 +61,7 @@ export default async function Footer({ locale }: { locale: string }) {
               className="font-semibold mb-3"
               style={{ color: theme.colors.text }}
             >
-              {dict.nav.cities}
+              Locations
             </h4>
             <ul className="space-y-2">
               <li>
@@ -80,6 +80,44 @@ export default async function Footer({ locale }: { locale: string }) {
                   style={{ color: theme.colors.textMuted }}
                 >
                   Countries
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={`/${locale}/worldwide`} 
+                  className="hover:underline"
+                  style={{ color: theme.colors.textMuted }}
+                >
+                  Worldwide
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 
+              className="font-semibold mb-3"
+              style={{ color: theme.colors.text }}
+            >
+              Company
+            </h4>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  href={`/${locale}/about`} 
+                  className="hover:underline"
+                  style={{ color: theme.colors.textMuted }}
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={`/${locale}/contact`} 
+                  className="hover:underline"
+                  style={{ color: theme.colors.textMuted }}
+                >
+                  Contact
                 </Link>
               </li>
             </ul>

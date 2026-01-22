@@ -10,10 +10,6 @@ export default async function Navigation({ locale }: { locale: string }) {
     { href: "", label: dict.nav.home },
     { href: "services", label: dict.nav.services },
     { href: "fleet", label: dict.nav.fleet },
-    { href: "cities", label: dict.nav.cities },
-    { href: "countries", label: dict.nav.countries },
-    { href: "worldwide", label: dict.nav.worldwide },
-    { href: "about", label: dict.nav.about },
     { href: "contact", label: dict.nav.contact },
   ];
 
