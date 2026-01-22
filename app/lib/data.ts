@@ -191,6 +191,12 @@ export const services: Service[] = [
     areaServed: "Oregon, United States"
   },
   {
+    slug: "vip-arrival",
+    name: "VIP Arrival Service",
+    description: "Premium meet and greet service for VIP guests and executives. Red carpet treatment with dedicated concierge, luggage handling, and expedited customs assistance.",
+    areaServed: "United States"
+  },
+  {
     slug: "long_distance",
     name: "Long Distance",
     description: "Comfortable long-distance chauffeur service for extended journeys. Perfect for multi-city business trips or leisure travel throughout the Pacific Northwest.",

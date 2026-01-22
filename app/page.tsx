@@ -1,8 +1,10 @@
 import { serverClient } from "@/app/lib/serverClient";
 import BookButton from "@/components/BookButton";
+import Link from "next/link";
 
 export default async function HomePage() {
   const homepage = await serverClient.homepage();
+  const allServices = await serverClient.services();
 
   return (
     <div className="space-y-12">
@@ -25,14 +27,21 @@ export default async function HomePage() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Featured Services</h2>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {homepage.featuredServices.map((service) => (
-            <li
-              key={service}
-              className="p-4 border rounded shadow-sm bg-white"
-            >
-              {service}
-            </li>
-          ))}
+          {homepage.featuredServices.map((serviceName) => {
+            const service = allServices.find(s => s.name === serviceName);
+            return service ? (
+              <li key={service.slug} className="p-4 border rounded shadow-sm bg-white space-y-3">
+                <h3 className="font-semibold text-lg">{service.name}</h3>
+                <p className="text-gray-600 text-sm">{service.description}</p>
+                <Link 
+                  href={`/services/${service.slug}`}
+                  className="inline-block text-blue-600 hover:text-blue-800 hover:underline font-medium"
+                >
+                  Learn More →
+                </Link>
+              </li>
+            ) : null;
+          })}
         </ul>
       </section>
 
