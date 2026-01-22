@@ -14,7 +14,7 @@ export default function LangLayout({
   return (
     <html lang={params.lang}>
       <body className="bg-gray-50">
-        <Navigation />
+        <Navigation locale={params.lang} />
         <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
