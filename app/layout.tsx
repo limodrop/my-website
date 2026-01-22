@@ -1,6 +1,7 @@
 import "./globals.css"
 import { ReactNode } from "react"
-import Link from "next/link"
+import Navigation from "@/components/layout/Navigation"
+import Footer from "@/components/layout/Footer"
 
 export const metadata = {
   title: "Oregon Town Car",
@@ -10,22 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
-        <header className="p-4 bg-white shadow">
-          <nav className="flex gap-6">
-            <Link href="/">Home</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/cities">Cities</Link>
-            <Link href="/fleet">Fleet</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
-        </header>
-
-        <main className="p-6">{children}</main>
-
-        <footer className="p-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Oregon Town Car
-        </footer>
+      <body className="min-h-screen">
+        <Navigation />
+        <main className="px-6 py-8 max-w-7xl mx-auto">{children}</main>
+        <Footer />
       </body>
     </html>
   )
