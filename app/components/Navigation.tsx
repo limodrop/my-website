@@ -34,9 +34,9 @@ export default function Navigation({ locale, dict }: NavigationProps) {
   return (
     <nav
       className={`
-        sticky top-0 z-50 w-full px-6 py-4 border-b transition-all duration-300
+        sticky top-0 z-50 w-full px-6 py-4 border-b header-animate
         bg-[var(--surface)] border-[var(--border)]
-        ${scrolled ? "shadow-md" : "shadow-sm"}
+        ${scrolled ? "header-scrolled shadow-md" : "shadow-sm"}
       `}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">

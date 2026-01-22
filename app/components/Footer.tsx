@@ -12,41 +12,45 @@ export default async function Footer({ locale }: { locale: string }) {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           <div>
-            <h4 className="font-semibold mb-3">
-              {dict.nav.services}
-            </h4>
+            <h4 className="font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link 
                   href={`/${locale}/services`} 
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
-                  All Services
+                  {dict.nav.services}
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-3">
-              {dict.nav.fleet}
-            </h4>
-            <ul className="space-y-2">
               <li>
                 <Link 
                   href={`/${locale}/fleet`} 
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
-                  Our Fleet
+                  {dict.nav.fleet}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={`/${locale}/contact`} 
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  {dict.nav.contact}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={`/${locale}/about`} 
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  {dict.nav.about}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3">
-              Locations
-            </h4>
+            <h4 className="font-semibold mb-3">Global Coverage</h4>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -77,23 +81,37 @@ export default async function Footer({ locale }: { locale: string }) {
 
           <div>
             <h4 className="font-semibold mb-3">
-              Company
+              {dict.nav.services}
             </h4>
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={`/${locale}/about`} 
+                  href={`/${locale}/services`} 
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
-                  {dict.nav.about}
+                  All Services
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3">Legal</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  href={`/${locale}/terms`} 
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Terms of Service
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={`/${locale}/contact`} 
+                  href={`/${locale}/privacy`} 
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
-                  Contact
+                  Privacy Policy
                 </Link>
               </li>
             </ul>

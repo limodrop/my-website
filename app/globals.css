@@ -119,6 +119,19 @@ nav {
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+.header-animate {
+  transition:
+    background-color 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out);
+}
+
+.header-scrolled {
+  background-color: var(--surface);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border);
+}
+
 /* SMOOTH ANIMATIONS */
 .fade-in,
 .animate-fade {
@@ -195,6 +208,12 @@ html[data-theme="dark"] {
 .grid {
   display: grid;
   gap: 1.5rem;
+}
+
+.grid-responsive {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 /* CONTAINER SYSTEM */
