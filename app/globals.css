@@ -1,6 +1,41 @@
+/* CSS Variables for Theming */
+:root {
+  --text: #1a1a1a;
+  --textMuted: #6b7280;
+  --surface: #ffffff;
+  --background: #f9fafb;
+  --border: #e5e7eb;
+}
+
+html[data-theme="dark"] {
+  --text: #f9fafb;
+  --textMuted: #9ca3af;
+  --surface: #1f2937;
+  --background: #111827;
+  --border: #374151;
+}
+
+/* Smooth Dark Mode Transitions */
+html[data-theme="light"],
+html[data-theme="dark"] {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+* {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 a {
@@ -9,4 +44,45 @@ a {
 
 a:hover {
   opacity: 0.8;
+}
+
+/* Global Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: reveal 0.8s ease forwards;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
 }

@@ -1,14 +1,19 @@
 import { serverClient } from "@/app/lib/serverClient";
+import Section from "@/app/components/Section";
+import ServiceCard from "@/app/components/ServiceCard";
+import FleetCard from "@/app/components/FleetCard";
+import CityCard from "@/app/components/CityCard";
 
 export default async function HomePage() {
   const homepage = await serverClient.homepage();
+  const locale = "en";
 
   return (
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="space-y-6">
-        <h1 className="text-4xl font-bold">{homepage.heroSlides[0].title}</h1>
-        <p className="text-lg text-gray-700">
+        <h1 className="text-4xl font-bold text-[var(--text)]">{homepage.heroSlides[0].title}</h1>
+        <p className="text-lg text-[var(--textMuted)]">
           {homepage.heroSlides[0].subtitle}
         </p>
 
@@ -21,49 +26,44 @@ export default async function HomePage() {
       </section>
 
       {/* Featured Services */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Featured Services</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {homepage.featuredServices.map((service) => (
-            <li
-              key={service}
-              className="p-4 border rounded shadow-sm bg-white"
-            >
-              {service}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Section title="Services">
+        <p className="text-[var(--textMuted)] mb-6">
+          Explore our premium chauffeur services designed for airport travel, corporate needs,
+          and point‑to‑point transportation.
+        </p>
 
-      {/* Featured Cities */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Popular Cities</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {homepage.featuredCities.map((city) => (
-            <li
-              key={city}
-              className="p-4 border rounded shadow-sm bg-white"
-            >
-              {city}
-            </li>
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {homepage.featuredServices.map((s) => (
+            <ServiceCard key={s.slug} {...s} locale={locale} />
           ))}
-        </ul>
-      </section>
+        </div>
+      </Section>
 
       {/* Featured Fleet */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Featured Fleet</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {homepage.featuredFleet.map((vehicle) => (
-            <li
-              key={vehicle}
-              className="p-4 border rounded shadow-sm bg-white"
-            >
-              {vehicle}
-            </li>
+      <Section title="Fleet">
+        <p className="text-[var(--textMuted)] mb-6">
+          Luxury sedans, SUVs, Sprinters, and executive vehicles — all driven by professionals.
+        </p>
+
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {homepage.featuredFleet.map((f) => (
+            <FleetCard key={f.slug} {...f} locale={locale} />
           ))}
-        </ul>
-      </section>
+        </div>
+      </Section>
+
+      {/* Featured Cities */}
+      <Section title="Cities">
+        <p className="text-[var(--textMuted)] mb-6">
+          Chauffeur service in major cities across the U.S. and worldwide.
+        </p>
+
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {homepage.featuredCities.map((c) => (
+            <CityCard key={c.slug} {...c} locale={locale} />
+          ))}
+        </div>
+      </Section>
     </div>
   );
 }
