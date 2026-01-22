@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS VARIABLES FOR THEME */
+:root {
+  --background: #F3F3F3;
+  --surface: #FFFFFF;
+  --text: #1B1B1B;
+  --textMuted: #5A5A5A;
+  --primary: #0067B8;
+  --border: #D1D1D1;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
 /* GLOBAL RESET */
 * {
   margin: 0;
@@ -44,6 +55,11 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+/* NAVIGATION SMOOTH TRANSITIONS */
+nav {
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 /* GRID HELPERS */

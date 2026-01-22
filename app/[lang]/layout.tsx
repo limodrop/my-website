@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import { Locale } from "@/lib/i18n/types"
+import { getDictionary } from "@/app/i18n"
 import Navigation from "@/app/components/Navigation"
 import Footer from "@/app/components/Footer"
 import "../globals.css"
@@ -56,10 +57,12 @@ export default async function LangLayout({
   children: ReactNode
   params: { lang: Locale }
 }) {
+  const dict = await getDictionary(params.lang);
+
   return (
     <html lang={params.lang}>
       <body className="bg-[#F3F3F3] text-[#1B1B1B]">
-        <Navigation locale={params.lang} />
+        <Navigation locale={params.lang} dict={dict} />
         <main className="min-h-screen">{children}</main>
         <Footer locale={params.lang} />
       </body>
