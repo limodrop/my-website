@@ -1,4 +1,18 @@
-import Link from "next/link"
+import PageShell from "@/app/components/PageShell";
+import Heading from "@/app/components/Heading";
+import Text from "@/app/components/Text";
+import CityCard from "@/app/components/CityCard";
+
+export async function generateMetadata() {
+  return {
+    title: "Cities We Serve — Oregon Town Car",
+    description:
+      "Find premium chauffeur service in major cities across the U.S. and worldwide.",
+    alternates: {
+      canonical: `https://oregontowncar.com/cities`,
+    },
+  };
+}
 
 export default function CitiesPage() {
   const cities = [
@@ -6,21 +20,24 @@ export default function CitiesPage() {
     { slug: "beaverton", name: "Beaverton" },
     { slug: "hillsboro", name: "Hillsboro" },
     { slug: "vancouver", name: "Vancouver" }
-  ]
+  ];
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-3xl font-bold">Cities We Serve</h1>
+    <PageShell>
+      <Heading level={1}>Cities We Serve</Heading>
+      <Text muted>
+        Premium chauffeur service in major cities across the Pacific Northwest.
+      </Text>
 
-      <ul className="space-y-2">
-        {cities.map((c) => (
-          <li key={c.slug}>
-            <Link href={`/cities/${c.slug}`} className="text-blue-600 underline">
-              {c.name}
-            </Link>
-          </li>
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {cities.map((city) => (
+          <CityCard
+            key={city.slug}
+            name={city.name}
+            slug={city.slug}
+          />
         ))}
-      </ul>
-    </div>
-  )
+      </div>
+    </PageShell>
+  );
 }
