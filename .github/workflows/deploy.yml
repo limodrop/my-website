@@ -21,10 +21,12 @@ jobs:
           username: limodrop
           password: ${{ secrets.GHCR_PAT }}
 
-      - name: Build image
+      - name: Build and tag image
         run: |
           docker build -t ghcr.io/limodrop/website-www:latest .
+          docker tag ghcr.io/limodrop/website-www:latest ghcr.io/limodrop/website-www:sha-${{ github.sha }}
 
       - name: Push image
         run: |
           docker push ghcr.io/limodrop/website-www:latest
+          docker push ghcr.io/limodrop/website-www:sha-${{ github.sha }}
