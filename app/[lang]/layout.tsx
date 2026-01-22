@@ -63,27 +63,27 @@ export default async function LangLayout({
   const variant = "boxed";
   const containerClass =
     variant === "boxed"
-      ? "max-w-7xl mx-auto px-6"
+      ? "max-w-7xl mx-auto px-4 sm:px-6"
       : variant === "wide"
-      ? "max-w-screen-xl mx-auto px-6"
-      : "px-6";
+      ? "max-w-screen-xl mx-auto px-4 sm:px-6"
+      : "px-4 sm:px-6";
 
   return (
     <html lang={params.lang}>
       <body className="min-h-screen bg-[var(--background)] text-[var(--text)]">
-        <header className="bg-[var(--surface)] border-b border-[var(--border)]">
+        <header className="bg-[var(--surface)] border-b border-[var(--border)] sticky top-0 z-30">
           <div className={containerClass}>
             <Navigation locale={params.lang} dict={dict} />
           </div>
         </header>
 
-        <main className={`${containerClass} py-10 min-h-screen`}>
+        <main className={`${containerClass} py-6 sm:py-10 min-h-screen`}>
           {children}
         </main>
 
-        <footer className="bg-[var(--surface)] border-t border-[var(--border)] mt-20">
+        <footer className="bg-[var(--surface)] border-t border-[var(--border)] mt-10 sm:mt-20">
           <div className={containerClass}>
-            <Footer locale={params.lang} />
+            <Footer locale={params.lang} dict={dict} />
           </div>
         </footer>
       </body>

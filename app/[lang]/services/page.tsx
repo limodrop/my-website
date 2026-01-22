@@ -23,10 +23,10 @@ export default async function ServicesPage({ params }: { params: { lang: Locale 
 
   return (
     <>
-      <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
+      <h1 className="text-3xl sm:text-4xl font-semibold text-[var(--text)] mb-3 sm:mb-4">
         {dict.nav.services}
       </h1>
-      <p className="text-lg text-[var(--textMuted)] mb-10">
+      <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)] mb-8 sm:mb-10 max-w-2xl">
         Premium chauffeur services designed for airport travel, corporate needs, and point-to-point transportation worldwide.
       </p>
 

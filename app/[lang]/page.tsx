@@ -26,7 +26,7 @@ export default async function LangHome({
       <HeroSlider slides={homepage.heroSlides} />
 
       <Section title={dict.nav.services}>
-        <p className="text-lg text-[var(--textMuted)] mb-6">
+        <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)] mb-4 sm:mb-6 max-w-2xl">
           Explore our premium chauffeur services designed for airport travel, corporate needs, and point-to-point transportation.
         </p>
         <div className="grid-responsive">
@@ -43,7 +43,7 @@ export default async function LangHome({
       </Section>
 
       <Section title={dict.nav.fleet}>
-        <p className="text-lg text-[var(--textMuted)] mb-6">
+        <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)] mb-4 sm:mb-6 max-w-2xl">
           Luxury sedans, SUVs, Sprinter vans, and executive vehicles — all driven by professional chauffeurs.
         </p>
         <div className="grid-responsive">
@@ -60,7 +60,7 @@ export default async function LangHome({
       </Section>
 
       <Section title={dict.nav.cities}>
-        <p className="text-lg text-[var(--textMuted)] mb-6">
+        <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)] mb-4 sm:mb-6 max-w-2xl">
           Chauffeur service in major cities across the U.S. and worldwide.
         </p>
         <div className="grid-responsive">

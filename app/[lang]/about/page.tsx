@@ -8,11 +8,11 @@ export default async function AboutPage({ params }: { params: { lang: Locale } }
 
   return (
     <>
-      <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
+      <h1 className="text-3xl sm:text-4xl font-semibold text-[var(--text)] mb-3 sm:mb-4">
         About Oregon Town Car
       </h1>
 
-      <p className="text-lg text-[var(--textMuted)] mb-8">
+      <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)] mb-6 sm:mb-8">
         Premium chauffeur service built on reliability, professionalism, and global reach.
       </p>
 

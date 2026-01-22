@@ -14,16 +14,16 @@ export function Section({
   className = ""
 }: SectionProps) {
   return (
-    <section className={`w-full mb-[var(--space-section)] ${className}`}>
+    <section className={`w-full mb-10 sm:mb-[var(--space-section)] ${className}`}>
       {(title || subtitle) && (
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           {title && (
-            <h2 className="text-3xl font-semibold mb-2 text-[var(--text)]">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 text-[var(--text)]">
               {title}
             </h2>
           )}
           {subtitle && (
-            <p className="text-lg text-[var(--textMuted)]">
+            <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)]">
               {subtitle}
             </p>
           )}

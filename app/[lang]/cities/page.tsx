@@ -23,10 +23,10 @@ export default async function CitiesPage({ params }: { params: { lang: Locale } 
 
   return (
     <>
-      <h1 className="text-4xl font-semibold text-[var(--text)] mb-4">
+      <h1 className="text-3xl sm:text-4xl font-semibold text-[var(--text)] mb-3 sm:mb-4">
         {dict.nav.cities}
       </h1>
-      <p className="text-lg text-[var(--textMuted)] mb-10">
+      <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)] mb-8 sm:mb-10 max-w-2xl">
         Find premium chauffeur service in major cities across the U.S. and worldwide.
       </p>
 

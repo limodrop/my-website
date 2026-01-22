@@ -26,12 +26,12 @@ export function FleetCard({ name, slug, capacity, luggage, locale }: FleetCardPr
         hover:-translate-y-1 hover:shadow-md hover:border-[var(--primary)]
       "
     >
-      <SmartImage src={fleetImage} alt={name} className="h-40" />
+      <SmartImage src={fleetImage} alt={name} className="h-32 sm:h-40" />
 
-      <div className="p-5 flex flex-col gap-3 flex-1">
+      <div className="p-4 sm:p-5 flex flex-col gap-2 sm:gap-3 flex-1">
         <div className="flex items-center gap-2">
-          <Icon className="w-5 h-5 text-[var(--primary)]" />
-          <h3 className="text-base font-semibold text-[var(--text)]">
+          <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--primary)] flex-shrink-0" />
+          <h3 className="text-sm sm:text-base font-semibold text-[var(--text)]">
             {name}
           </h3>
         </div>
@@ -45,10 +45,10 @@ export function FleetCard({ name, slug, capacity, luggage, locale }: FleetCardPr
           variant="ghost"
           as="a"
           href={`/${locale}/fleet/${slug}`}
-          className="mt-auto justify-start gap-2 px-0"
+          className="mt-auto justify-start gap-2 px-0 min-h-[44px]"
         >
-          View Details
-          <Icons.arrow className="w-4 h-4" />
+          <span className="text-xs sm:text-sm">View Details</span>
+          <Icons.arrow className="w-3 h-3 sm:w-4 sm:h-4" />
         </Button>
       </div>
     </article>

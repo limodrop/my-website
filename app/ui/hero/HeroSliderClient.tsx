@@ -35,22 +35,22 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
   const slide = slides[currentSlide]
 
   return (
-    <div className="relative w-screen -mx-6 mb-[var(--space-section)]">
+    <div className="relative w-screen -mx-4 sm:-mx-6 mb-10 sm:mb-[var(--space-section)]">
       {slide.image && (
         <SmartImage
           src={slide.image}
-          className="w-full h-[500px] object-cover"
+          className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
           alt={slide.title}
         />
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full">
-          <h1 className="text-4xl md:text-5xl font-semibold text-white mb-3">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-3">
             {slide.title}
           </h1>
 
-          <p className="text-lg text-white/90 mb-6 max-w-2xl">
+          <p className="text-sm sm:text-base lg:text-lg text-white/90 mb-6 max-w-2xl">
             {slide.subtitle}
           </p>
 
@@ -58,6 +58,7 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
             variant="primary"
             as="a"
             href={slide.ctaLink || "https://book.oregontowncar.com"}
+            className="w-full sm:w-auto"
           >
             {slide.cta}
           </Button>
