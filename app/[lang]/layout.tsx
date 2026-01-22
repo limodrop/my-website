@@ -5,6 +5,16 @@ import Footer from "@/app/components/Footer"
 import { getDictionary } from "@/app/i18n"
 import "../globals.css"
 
+export async function generateStaticParams() {
+  return [
+    { lang: "en" },
+    { lang: "es" },
+    { lang: "fr" },
+    { lang: "ar" },
+    { lang: "zh" },
+  ]
+}
+
 export default async function LangLayout({
   children,
   params
