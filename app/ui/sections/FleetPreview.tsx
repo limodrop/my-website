@@ -63,11 +63,16 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
               </div>
             )}
             
-            <SmartImage
-              src={vehicle.image}
-              alt={vehicle.name}
-              className="w-full max-w-full h-48 sm:h-56 object-cover"
-            />
+            {/* 16:9 Image Container */}
+            <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
+              <SmartImage
+                src={vehicle.image}
+                alt={vehicle.name}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              {/* Subtle overlay for consistency */}
+              <div className="absolute inset-0 bg-black/5"></div>
+            </div>
 
             <div className="p-5 flex flex-col gap-4 flex-1">
               <h3 className="text-lg sm:text-xl font-semibold text-[var(--text)]">

@@ -26,7 +26,16 @@ export function FleetCard({ name, slug, capacity, luggage, locale }: FleetCardPr
         hover:-translate-y-1 hover:shadow-md hover:border-[var(--primary)]
       "
     >
-      <SmartImage src={fleetImage} alt={name} className="w-full max-w-full h-32 sm:h-40 object-cover" />
+      {/* 16:9 Image Container */}
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
+        <SmartImage 
+          src={fleetImage} 
+          alt={name} 
+          className="absolute inset-0 w-full h-full object-cover object-center" 
+        />
+        {/* Subtle overlay for consistency */}
+        <div className="absolute inset-0 bg-black/5"></div>
+      </div>
 
       <div className="p-4 sm:p-5 flex flex-col gap-2 sm:gap-3 flex-1">
         <div className="flex items-center gap-2">
