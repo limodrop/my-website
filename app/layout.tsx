@@ -1,6 +1,8 @@
 import "./globals.css"
 import { ReactNode } from "react"
-import Link from "next/link"
+import Navigation from "@/components/navigation/Navigation"
+import Footer from "@/components/navigation/Footer"
+import { dictionaries } from "@/lib/dictionaries"
 
 export const metadata = {
   title: "Oregon Town Car",
@@ -8,24 +10,17 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  // Default to English locale
+  const dict = dictionaries.en;
+
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
-        <header className="p-4 bg-white shadow">
-          <nav className="flex gap-6">
-            <Link href="/">Home</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/cities">Cities</Link>
-            <Link href="/fleet">Fleet</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
-        </header>
+      <body className="min-h-screen bg-[var(--background)] text-[var(--text)]">
+        <Navigation locale="en" dict={dict} />
 
-        <main className="p-6">{children}</main>
+        <main className="min-h-[calc(100vh-200px)]">{children}</main>
 
-        <footer className="p-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Oregon Town Car
-        </footer>
+        <Footer dict={dict} />
       </body>
     </html>
   )
