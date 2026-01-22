@@ -3,7 +3,7 @@ import { Locale } from "@/lib/i18n/types"
 import { notFound } from "next/navigation"
 
 export async function generateStaticParams() {
-  const langs = ["en", "es", "fr"]
+  const langs = ["en", "es", "fr", "ar", "zh"]
   const slugs = ["portland-airport-winter", "beaverton-wine-summer"]
 
   return langs.flatMap((lang) =>
