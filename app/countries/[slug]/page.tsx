@@ -37,7 +37,7 @@ export default async function CountryDetail({ params }: Props) {
         {country.cities.map((city) => (
           <Link
             key={city.slug}
-            href={`/${locale}/cities/${city.slug}`}
+            href={`/cities/${city.slug}`}
             className="
               p-4 rounded-lg
               bg-[var(--surface)]

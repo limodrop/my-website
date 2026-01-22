@@ -7,10 +7,10 @@ interface FleetCardProps {
   locale: string;
 }
 
-export default function FleetCard({ slug, name, description, locale }: FleetCardProps) {
+export default function FleetCard({ slug, name, description }: FleetCardProps) {
   return (
     <Link
-      href={`/${locale}/fleet/${slug}`}
+      href={`/fleet/${slug}`}
       className="
         block p-6 rounded-lg
         bg-white dark:bg-[var(--surface)]

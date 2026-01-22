@@ -7,10 +7,10 @@ interface ServiceCardProps {
   locale: string;
 }
 
-export default function ServiceCard({ slug, name, description, locale }: ServiceCardProps) {
+export default function ServiceCard({ slug, name, description }: ServiceCardProps) {
   return (
     <Link
-      href={`/${locale}/services/${slug}`}
+      href={`/services/${slug}`}
       className="
         block p-6 rounded-lg
         bg-white dark:bg-[var(--surface)]
