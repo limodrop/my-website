@@ -115,7 +115,7 @@ export const cities: City[] = [
   {
     slug: "vancouver",
     name: "Vancouver",
-    tagline: "Premium chauffeur service in Vancouver.",
+    tagline: "Premium chauffeur service in Vancouver, Washington.",
     seoDescription: "Professional black car service in Vancouver, Washington.",
     primaryUseCases: [
       "Airport transfers",
