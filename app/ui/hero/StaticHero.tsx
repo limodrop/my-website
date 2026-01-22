@@ -6,9 +6,9 @@ export function StaticHero() {
   return (
     <section className="relative w-full mb-10 sm:mb-[var(--space-section)] overflow-hidden rounded-lg">
       <SmartImage
-        src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=80"
+        src="/images/hero/chauffeur-service.jpg"
         className="w-full max-w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
-        alt="Luxury chauffeur service in Portland"
+        alt="Professional chauffeur opening luxury car door for client in Portland"
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex items-center">

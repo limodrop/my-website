@@ -86,24 +86,20 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
                 </div>
               </div>
 
-              <div className="mt-auto flex gap-2">
-                <Button
-                  variant="ghost"
-                  as="a"
-                  href="/contact"
-                  className="flex-1 justify-center text-xs sm:text-sm"
-                >
-                  Get a Quote
-                </Button>
-                <Button
-                  variant="primary"
-                  as="a"
-                  href="https://book.oregontowncar.com"
-                  className="flex-1 justify-center text-xs sm:text-sm"
-                >
-                  Book Now
-                </Button>
-              </div>
+              <a
+                href={service.link}
+                className="
+                  mt-auto
+                  inline-flex items-center gap-2
+                  text-sm text-[var(--primary)]
+                  hover:gap-3
+                  transition-all duration-200
+                  font-medium
+                "
+              >
+                <span>Learn More</span>
+                <Icons.arrow className="w-4 h-4" />
+              </a>
             </article>
           );
         })}

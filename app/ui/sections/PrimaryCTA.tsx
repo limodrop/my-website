@@ -1,33 +1,56 @@
 import { Button } from "@/app/ui/buttons/Button";
+import { Icons } from "@/app/components/Icons";
+import { COMPANY_PHONE_FORMATTED } from "@/lib/config/constants";
 
 export function PrimaryCTA() {
   return (
-    <section className="py-16 sm:py-20 bg-[var(--text)] text-white">
-      <div className="text-center max-w-3xl mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-          Ready for a Premium Experience?
-        </h2>
-        <p className="text-base sm:text-lg text-white/90 mb-8">
-          Book your chauffeur-driven ride today or request a custom quote for your event.
-        </p>
+    <section className="py-12 sm:py-16">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg py-10 px-6 sm:px-10">
+          <div className="text-center">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+              Ready to Book or Need Help?
+            </h2>
+            <p className="text-base sm:text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+              Book your chauffeur-driven ride or speak with our concierge for a custom request.
+            </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button
-            variant="primary"
-            as="a"
-            href="https://book.oregontowncar.com"
-            className="w-full sm:w-auto bg-white text-[var(--text)] hover:bg-white/90 !px-8 !py-3 text-base sm:text-lg font-semibold"
-          >
-            Book Now
-          </Button>
-          <Button
-            variant="ghost"
-            as="a"
-            href="/contact"
-            className="w-full sm:w-auto border-white text-white hover:bg-white/10 !px-8 !py-3 text-base sm:text-lg font-semibold"
-          >
-            Get a Quote
-          </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                variant="primary"
+                as="a"
+                href="https://book.oregontowncar.com"
+                className="w-full sm:w-auto bg-white text-blue-700 hover:bg-white/90 !px-8 !py-3 text-base sm:text-lg font-semibold shadow-md"
+              >
+                Book Now
+              </Button>
+              <a
+                href="/contact"
+                className="
+                  w-full sm:w-auto
+                  inline-flex items-center justify-center gap-2
+                  text-white hover:text-white/90
+                  font-medium text-base sm:text-lg
+                  transition-colors
+                  px-4 py-2
+                "
+              >
+                <Icons.messageCircle className="w-5 h-5" />
+                <span>Get a Quote</span>
+              </a>
+            </div>
+
+            <div className="mt-6 flex items-center justify-center gap-2 text-white/90 text-sm">
+              <Icons.phone className="w-4 h-4" />
+              <span>Or call:</span>
+              <a
+                href={`tel:${COMPANY_PHONE_FORMATTED.replace(/[^0-9]/g, '')}`}
+                className="font-semibold hover:text-white transition-colors"
+              >
+                {COMPANY_PHONE_FORMATTED}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -46,6 +46,7 @@ import {
   Map,
   Wine,
   DollarSign,
+  MessageCircle,
 } from "lucide-react";
 
 /**
@@ -90,6 +91,7 @@ export const Icons = {
   mail: Mail,
   language: Languages,
   phone: Phone,
+  messageCircle: MessageCircle,
 
   // Time & Scheduling
   time: Clock,
