@@ -242,7 +242,6 @@ html[data-theme="dark"] {
 
 /* CONTAINER SYSTEM */
 .container {
-  max-w-7xl mx-auto px-4 sm:px-6;
   max-width: var(--container-max);
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
