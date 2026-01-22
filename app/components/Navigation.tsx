@@ -1,6 +1,7 @@
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { getDictionary } from "@/app/i18n";
+import { theme } from "@/app/ui/theme";
 
 export default async function Navigation({ locale }: { locale: string }) {
   const dict = await getDictionary(locale);
@@ -17,23 +18,27 @@ export default async function Navigation({ locale }: { locale: string }) {
   ];
 
   return (
-    <nav className="w-full border-b border-[#D1D1D1] bg-white">
-      <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-        
-        {/* Left side navigation */}
+    <nav
+      className="w-full border-b px-6 py-4"
+      style={{
+        backgroundColor: theme.colors.surface,
+        borderColor: theme.colors.border,
+      }}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={`/${locale}/${item.href}`}
-              className="text-sm hover:text-[#0067B8] transition text-[#1B1B1B] font-medium"
+              className="text-sm font-medium transition hover:underline"
+              style={{ color: theme.colors.text }}
             >
               {item.label}
             </Link>
           ))}
         </div>
 
-        {/* Right side language switcher */}
         <LanguageSwitcher currentLocale={locale} />
       </div>
     </nav>
