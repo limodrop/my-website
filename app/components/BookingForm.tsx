@@ -6,7 +6,7 @@ type BookingFormProps = {
 
 export default function BookingForm({ locale = "en" }: BookingFormProps) {
   return (
-    <form className="space-y-6">
+    <form className="space-y-6" action="https://book.oregontowncar.com" method="GET">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label
