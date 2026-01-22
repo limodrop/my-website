@@ -40,3 +40,7 @@ const mockPosts: BlogPost[] = [
 export function getPostBySlug(slug: string, lang: string): BlogPost | null {
   return mockPosts.find((p) => p.slug === slug && p.lang === lang) || null
 }
+
+export function getAllPosts(): BlogPost[] {
+  return mockPosts
+}

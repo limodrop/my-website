@@ -1,14 +1,14 @@
-import { getPostBySlug } from "@/lib/blog/posts"
+import { getPostBySlug, getAllPosts } from "@/lib/blog/posts"
 import { Locale } from "@/lib/i18n/types"
 import { notFound } from "next/navigation"
 
 export async function generateStaticParams() {
-  const langs = ["en", "es", "fr", "ar", "zh"]
-  const slugs = ["portland-airport-winter", "beaverton-wine-summer"]
-
-  return langs.flatMap((lang) =>
-    slugs.map((slug) => ({ lang, slug }))
-  )
+  const allPosts = getAllPosts()
+  
+  return allPosts.map((post) => ({
+    lang: post.lang,
+    slug: post.slug,
+  }))
 }
 
 export default function BlogPostPage({
