@@ -293,10 +293,34 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link
+                  href={`/${locale}/cities/gresham`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Gresham
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={`/${locale}/cities/vancouver-wa`}
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
                   Vancouver, WA
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/salem`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Salem
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cities/eugene`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
+                >
+                  Eugene
                 </Link>
               </li>
               <li>
