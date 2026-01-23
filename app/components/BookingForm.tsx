@@ -33,7 +33,7 @@ export function BookingForm({ locale }: { locale: string }) {
 
       <div className="md:col-span-2 flex justify-end mt-2">
         <Button variant="primary" type="submit" disabled={submitting}>
-          {submitting ? "Submitting..." : "Request Booking"}
+          {submitting ? "Submitting..." : "Request a Quote"}
         </Button>
       </div>
     </form>
