@@ -143,7 +143,7 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: any
           {/* CTA */}
           <div className="pt-4 space-y-3">
             <a
-              href="https://book.oregontowncar.com"
+              href="https://accounts.oregontowncar.com/"
               className="
                 block w-full px-4 py-3 rounded-lg text-center
                 bg-[var(--primary)] text-white font-semibold
@@ -155,7 +155,7 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: any
               Book Now
             </a>
             <a
-              href="https://login.oregontowncar.com"
+              href="https://accounts.oregontowncar.com/"
               className="
                 block w-full px-4 py-3 rounded-lg text-center
                 border border-[var(--border)] text-[var(--text)] font-semibold

@@ -10,7 +10,7 @@ export function MobileStickyBar() {
         <Button
           variant="primary"
           as="a"
-          href="https://book.oregontowncar.com"
+          href="https://accounts.oregontowncar.com/"
           className="flex-[2] justify-center gap-2 !font-semibold"
         >
           <span>Book Now</span>

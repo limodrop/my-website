@@ -68,6 +68,7 @@ export const Icons = {
   home: Home,
   menu: Menu,
   close: X,
+  x: X,
   search: Search,
   filter: Filter,
   sort: SortAsc,

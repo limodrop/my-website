@@ -63,7 +63,7 @@ export default function Navigation({ locale, dict }: NavigationProps) {
           <Button
             variant="primary"
             as="a"
-            href="https://book.oregontowncar.com"
+            href="https://accounts.oregontowncar.com/"
             className="!py-2 !px-4"
           >
             Book Now
@@ -71,7 +71,7 @@ export default function Navigation({ locale, dict }: NavigationProps) {
           <Button
             variant="ghost"
             as="a"
-            href="https://login.oregontowncar.com"
+            href="https://accounts.oregontowncar.com/"
             className="!py-2 !px-4"
           >
             Client Portal

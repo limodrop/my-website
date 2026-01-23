@@ -12,7 +12,7 @@ export function navigationEngine(ctx: NavigationContext): NavigationLayout {
   const bottom = [
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Book Now", href: "https://book.oregontowncar.com" }
+    { label: "Book Now", href: "https://accounts.oregontowncar.com/" }
   ]
 
   return {

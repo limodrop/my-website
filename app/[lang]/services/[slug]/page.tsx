@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import { serverApi } from "@/lib/api/serverClient"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs"
 import { SmartImage } from "@/app/components/SmartImage"
 import { Button } from "@/app/ui/buttons/Button"
 import { Icons } from "@/app/components/Icons"
+import { QuoteModal } from "@/app/components/QuoteModal"
 
 interface Props {
   params: { slug: string; lang: string }
@@ -146,12 +150,11 @@ export async function generateMetadata({ params }: Props) {
   if (!service) return { title: "Service not found" }
 
   return {
-    title: `${service.name} | ${seo.title}`,
+    title: `${service.name} | ${seo.defaultTitle}`,
     description: service.description,
     openGraph: {
       title: service.name,
       description: service.description,
-      images: [service.image],
     },
   }
 }
@@ -168,11 +171,34 @@ export default async function ServiceDetailPage({ params }: Props) {
     return <div>Service not found</div>
   }
 
-  const relevantCities = rules.cityServices[params.slug] || []
-  const relevantFleet = rules.serviceFleet[params.slug] || []
+  const relevantCities = (rules.cityServices as any)[params.slug] || []
+  const relevantFleet = (rules.serviceFleet as any)[params.slug] || []
   const content = serviceContent[params.slug] || { overview: [], benefits: [], reassurance: [] }
 
+  return <ServiceDetailContent 
+    service={service}
+    cities={cities}
+    fleet={fleet}
+    relevantCities={relevantCities}
+    relevantFleet={relevantFleet}
+    content={content}
+    slug={params.slug}
+  />
+}
+
+function ServiceDetailContent({ service, cities, fleet, relevantCities, relevantFleet, content, slug }: {
+  service: any;
+  cities: any[];
+  fleet: any[];
+  relevantCities: string[];
+  relevantFleet: string[];
+  content: { overview: string[]; benefits: string[]; reassurance: string[]; };
+  slug: string;
+}) {
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+
   return (
+    <>
     <div className="space-y-12">
       <ServiceJsonLd service={service} />
       <Breadcrumbs
@@ -197,15 +223,14 @@ export default async function ServiceDetailPage({ params }: Props) {
           <Button
             variant="primary"
             as="a"
-            href="https://book.oregontowncar.com"
+            href="https://accounts.oregontowncar.com/"
             className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
           >
             Book Now
           </Button>
           <Button
             variant="ghost"
-            as="a"
-            href="/contact"
+            onClick={() => setQuoteModalOpen(true)}
             className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
           >
             Get a Quote
@@ -330,13 +355,13 @@ export default async function ServiceDetailPage({ params }: Props) {
           <Button
             variant="primary"
             as="a"
-            href="https://book.oregontowncar.com"
+            href="https://accounts.oregontowncar.com/"
             className="w-full sm:w-auto bg-white text-blue-700 hover:bg-white/90 !px-8 !py-3.5 text-base sm:text-lg !font-semibold shadow-md"
           >
             Book Now
           </Button>
-          <a
-            href="/contact"
+          <button
+            onClick={() => setQuoteModalOpen(true)}
             className="
               w-full sm:w-auto
               inline-flex items-center justify-center gap-2
@@ -348,9 +373,15 @@ export default async function ServiceDetailPage({ params }: Props) {
           >
             <Icons.messageCircle className="w-5 h-5" />
             <span>Get a Quote</span>
-          </a>
+          </button>
         </div>
       </section>
     </div>
+
+    <QuoteModal
+      isOpen={quoteModalOpen}
+      onClose={() => setQuoteModalOpen(false)}
+    />
+    </>
   )
 }

@@ -4,6 +4,6 @@ export async function getSettings() {
     tagline: "Premium Chauffeur Service in Oregon",
     primaryColor: "#0A3A63",
     secondaryColor: "#D4AF37",
-    bookingUrl: "https://book.oregontowncar.com"
+    bookingUrl: "https://accounts.oregontowncar.com/"
   }
 }

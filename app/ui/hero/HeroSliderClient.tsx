@@ -57,7 +57,7 @@ export function HeroSliderClient({ slides }: HeroSliderClientProps) {
           <Button
             variant="primary"
             as="a"
-            href={slide.ctaLink || "https://book.oregontowncar.com"}
+            href={slide.ctaLink || "https://accounts.oregontowncar.com/"}
             className="w-full sm:w-auto"
           >
             {slide.cta}

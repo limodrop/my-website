@@ -1,6 +1,6 @@
 import { getDictionary } from "@/app/i18n";
 import { Locale } from "@/lib/i18n/types";
-import { BookingForm } from "@/app/components/BookingForm";
+import { QuoteForm } from "@/app/components/QuoteForm";
 import { Button } from "@/app/ui/buttons/Button";
 
 export default async function ContactPage({ params }: { params: { lang: Locale } }) {
@@ -59,7 +59,7 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
         <Button
           variant="primary"
           as="a"
-          href="https://book.oregontowncar.com"
+          href="https://accounts.oregontowncar.com/"
           className="bg-white text-blue-700 hover:bg-white/90 !px-8 !py-3.5 text-base sm:text-lg !font-semibold shadow-md mb-3"
         >
           Book Now
@@ -98,7 +98,7 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
       {/* Custom Quote Form */}
       <div className="max-w-2xl">
         <h2 className="text-2xl font-semibold text-[var(--text)] mb-4">Custom Quote & Special Requests</h2>
-        <BookingForm locale={locale} />
+        <QuoteForm locale={locale} />
       </div>
     </>
   );

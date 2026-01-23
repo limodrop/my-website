@@ -6,14 +6,14 @@ export async function getHomepageData() {
         subtitle: "Airport, corporate, wine tours, and special events",
         image: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1920&q=85",
         cta: "Book Now",
-        ctaLink: "https://book.oregontowncar.com"
+        ctaLink: "https://accounts.oregontowncar.com/"
       },
       {
         title: "On-Time Airport Transportation",
         subtitle: "Professional drivers with flight tracking",
         image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1920&q=85",
         cta: "Reserve Your Ride",
-        ctaLink: "https://book.oregontowncar.com"
+        ctaLink: "https://accounts.oregontowncar.com/"
       },
       {
         title: "Luxury Wine Tours",

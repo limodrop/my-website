@@ -285,7 +285,7 @@ export default async function VIPArrivalPage({ params }: { params: { lang: Local
               <Button
                 variant="ghost"
                 as="a"
-                href="https://book.oregontowncar.com"
+                href="https://accounts.oregontowncar.com/"
                 className="w-full sm:w-auto border-white text-white hover:bg-white/10 !px-8 !py-3 text-base sm:text-lg font-semibold"
               >
                 Book Now
