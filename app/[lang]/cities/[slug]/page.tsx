@@ -1,6 +1,7 @@
 import { serverApi } from "@/lib/api/serverClient"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs"
-import { SmartImage } from "@/app/components/SmartImage"
+import { CityPageTemplate } from "@/app/components/cities/CityPageTemplate"
+import { cityContent } from "@/lib/data/cityContent"
 
 interface Props {
   params: { slug: string; lang: string }
@@ -28,20 +29,19 @@ function CityJsonLd({ city }: { city: any }) {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const [seo, city] = await Promise.all([
-    serverApi.getSeo(),
-    serverApi.getCity(params.slug),
-  ])
+  const city = await serverApi.getCity(params.slug);
 
   if (!city) return { title: "City not found" }
 
+  const content = cityContent[params.slug];
+  const stateLabel = content?.state || "Oregon";
+
   return {
-    title: `${city.name} | ${seo.title}`,
-    description: city.description,
+    title: `${city.name} Chauffeur Service | Oregon Town Car`,
+    description: content?.subtitle || `Professional chauffeur service in ${city.name}, ${stateLabel} for airport transfers, corporate travel, and special events.`,
     openGraph: {
-      title: city.name,
-      description: city.description,
-      images: [city.image],
+      title: `${city.name} Chauffeur Service`,
+      description: content?.subtitle || city.description,
     },
   }
 }
@@ -57,10 +57,15 @@ export default async function CityDetailPage({ params }: Props) {
     return <div>City not found</div>
   }
 
-  const relevantServices = rules.cityServices[params.slug] || []
+  const relevantServices = (rules.cityServices as any)[params.slug] || []
+  const content = cityContent[params.slug]
+
+  if (!content) {
+    return <div>City content not found</div>
+  }
 
   return (
-    <div className="space-y-8">
+    <>
       <CityJsonLd city={city} />
       <Breadcrumbs
         items={[
@@ -69,46 +74,12 @@ export default async function CityDetailPage({ params }: Props) {
           { label: city.name, href: `/cities/${city.slug}` },
         ]}
       />
-
-      <h1 className="text-4xl font-semibold text-[var(--text)]">{city.name}</h1>
-      
-      {city.image && (
-        <SmartImage 
-          src={city.image} 
-          alt={city.name} 
-          className="rounded-lg w-full max-w-2xl shadow-sm" 
-        />
-      )}
-      
-      <p className="text-lg text-[var(--textMuted)] leading-relaxed">{city.description}</p>
-
-      {relevantServices.length > 0 && (
-        <section className="mt-12">
-          <h2 className="text-2xl font-semibold text-[var(--text)] mb-6">
-            Services available in {city.name}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {relevantServices.map((serviceSlug) => {
-              const service = services.find((s) => s.slug === serviceSlug)
-              return service ? (
-                <a
-                  key={serviceSlug}
-                  href={`/services/${serviceSlug}`}
-                  className="
-                    p-4 rounded-lg
-                    bg-[var(--surface)]
-                    border border-[var(--border)]
-                    hover:border-[var(--primary)]
-                    transition
-                  "
-                >
-                  <h3 className="font-medium text-[var(--text)]">{service.name}</h3>
-                </a>
-              ) : null
-            })}
-          </div>
-        </section>
-      )}
-    </div>
+      <CityPageTemplate
+        city={city}
+        services={services}
+        relevantServices={relevantServices}
+        content={content}
+      />
+    </>
   )
 }
