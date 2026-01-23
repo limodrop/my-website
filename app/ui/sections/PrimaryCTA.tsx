@@ -4,8 +4,8 @@ import { Icons } from "@/app/components/Icons";
 export function PrimaryCTA() {
   return (
     <section className="py-16 sm:py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 rounded-2xl sm:rounded-3xl shadow-2xl py-14 sm:py-20 px-6 sm:px-12 text-center relative overflow-hidden">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 rounded-2xl sm:rounded-3xl shadow-2xl py-12 sm:py-16 px-6 sm:px-12 lg:px-16 text-center relative overflow-hidden">
           {/* Subtle pattern overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50"></div>
           
