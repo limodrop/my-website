@@ -39,8 +39,8 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
     },
     {
       icon: Icons.star,
-      title: "Special Occasions",
-      description: "Concerts, anniversaries, nights out",
+      title: "Special Events",
+      description: "Elegant transportation for weddings, proms, and special occasions.",
       link: `/${locale}/services/special-occasions`
     }
   ];
