@@ -10,16 +10,16 @@ export async function GET() {
     },
     {
       id: 2,
-      name: "SUV",
-      slug: "suv",
+      name: "Black SUV",
+      slug: "black-suv",
       seats: 6,
       image: "/images/fleet/suv.jpg",
       description: "Spacious SUV ideal for families and group travel."
     },
     {
       id: 3,
-      name: "Sprinter Van",
-      slug: "sprinter-van",
+      name: "Executive Van",
+      slug: "executive-van",
       seats: 14,
       image: "/images/fleet/van.jpg",
       description: "Perfect for wine tours and group events."
