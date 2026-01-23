@@ -51,16 +51,18 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {vehicles.map((vehicle, index) => (
-          <article
+          <a
             key={index}
+            href={`/${locale}/fleet/${vehicle.slug}`}
             className="
               rounded-lg overflow-hidden
-              bg-[var(--surface)]
+              bg-white
               border border-[var(--border)]
               shadow-sm flex flex-col
               transition-all duration-200
               hover:-translate-y-1 hover:shadow-md hover:border-[var(--primary)]
               relative
+              group
             "
           >
             {/* Most Popular Badge for Black SUV */}
@@ -97,16 +99,12 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
                 </div>
               </div>
 
-              <Button
-                variant="secondary"
-                as="a"
-                href="https://book.oregontowncar.com"
-                className="mt-auto w-full justify-center !py-2 text-sm"
-              >
-                Book Now
-              </Button>
+              <div className="mt-auto text-sm text-[var(--primary)] group-hover:text-[var(--primaryHover)] flex items-center gap-1 font-medium">
+                <span>View Details</span>
+                <Icons.arrow className="w-3 h-3" />
+              </div>
             </div>
-          </article>
+          </a>
         ))}
       </div>
 

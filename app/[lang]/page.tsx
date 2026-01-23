@@ -28,11 +28,11 @@ export default async function LangHome({
       
       <EnhancedServices locale={locale} />
       
+      <FleetPreview locale={locale} />
+      
       <Differentiators />
       
       <SocialProof />
-      
-      <FleetPreview locale={locale} />
       
       <PrimaryCTA />
       
