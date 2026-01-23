@@ -13,7 +13,7 @@ export function StaticHero() {
           
           {/* Left Column - Text Content */}
           <div className="px-6 sm:px-10 lg:px-12 pt-8 sm:pt-12 pb-6 sm:pb-8 lg:py-12 flex flex-col justify-center">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text)] mb-2 sm:mb-3 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-[var(--text)] mb-2 sm:mb-3 leading-tight">
               Luxury Chauffeur Service<br />
               in Portland, Oregon
             </h1>
@@ -66,7 +66,7 @@ export function StaticHero() {
 
             {/* Service Area Line */}
             <p className="text-sm text-[var(--textMuted)]">
-              Serving Portland, Oregon • PDX • Willamette Valley
+              Serving Portland, Oregon • PDX • Willamette Valley • Worldwide
             </p>
           </div>
 
