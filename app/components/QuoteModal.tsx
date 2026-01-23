@@ -51,9 +51,13 @@ export function QuoteModal({ isOpen, onClose, locale }: QuoteModalProps) {
     <div
       ref={modalRef}
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-0 sm:p-4"
+      className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-0 sm:p-4"
+      style={{ zIndex: 9999 }}
     >
-      <div className="bg-[var(--surface)] w-full sm:max-w-3xl sm:rounded-2xl rounded-t-2xl shadow-2xl max-h-[90vh] overflow-y-auto animate-slide-up sm:animate-fade-in">
+      <div 
+        className="bg-[var(--surface)] w-full sm:max-w-3xl sm:rounded-2xl rounded-t-2xl shadow-2xl max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="sticky top-0 bg-[var(--surface)] border-b border-[var(--border)] p-4 sm:p-6 flex items-center justify-between z-10">
           <h2 className="text-xl sm:text-2xl font-semibold text-[var(--text)]">
