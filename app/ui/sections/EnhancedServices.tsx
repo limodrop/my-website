@@ -9,9 +9,9 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
   const services = [
     {
       icon: Icons.airport,
-      title: "Airport Transfers",
-      description: "PDX, private airports, flight tracking",
-      link: `/${locale}/services/airport-transfers`
+      title: "Airport Transportation",
+      description: "Reliable airport pickup and drop-off service",
+      link: `/${locale}/services/airport-transportation`
     },
     {
       icon: Icons.user,
@@ -21,27 +21,21 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
     },
     {
       icon: Icons.briefcase,
-      title: "Corporate Transportation",
-      description: "Meetings, executives, roadshows",
-      link: `/${locale}/services/corporate`
+      title: "Corporate Travel",
+      description: "Professional transportation for business meetings and events",
+      link: `/${locale}/services/corporate-travel`
     },
     {
       icon: Icons.wine,
       title: "Wine Tours",
-      description: "Willamette Valley luxury tours",
+      description: "Luxury wine tasting tours across Oregon vineyards",
       link: `/${locale}/services/wine-tours`
-    },
-    {
-      icon: Icons.heart,
-      title: "Weddings & Events",
-      description: "Elegant arrivals, stress-free rides",
-      link: `/${locale}/services/weddings`
     },
     {
       icon: Icons.star,
       title: "Special Events",
       description: "Elegant transportation for weddings, proms, and special occasions.",
-      link: `/${locale}/services/special-occasions`
+      link: `/${locale}/services/special-events`
     }
   ];
 
