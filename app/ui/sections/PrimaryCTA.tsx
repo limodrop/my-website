@@ -3,7 +3,7 @@ import { Icons } from "@/app/components/Icons";
 
 export function PrimaryCTA() {
   return (
-    <section className="py-12 sm:py-16">
+    <section className="py-12 sm:py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4">
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg py-10 px-6 sm:px-10 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">

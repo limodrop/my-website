@@ -2,7 +2,7 @@ import { Icons } from "@/app/components/Icons";
 
 export function ClarityBlock() {
   return (
-    <section className="py-8 sm:py-12">
+    <section className="py-8 sm:py-12 bg-white">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         {/* Card 1 - What We Do */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 text-center hover:border-[var(--primary)] transition-all">

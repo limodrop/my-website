@@ -40,7 +40,7 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
   ];
 
   return (
-    <section className="py-10 sm:py-16">
+    <section className="py-10 sm:py-16 bg-white">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--text)] mb-3">
           Our Services

@@ -12,19 +12,19 @@ export function StaticHero() {
       />
 
       {/* Left-to-right gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/25"></div>
 
       {/* Content Container */}
       <div className="absolute inset-0 flex items-center">
         <div className="w-full px-4 sm:px-6">
           {/* Main Headline with intentional line break */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight max-w-3xl">
             Luxury Chauffeur Service<br />
             in Portland & Oregon
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-6 max-w-2xl">
+          <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-6 max-w-xl leading-relaxed">
             Airport transfers, corporate travel, wine tours & special events
           </p>
 

@@ -25,7 +25,7 @@ export function Differentiators() {
   ];
 
   return (
-    <section className="py-10 sm:py-16 bg-[var(--background)]">
+    <section className="py-10 sm:py-16 bg-gray-50">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--text)] mb-3">
           Why Choose Oregon Town Car

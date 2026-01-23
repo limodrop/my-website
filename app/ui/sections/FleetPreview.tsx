@@ -39,7 +39,7 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
   ];
 
   return (
-    <section className="py-10 sm:py-16">
+    <section className="py-10 sm:py-16 bg-gray-50">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--text)] mb-3">
           Our Fleet
@@ -98,10 +98,10 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
               </div>
 
               <Button
-                variant="primary"
+                variant="secondary"
                 as="a"
                 href="https://book.oregontowncar.com"
-                className="mt-auto w-full justify-center"
+                className="mt-auto w-full justify-center !py-2 text-sm"
               >
                 Book Now
               </Button>

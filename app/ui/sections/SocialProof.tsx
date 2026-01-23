@@ -2,7 +2,7 @@ import { Icons } from "@/app/components/Icons";
 
 export function SocialProof() {
   return (
-    <section className="py-10 sm:py-16 bg-[var(--surface)] border-y border-[var(--border)]">
+    <section className="py-10 sm:py-16 bg-gray-50">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--text)] mb-3">
           Trusted by Business Travelers & Locals
