@@ -1,6 +1,7 @@
 export async function getCities() {
   return [
     {
+      id: 1,
       slug: "portland",
       name: "Portland",
       state: "Oregon",
@@ -9,6 +10,7 @@ export async function getCities() {
       zipCodes: ["97201", "97202", "97203", "97204", "97205"]
     },
     {
+      id: 2,
       slug: "beaverton",
       name: "Beaverton",
       state: "Oregon",
@@ -17,6 +19,7 @@ export async function getCities() {
       zipCodes: ["97005", "97006", "97007", "97008"]
     },
     {
+      id: 3,
       slug: "lake-oswego",
       name: "Lake Oswego",
       state: "Oregon",
@@ -25,6 +28,7 @@ export async function getCities() {
       zipCodes: ["97034", "97035"]
     },
     {
+      id: 4,
       slug: "tigard",
       name: "Tigard",
       state: "Oregon",
@@ -33,6 +37,7 @@ export async function getCities() {
       zipCodes: ["97223", "97224"]
     },
     {
+      id: 5,
       slug: "hillsboro",
       name: "Hillsboro",
       state: "Oregon",
@@ -41,6 +46,7 @@ export async function getCities() {
       zipCodes: ["97123", "97124"]
     },
     {
+      id: 6,
       slug: "vancouver-wa",
       name: "Vancouver",
       state: "Washington",
@@ -49,6 +55,7 @@ export async function getCities() {
       zipCodes: ["98660", "98661", "98662", "98663", "98664", "98665"]
     },
     {
+      id: 7,
       slug: "willamette-valley",
       name: "Willamette Valley",
       state: "Oregon",
@@ -57,6 +64,7 @@ export async function getCities() {
       zipCodes: ["97101", "97115", "97128", "97148"]
     },
     {
+      id: 8,
       slug: "salem",
       name: "Salem",
       state: "Oregon",
@@ -65,6 +73,7 @@ export async function getCities() {
       zipCodes: ["97301", "97302", "97303", "97304", "97305"]
     },
     {
+      id: 9,
       slug: "eugene",
       name: "Eugene",
       state: "Oregon",
