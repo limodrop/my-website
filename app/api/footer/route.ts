@@ -2,7 +2,7 @@ export async function GET() {
   return Response.json({
     company: "Oregon Town Car",
     phone: "(503) 123-4567",
-    email: "info@oregontowncar.com",
+    email: "hello@oregontowncar.com",
     address: "Portland, Oregon",
     links: [
       { label: "Home", href: "/" },

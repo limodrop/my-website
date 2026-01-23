@@ -346,10 +346,10 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="mailto:info@oregontowncar.com"
+                  href="mailto:hello@oregontowncar.com"
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
-                  info@oregontowncar.com
+                  hello@oregontowncar.com
                 </a>
               </li>
               <li className="text-[var(--textMuted)] text-xs pt-2">
