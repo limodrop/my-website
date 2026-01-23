@@ -28,6 +28,13 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
       passengers: "14 passengers",
       luggage: "10 large bags",
       slug: "executive-van"
+    },
+    {
+      name: "Mini Coach",
+      image: "/images/fleet/mini-coach.jpg",
+      passengers: "20–30 passengers",
+      luggage: "20+ large bags",
+      slug: "mini-coach"
     }
   ];
 
@@ -42,7 +49,7 @@ export function FleetPreview({ locale }: FleetPreviewProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {vehicles.map((vehicle, index) => (
           <article
             key={index}

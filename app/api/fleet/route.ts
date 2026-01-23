@@ -23,6 +23,14 @@ export async function GET() {
       seats: 14,
       image: "/images/fleet/van.jpg",
       description: "Perfect for wine tours and group events."
+    },
+    {
+      id: 4,
+      name: "Mini Coach",
+      slug: "mini-coach",
+      seats: 30,
+      image: "/images/fleet/mini-coach.jpg",
+      description: "Ideal for corporate groups, special events, and large party transportation."
     }
   ])
 }
