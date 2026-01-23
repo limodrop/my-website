@@ -14,8 +14,8 @@ export async function getFleet() {
       rate: "$85/hour"
     },
     {
-      slug: "suv",
-      name: "Luxury SUV",
+      slug: "black-suv",
+      name: "Black SUV",
       make: "Cadillac",
       model: "Escalade",
       year: 2024,
@@ -38,6 +38,19 @@ export async function getFleet() {
       features: ["Conference seating", "Wi-Fi", "USB charging ports", "Climate zones"],
       image: "/images/fleet/van.jpg",
       rate: "$120/hour"
+    },
+    {
+      slug: "mini-coach",
+      name: "Mini Coach",
+      make: "Mercedes-Benz",
+      model: "Sprinter Coach",
+      year: 2024,
+      capacity: 30,
+      luggage: 20,
+      description: "Ideal for corporate groups, special events, and large party transportation.",
+      features: ["Spacious seating", "Climate control", "Premium amenities", "Large luggage capacity"],
+      image: "/images/fleet/mini-coach.jpg",
+      rate: "$150/hour"
     }
   ]
 }
