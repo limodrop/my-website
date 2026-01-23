@@ -3,8 +3,11 @@ export async function GET() {
     cities: {
       portland: ["airport-transportation", "corporate-travel", "wine-tours"],
       beaverton: ["airport-transportation", "corporate-travel"],
-      hillsboro: ["airport-transportation"],
-      vancouver: ["airport-transportation", "corporate-travel"]
+      "lake-oswego": ["airport-transportation", "corporate-travel"],
+      tigard: ["airport-transportation", "corporate-travel"],
+      hillsboro: ["airport-transportation", "corporate-travel"],
+      "vancouver-wa": ["airport-transportation", "corporate-travel"],
+      "willamette-valley": ["wine-tours", "airport-transportation"]
     },
 
     fleet: {
@@ -15,15 +18,15 @@ export async function GET() {
 
     services: {
       "airport-transportation": {
-        cities: ["portland", "beaverton", "hillsboro", "vancouver"],
+        cities: ["portland", "beaverton", "lake-oswego", "tigard", "hillsboro", "vancouver-wa", "willamette-valley"],
         fleet: ["luxury-sedan", "suv"],
       },
       "corporate-travel": {
-        cities: ["portland", "beaverton", "vancouver"],
+        cities: ["portland", "beaverton", "lake-oswego", "tigard", "hillsboro", "vancouver-wa"],
         fleet: ["luxury-sedan", "suv", "sprinter-van"],
       },
       "wine-tours": {
-        cities: ["portland"],
+        cities: ["portland", "willamette-valley"],
         fleet: ["suv", "sprinter-van"],
       },
     },

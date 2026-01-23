@@ -17,6 +17,46 @@ export async function getCities() {
       zipCodes: ["97005", "97006", "97007", "97008"]
     },
     {
+      slug: "lake-oswego",
+      name: "Lake Oswego",
+      state: "Oregon",
+      description: "Luxury chauffeur service in Lake Oswego.",
+      population: "40,000",
+      zipCodes: ["97034", "97035"]
+    },
+    {
+      slug: "tigard",
+      name: "Tigard",
+      state: "Oregon",
+      description: "Professional transportation in Tigard.",
+      population: "55,000",
+      zipCodes: ["97223", "97224"]
+    },
+    {
+      slug: "hillsboro",
+      name: "Hillsboro",
+      state: "Oregon",
+      description: "Executive car service in Hillsboro and the west metro area.",
+      population: "110,000",
+      zipCodes: ["97123", "97124"]
+    },
+    {
+      slug: "vancouver-wa",
+      name: "Vancouver",
+      state: "Washington",
+      description: "Premium chauffeur service in Vancouver, Washington.",
+      population: "190,000",
+      zipCodes: ["98660", "98661", "98662", "98663", "98664", "98665"]
+    },
+    {
+      slug: "willamette-valley",
+      name: "Willamette Valley",
+      state: "Oregon",
+      description: "Wine country transportation in Willamette Valley.",
+      population: "N/A",
+      zipCodes: ["97101", "97115", "97128", "97148"]
+    },
+    {
       slug: "salem",
       name: "Salem",
       state: "Oregon",
