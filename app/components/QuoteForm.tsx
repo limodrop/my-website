@@ -35,11 +35,11 @@ export function QuoteForm({ locale, onSuccess }: QuoteFormProps) {
     }
     
     if (!formData.pickupCity || formData.pickupCity.trim().length < 2) {
-      newErrors.pickupCity = "Please enter a pickup city.";
+      newErrors.pickupCity = "Please enter a pickup location.";
     }
     
     if (!formData.dropoffCity || formData.dropoffCity.trim().length < 2) {
-      newErrors.dropoffCity = "Please enter a dropoff city.";
+      newErrors.dropoffCity = "Please enter a dropoff location.";
     }
     
     if (!formData.date) {
@@ -141,8 +141,8 @@ export function QuoteForm({ locale, onSuccess }: QuoteFormProps) {
       />
       
       <Input
-        label="Pickup City"
-        placeholder="Portland"
+        label="Pickup Address or Airport Name"
+        placeholder="PDX Airport or 123 Main St, Portland"
         required
         value={formData.pickupCity}
         onChange={(e) => handleChange('pickupCity', e.target.value)}
@@ -150,8 +150,8 @@ export function QuoteForm({ locale, onSuccess }: QuoteFormProps) {
       />
       
       <Input
-        label="Dropoff City"
-        placeholder="Beaverton"
+        label="Dropoff Address or Airport Name"
+        placeholder="Hotel address or airport name"
         required
         value={formData.dropoffCity}
         onChange={(e) => handleChange('dropoffCity', e.target.value)}
