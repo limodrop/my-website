@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import JsonLd from '@/app/components/JsonLd';
+import { JsonLd } from '@/app/components/seo/JsonLd';
 import { buildLocalBusinessSchema } from '@/lib/seo/schema';
 
 export const metadata: Metadata = {

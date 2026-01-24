@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import JsonLd from '@/app/components/JsonLd';
+import { JsonLd } from '@/app/components/seo/JsonLd';
 import { buildLocalBusinessSchema, buildArticleSchema } from '@/lib/seo/schema';
 import ContextualFAQ from '@/app/components/seo/ContextualFAQ';
 
