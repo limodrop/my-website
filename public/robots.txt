@@ -1,2 +1,23 @@
+# Oregon Town Car - Robots.txt
 User-agent: *
 Allow: /
+
+# Allow important pages
+Allow: /en/
+Allow: /en/services/
+Allow: /en/cities/
+Allow: /en/fleet/
+Allow: /en/worldwide/
+Allow: /en/countries/
+Allow: /en/faq
+Allow: /en/resources
+Allow: /en/contact
+Allow: /en/about
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://oregontowncar.com/sitemap.xml

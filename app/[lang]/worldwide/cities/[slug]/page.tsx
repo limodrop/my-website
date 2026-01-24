@@ -6,6 +6,7 @@ import { getAirportsByCity } from '@/lib/data/worldwide/airports';
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
 import { JsonLd } from '@/app/components/seo/JsonLd';
 import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { Breadcrumb } from '@/app/components/seo/Breadcrumb';
 import { buildLocalBusinessSchema, buildCityServiceSchema } from '@/lib/seo/schema';
 import { getRelatedLinksForCity } from '@/lib/seo/internalLinks';
 import { defaultLocale } from '@/lib/i18n/locales';
@@ -62,31 +63,22 @@ export default function WorldwideCityPage({ params }: Props) {
     serviceTypes: ['Airport Transfer', 'Corporate Travel', 'Special Events', 'Wine Tours'],
   });
 
+  const breadcrumbItems = [
+    { label: 'Home', href: '/en' },
+    { label: 'Worldwide', href: '/en/worldwide' },
+    { label: 'Cities', href: '/en/worldwide' },
+    { label: city.name },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* JSON-LD Schema */}
       <JsonLd data={[localBusinessSchema, serviceSchema]} />
       
       {/* Breadcrumbs */}
-      <div className="border-b border-border bg-surface">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/en" className="text-text-secondary hover:text-primary">
-              Home
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <Link href="/en/worldwide" className="text-text-secondary hover:text-primary">
-              Worldwide
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <Link href="/en/worldwide/cities" className="text-text-secondary hover:text-primary">
-              Cities
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <span className="text-text-primary font-medium">{city.name}</span>
-          </nav>
-        </div>
-      </div>
+      <Breadcrumb items={breadcrumbItems} />
+      {/* Breadcrumbs */}
+      <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero */}
       <div className="bg-gradient-to-b from-surface to-background border-b border-border">

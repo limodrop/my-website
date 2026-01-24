@@ -6,6 +6,7 @@ import { worldwideAirports } from '@/lib/data/worldwide/airports';
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
 import { JsonLd } from '@/app/components/seo/JsonLd';
 import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { ContextualFAQ, buildFAQSchema } from '@/app/components/seo/ContextualFAQ';
 import { buildLocalBusinessSchema, buildWorldwideServiceSchema } from '@/lib/seo/schema';
 import { getRelatedLinksForWorldwide } from '@/lib/seo/internalLinks';
 import { defaultLocale } from '@/lib/i18n/locales';
@@ -31,10 +32,31 @@ export default async function WorldwidePage() {
   const localBusinessSchema = buildLocalBusinessSchema();
   const serviceSchema = buildWorldwideServiceSchema();
   
+  const worldwideFAQs = [
+    {
+      question: 'How does worldwide chauffeur service work?',
+      answer: 'We partner with vetted professional chauffeur companies in cities worldwide. When you book, we coordinate with our trusted partners to ensure the same premium service standards you expect from Oregon Town Car.',
+    },
+    {
+      question: 'Which cities and countries do you serve?',
+      answer: 'We serve 64+ major cities across 13 countries, including all major business and travel destinations in North America, Europe, Middle East, and Asia. View our worldwide coverage for the complete list of cities and airports.',
+    },
+    {
+      question: 'Is pricing consistent worldwide?',
+      answer: 'Pricing varies by location based on local market rates, vehicle availability, and distance. You will receive a transparent quote before booking with no hidden fees.',
+    },
+    {
+      question: 'Can I book multi-city itineraries?',
+      answer: 'Yes, we can coordinate transportation across multiple cities and countries for complex travel itineraries. Contact our concierge team for custom multi-destination arrangements.',
+    },
+  ];
+
+  const faqSchema = buildFAQSchema(worldwideFAQs) as any;
+  
   return (
     <div className="min-h-screen">
       {/* JSON-LD Schema */}
-      <JsonLd data={[localBusinessSchema, serviceSchema]} />
+      <JsonLd data={[localBusinessSchema, serviceSchema, faqSchema]} />
       
       {/* Hero */}
       <div className="bg-gradient-to-b from-surface to-background border-b border-border">
@@ -190,6 +212,9 @@ export default async function WorldwidePage() {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* FAQs */}
+      <ContextualFAQ faqs={worldwideFAQs} />
 
       {/* Related Links */}
       <RelatedLinks

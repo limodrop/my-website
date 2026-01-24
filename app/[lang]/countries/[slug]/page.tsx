@@ -6,6 +6,7 @@ import { getCitiesByCountry } from '@/lib/data/worldwide/cities';
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
 import { JsonLd } from '@/app/components/seo/JsonLd';
 import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { Breadcrumb } from '@/app/components/seo/Breadcrumb';
 import { buildLocalBusinessSchema, buildCountryServiceSchema } from '@/lib/seo/schema';
 import { getRelatedLinksForCountry } from '@/lib/seo/internalLinks';
 import { defaultLocale } from '@/lib/i18n/locales';
@@ -60,31 +61,24 @@ export default async function CountryDetailPage({ params }: Props) {
     url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com'}/en/countries/${params.slug}`,
   });
 
+  const breadcrumbItems = [
+    { label: 'Home', href: '/en' },
+    { label: 'Worldwide', href: '/en/worldwide' },
+    { label: 'Countries', href: '/en/worldwide' },
+    { label: country.name },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* JSON-LD Schema */}
       <JsonLd data={[localBusinessSchema, serviceSchema]} />
       
       {/* Breadcrumbs */}
-      <div className="border-b border-border bg-surface">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/en" className="text-text-secondary hover:text-primary">
-              Home
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <Link href="/en/worldwide" className="text-text-secondary hover:text-primary">
-              Worldwide
-            </Link>
-            <span className="text-text-tertiary">/</span>
+      <Breadcrumb items={breadcrumbItems} />
             <Link href="/en/countries" className="text-text-secondary hover:text-primary">
               Countries
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <span className="text-text-primary font-medium">{country.name}</span>
-          </nav>
-        </div>
-      </div>
+      {/* Breadcrumbs */}
+      <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero */}
       <div className="bg-gradient-to-b from-surface to-background border-b border-border">

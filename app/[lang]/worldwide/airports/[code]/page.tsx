@@ -5,6 +5,8 @@ import { getAirportByCode, worldwideAirports } from '@/lib/data/worldwide/airpor
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
 import { JsonLd } from '@/app/components/seo/JsonLd';
 import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { Breadcrumb } from '@/app/components/seo/Breadcrumb';
+import { ContextualFAQ, buildFAQSchema } from '@/app/components/seo/ContextualFAQ';
 import { buildLocalBusinessSchema, buildAirportServiceSchema } from '@/lib/seo/schema';
 import { getRelatedLinksForAirport } from '@/lib/seo/internalLinks';
 import { defaultLocale } from '@/lib/i18n/locales';
@@ -60,31 +62,37 @@ export default function WorldwideAirportPage({ params }: Props) {
     url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com'}/en/worldwide/airports/${params.code.toLowerCase()}`,
   });
 
+  const airportFAQs = [
+    {
+      question: 'Do you provide meet and greet service at airports?',
+      answer: 'Yes, all airport pickups include complimentary meet and greet service. Your chauffeur will track your flight and meet you in the arrivals area with a name sign.',
+    },
+    {
+      question: 'Is flight tracking included?',
+      answer: 'Yes, we monitor all flights in real-time. If your flight is delayed or arrives early, your chauffeur will adjust pickup time accordingly at no extra charge.',
+    },
+    {
+      question: 'How much wait time is included for airport pickups?',
+      answer: 'We include 60 minutes complimentary wait time for domestic flights and 90 minutes for international flights, starting from actual landing time.',
+    },
+  ];
+
+  const faqSchema = buildFAQSchema(airportFAQs) as any;
+
+  const breadcrumbItems = [
+    { label: 'Home', href: '/en' },
+    { label: 'Worldwide', href: '/en/worldwide' },
+    { label: 'Airports', href: '/en/worldwide' },
+    { label: airport.code },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* JSON-LD Schema */}
-      <JsonLd data={[localBusinessSchema, serviceSchema]} />
+      <JsonLd data={[localBusinessSchema, serviceSchema, faqSchema]} />
       
       {/* Breadcrumbs */}
-      <div className="border-b border-border bg-surface">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/en" className="text-text-secondary hover:text-primary">
-              Home
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <Link href="/en/worldwide" className="text-text-secondary hover:text-primary">
-              Worldwide
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <Link href="/en/worldwide/airports" className="text-text-secondary hover:text-primary">
-              Airports
-            </Link>
-            <span className="text-text-tertiary">/</span>
-            <span className="text-text-primary font-medium">{airport.code}</span>
-          </nav>
-        </div>
-      </div>
+      <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero */}
       <div className="bg-gradient-to-b from-surface to-background border-b border-border">
@@ -218,6 +226,12 @@ export default function WorldwideAirportPage({ params }: Props) {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* FAQs */}
+      <ContextualFAQ 
+        faqs={airportFAQs}
+        title={`${airport.code} Airport Transportation FAQs`}
+      />
 
       {/* Related Links */}
       <RelatedLinks
