@@ -7,7 +7,6 @@ import { EnhancedServices } from "@/app/ui/sections/EnhancedServices"
 import { Differentiators } from "@/app/ui/sections/Differentiators"
 import { SocialProof } from "@/app/ui/sections/SocialProof"
 import { FleetPreview } from "@/app/ui/sections/FleetPreview"
-import { PrimaryCTA } from "@/app/ui/sections/PrimaryCTA"
 import { MobileStickyBar } from "@/app/components/MobileStickyBar"
 import { LocalServiceArea } from "@/app/components/sections/LocalServiceArea"
 import { WhyChooseUs } from "@/app/components/sections/WhyChooseUs"
@@ -39,8 +38,6 @@ export default async function LangHome({
       <SocialProof />
       
       <LocalServiceArea />
-      
-      <PrimaryCTA />
       
       <MobileStickyBar />
     </>

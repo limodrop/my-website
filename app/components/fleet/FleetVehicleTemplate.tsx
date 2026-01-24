@@ -80,13 +80,6 @@ export function FleetVehicleTemplate({ vehicle, content, relatedVehicles = [] }:
               >
                 Book Now
               </Button>
-              <Button
-                variant="ghost"
-                onClick={() => setQuoteModalOpen(true)}
-                className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
-              >
-                Get a Quote
-              </Button>
             </div>
           </div>
 
