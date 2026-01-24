@@ -64,14 +64,15 @@ export function QuoteForm({ locale, onSuccess }: QuoteFormProps) {
     setSubmitting(true);
     
     try {
-      // Wire to your booking endpoint / email handler
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
       
-      if (response.ok) {
+      const data = await response.json();
+      
+      if (response.ok && data.success) {
         // Reset form
         setFormData({
           name: "",
@@ -87,9 +88,13 @@ export function QuoteForm({ locale, onSuccess }: QuoteFormProps) {
         if (onSuccess) {
           onSuccess();
         }
+      } else {
+        console.error('Quote submission failed:', data.error);
+        setErrors({ submit: data.error || 'Failed to submit quote request' });
       }
     } catch (error) {
       console.error('Form submission error:', error);
+      setErrors({ submit: 'Network error. Please try again.' });
     } finally {
       setSubmitting(false);
     }
@@ -185,6 +190,12 @@ export function QuoteForm({ locale, onSuccess }: QuoteFormProps) {
           onChange={(e) => handleChange('notes', e.target.value)}
         />
       </div>
+
+      {errors.submit && (
+        <div className="md:col-span-2 p-3 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
+          {errors.submit}
+        </div>
+      )}
 
       <div className="md:col-span-2 flex justify-end mt-2">
         <Button variant="primary" type="submit" disabled={submitting}>
