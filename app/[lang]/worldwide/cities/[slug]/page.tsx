@@ -4,6 +4,11 @@ import { notFound } from 'next/navigation';
 import { getCityBySlug, worldwideCities } from '@/lib/data/worldwide/cities';
 import { getAirportsByCity } from '@/lib/data/worldwide/airports';
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
+import { JsonLd } from '@/app/components/seo/JsonLd';
+import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { buildLocalBusinessSchema, buildCityServiceSchema } from '@/lib/seo/schema';
+import { getRelatedLinksForCity } from '@/lib/seo/internalLinks';
+import { defaultLocale } from '@/lib/i18n/locales';
 
 type Props = {
   params: { slug: string; lang: string };
@@ -24,9 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com';
+
   return {
     title: `Chauffeur Service in ${city.name} | Oregon Town Car`,
     description: city.description,
+    alternates: {
+      canonical: `${baseUrl}/${defaultLocale}/worldwide/cities/${params.slug}`,
+      languages: {
+        'en': `${baseUrl}/en/worldwide/cities/${params.slug}`,
+        'x-default': `${baseUrl}/en/worldwide/cities/${params.slug}`,
+      },
+    },
   };
 }
 
@@ -38,9 +52,21 @@ export default function WorldwideCityPage({ params }: Props) {
   }
 
   const cityAirports = getAirportsByCity(city.name);
+  const relatedLinks = getRelatedLinksForCity(params.slug);
+  const localBusinessSchema = buildLocalBusinessSchema();
+  const serviceSchema = buildCityServiceSchema({
+    cityName: city.name,
+    region: city.country,
+    description: city.description,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com'}/en/worldwide/cities/${params.slug}`,
+    serviceTypes: ['Airport Transfer', 'Corporate Travel', 'Special Events', 'Wine Tours'],
+  });
 
   return (
     <div className="min-h-screen">
+      {/* JSON-LD Schema */}
+      <JsonLd data={[localBusinessSchema, serviceSchema]} />
+      
       {/* Breadcrumbs */}
       <div className="border-b border-border bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -212,6 +238,15 @@ export default function WorldwideCityPage({ params }: Props) {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* Related Links */}
+      <RelatedLinks
+        countries={relatedLinks.countries}
+        cities={relatedLinks.cities}
+        airports={relatedLinks.airports}
+        services={relatedLinks.services}
+        locale="en"
+      />
     </div>
   );
 }

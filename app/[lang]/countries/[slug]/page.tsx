@@ -4,6 +4,11 @@ import { notFound } from 'next/navigation';
 import { getCountryBySlug, worldwideCountries } from '@/lib/data/worldwide/countries';
 import { getCitiesByCountry } from '@/lib/data/worldwide/cities';
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
+import { JsonLd } from '@/app/components/seo/JsonLd';
+import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { buildLocalBusinessSchema, buildCountryServiceSchema } from '@/lib/seo/schema';
+import { getRelatedLinksForCountry } from '@/lib/seo/internalLinks';
+import { defaultLocale } from '@/lib/i18n/locales';
 
 interface Props {
   params: { slug: string; lang: string };
@@ -24,9 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com';
+
   return {
     title: `Chauffeur Service in ${country.name} | Oregon Town Car`,
     description: country.description,
+    alternates: {
+      canonical: `${baseUrl}/${defaultLocale}/countries/${params.slug}`,
+      languages: {
+        'en': `${baseUrl}/en/countries/${params.slug}`,
+        'x-default': `${baseUrl}/en/countries/${params.slug}`,
+      },
+    },
   };
 }
 
@@ -38,9 +52,19 @@ export default async function CountryDetailPage({ params }: Props) {
   }
 
   const countryCities = getCitiesByCountry(params.slug);
+  const relatedLinks = getRelatedLinksForCountry(params.slug);
+  const localBusinessSchema = buildLocalBusinessSchema();
+  const serviceSchema = buildCountryServiceSchema({
+    countryName: country.name,
+    description: country.description,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com'}/en/countries/${params.slug}`,
+  });
 
   return (
     <div className="min-h-screen">
+      {/* JSON-LD Schema */}
+      <JsonLd data={[localBusinessSchema, serviceSchema]} />
+      
       {/* Breadcrumbs */}
       <div className="border-b border-border bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -212,6 +236,14 @@ export default async function CountryDetailPage({ params }: Props) {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* Related Links */}
+      <RelatedLinks
+        cities={relatedLinks.cities}
+        airports={relatedLinks.airports}
+        services={relatedLinks.services}
+        locale="en"
+      />
     </div>
   );
 }

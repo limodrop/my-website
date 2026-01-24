@@ -3,6 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAirportByCode, worldwideAirports } from '@/lib/data/worldwide/airports';
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
+import { JsonLd } from '@/app/components/seo/JsonLd';
+import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { buildLocalBusinessSchema, buildAirportServiceSchema } from '@/lib/seo/schema';
+import { getRelatedLinksForAirport } from '@/lib/seo/internalLinks';
+import { defaultLocale } from '@/lib/i18n/locales';
 
 type Props = {
   params: { code: string; lang: string };
@@ -23,9 +28,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com';
+
   return {
     title: `${airport.code} Airport Chauffeur Service | Oregon Town Car`,
     description: airport.description,
+    alternates: {
+      canonical: `${baseUrl}/${defaultLocale}/worldwide/airports/${params.code.toLowerCase()}`,
+      languages: {
+        'en': `${baseUrl}/en/worldwide/airports/${params.code.toLowerCase()}`,
+        'x-default': `${baseUrl}/en/worldwide/airports/${params.code.toLowerCase()}`,
+      },
+    },
   };
 }
 
@@ -36,8 +50,21 @@ export default function WorldwideAirportPage({ params }: Props) {
     notFound();
   }
 
+  const relatedLinks = getRelatedLinksForAirport(params.code.toUpperCase());
+  const localBusinessSchema = buildLocalBusinessSchema();
+  const serviceSchema = buildAirportServiceSchema({
+    airportCode: airport.code,
+    airportName: airport.name,
+    city: airport.city,
+    country: airport.country,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com'}/en/worldwide/airports/${params.code.toLowerCase()}`,
+  });
+
   return (
     <div className="min-h-screen">
+      {/* JSON-LD Schema */}
+      <JsonLd data={[localBusinessSchema, serviceSchema]} />
+      
       {/* Breadcrumbs */}
       <div className="border-b border-border bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -191,6 +218,15 @@ export default function WorldwideAirportPage({ params }: Props) {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* Related Links */}
+      <RelatedLinks
+        countries={relatedLinks.countries}
+        cities={relatedLinks.cities}
+        airports={relatedLinks.airports}
+        services={relatedLinks.services}
+        locale="en"
+      />
     </div>
   );
 }

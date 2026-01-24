@@ -4,15 +4,38 @@ import { worldwideCountries } from '@/lib/data/worldwide/countries';
 import { worldwideCities } from '@/lib/data/worldwide/cities';
 import { worldwideAirports } from '@/lib/data/worldwide/airports';
 import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
+import { JsonLd } from '@/app/components/seo/JsonLd';
+import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
+import { buildLocalBusinessSchema, buildWorldwideServiceSchema } from '@/lib/seo/schema';
+import { getRelatedLinksForWorldwide } from '@/lib/seo/internalLinks';
+import { defaultLocale } from '@/lib/i18n/locales';
 
-export const metadata: Metadata = {
-  title: 'Worldwide Chauffeur Service | Oregon Town Car',
-  description: 'Professional chauffeur service in major cities worldwide. Airport transfers, corporate travel, and luxury transportation globally.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://oregontowncar.com';
+  
+  return {
+    title: 'Worldwide Chauffeur Service | Oregon Town Car',
+    description: 'Professional chauffeur service in major cities worldwide. Airport transfers, corporate travel, and luxury transportation globally.',
+    alternates: {
+      canonical: `${baseUrl}/${defaultLocale}/worldwide`,
+      languages: {
+        'en': `${baseUrl}/en/worldwide`,
+        'x-default': `${baseUrl}/en/worldwide`,
+      },
+    },
+  };
+}
 
 export default async function WorldwidePage() {
+  const relatedLinks = getRelatedLinksForWorldwide();
+  const localBusinessSchema = buildLocalBusinessSchema();
+  const serviceSchema = buildWorldwideServiceSchema();
+  
   return (
     <div className="min-h-screen">
+      {/* JSON-LD Schema */}
+      <JsonLd data={[localBusinessSchema, serviceSchema]} />
+      
       {/* Hero */}
       <div className="bg-gradient-to-b from-surface to-background border-b border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
@@ -167,6 +190,14 @@ export default async function WorldwidePage() {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* Related Links */}
+      <RelatedLinks
+        countries={relatedLinks.countries}
+        cities={relatedLinks.cities}
+        airports={relatedLinks.airports}
+        locale="en"
+      />
     </div>
   );
 }
