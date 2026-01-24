@@ -3,6 +3,7 @@ import { Locale } from "@/lib/i18n/types"
 import { getDictionary } from "@/app/i18n"
 import Navigation from "@/app/components/Navigation"
 import Footer from "@/app/components/Footer"
+import { GlobalQuoteModal } from "@/app/components/GlobalQuoteModal"
 import "../globals.css"
 
 export async function generateStaticParams() {
@@ -86,6 +87,9 @@ export default async function LangLayout({
             <Footer locale={params.lang} dict={dict} />
           </div>
         </footer>
+
+        {/* Global Quote Modal - accessible from any page */}
+        <GlobalQuoteModal locale={params.lang} />
       </body>
     </html>
   )
