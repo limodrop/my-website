@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Icons } from "./Icons";
 import { QuoteButton } from "./QuoteButton";
 
@@ -47,12 +48,18 @@ function FooterSection({ title, children, isMobile }: { title: string; children:
 }
 
 export default function Footer({ locale, dict }: FooterProps) {
+  const pathname = usePathname();
+  // Check if we're on homepage - matches /en, /es, /fr, /ar, /zh
+  const isHomepage = pathname && /^\/[a-z]{2}$/.test(pathname);
+  
   return (
     <footer className="bg-[var(--surface)] border-t-2 border-[var(--border)]">
       <div className="py-8 sm:py-12">
         
-        {/* Footer CTA - Compact */}
-        <div className="mb-10 pb-8 border-b border-[var(--border)]">
+        {/* Footer CTA - Compact - Hidden on mobile homepage only */}
+        <div className={`mb-10 pb-8 border-b border-[var(--border)] ${
+          isHomepage ? 'hidden md:block' : ''
+        }`}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-center sm:text-left">
               <p className="text-base sm:text-lg font-semibold text-[var(--text)] mb-1">
