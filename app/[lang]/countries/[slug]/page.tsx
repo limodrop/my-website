@@ -76,10 +76,6 @@ export default async function CountryDetailPage({ params }: Props) {
       
       {/* Breadcrumbs */}
       <Breadcrumb items={breadcrumbItems} />
-            <Link href="/en/countries" className="text-text-secondary hover:text-primary">
-              Countries
-      {/* Breadcrumbs */}
-      <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero */}
       <div className="bg-gradient-to-b from-surface to-background border-b border-border">
