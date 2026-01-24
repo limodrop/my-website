@@ -102,6 +102,65 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     });
 
+    // Partners
+    urls.push({
+      url: `${baseUrl}/${locale}/partners`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+
+    urls.push({
+      url: `${baseUrl}/${locale}/partners/hotels`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+
+    urls.push({
+      url: `${baseUrl}/${locale}/partners/venues`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+
+    urls.push({
+      url: `${baseUrl}/${locale}/partners/corporate`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+
+    // Guides
+    urls.push({
+      url: `${baseUrl}/${locale}/guides/airport-transportation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+
+    urls.push({
+      url: `${baseUrl}/${locale}/guides/corporate-chauffeur-service`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+
+    urls.push({
+      url: `${baseUrl}/${locale}/guides/wine-tour-transportation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+
+    // Press
+    urls.push({
+      url: `${baseUrl}/${locale}/press`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+
     // Worldwide Hub
     urls.push({
       url: `${baseUrl}/${locale}/worldwide`,

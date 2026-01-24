@@ -231,3 +231,96 @@ export function generateArticleSchema({
     "url": url
   }
 }
+
+// New Phase 3 Schema Builders
+
+export function buildOrganizationSchema(): WithContext<Thing> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Oregon Town Car',
+    url: SITE_URL,
+    logo: LOGO_URL,
+    description: 'Premium chauffeur service providing luxury ground transportation for executives, business travelers, and discerning clients in Portland and 64+ cities worldwide.',
+    foundingDate: '2010',
+    founder: {
+      '@type': 'Person',
+      name: 'Ali Al-Abbas',
+      jobTitle: 'Founder & CEO',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Portland',
+      addressRegion: 'OR',
+      addressCountry: 'US',
+    },
+    telephone: '+1-503-555-0100',
+    email: 'info@oregontowncar.com',
+    sameAs: [
+      // Add social media profiles when available
+    ],
+    areaServed: [
+      { '@type': 'Place', name: 'Portland, OR' },
+      { '@type': 'Place', name: 'United States' },
+      { '@type': 'Place', name: 'Worldwide' },
+    ],
+  } as any;
+}
+
+export function buildPersonSchema(params: {
+  name: string;
+  jobTitle: string;
+  description?: string;
+  url?: string;
+}): WithContext<Thing> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: params.name,
+    jobTitle: params.jobTitle,
+    description: params.description,
+    url: params.url || SITE_URL,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Oregon Town Car',
+      url: SITE_URL,
+    },
+  } as any;
+}
+
+export function buildArticleSchema(params: {
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  url: string;
+  imageUrl?: string;
+  authorName?: string;
+  keywords?: string[];
+}): WithContext<Thing> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: params.title,
+    description: params.description,
+    datePublished: params.datePublished,
+    dateModified: params.dateModified || params.datePublished,
+    author: {
+      '@type': params.authorName ? 'Person' : 'Organization',
+      name: params.authorName || 'Oregon Town Car',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Oregon Town Car',
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: LOGO_URL,
+      },
+    },
+    image: params.imageUrl || `${SITE_URL}/images/hero-fleet.jpg`,
+    url: params.url,
+    keywords: params.keywords,
+    inLanguage: 'en',
+  } as any;
+}
