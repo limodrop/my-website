@@ -577,6 +577,30 @@ export default function Footer({ locale, dict }: FooterProps) {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={`/${locale}/accessibility`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
+                >
+                  Accessibility
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/sms-policy`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
+                >
+                  SMS Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/cookie-policy`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
+                >
+                  Cookie Policy
+                </Link>
+              </li>
             </ul>
           </FooterSection>
         </div>

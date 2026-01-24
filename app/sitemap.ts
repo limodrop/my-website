@@ -213,6 +213,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 0.3,
     });
+
+    // Accessibility Statement
+    urls.push({
+      url: `${baseUrl}/${locale}/accessibility`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    });
+
+    // SMS Messaging Policy
+    urls.push({
+      url: `${baseUrl}/${locale}/sms-policy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    });
+
+    // Cookie Policy
+    urls.push({
+      url: `${baseUrl}/${locale}/cookie-policy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    });
   }
 
   return urls;

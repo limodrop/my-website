@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",
-    "export": "next build"
+    "export": "next build",
+    "audit:a11y": "echo 'Run Lighthouse accessibility audit: npx lighthouse https://oregontowncar.com --only-categories=accessibility --output=html --output-path=./lighthouse-report.html' && echo 'Or use Chrome DevTools > Lighthouse > Accessibility'"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
