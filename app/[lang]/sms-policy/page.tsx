@@ -80,7 +80,7 @@ export default function SMSPolicyPage({ params }: { params: { lang: string } }) 
               <ul className="list-disc pl-6 space-y-2 text-[var(--textMuted)]">
                 <li>Reply <strong>"HELP"</strong> to any text message from us</li>
                 <li>Call us at <a href="tel:5033537755" className="text-[var(--primary)] hover:underline">(503) 353-7755</a></li>
-                <li>Email <a href="mailto:info@oregontowncar.com" className="text-[var(--primary)] hover:underline">info@oregontowncar.com</a></li>
+                <li>Email <a href="mailto:hello@oregontowncar.com" className="text-[var(--primary)] hover:underline">hello@oregontowncar.com</a></li>
               </ul>
             </div>
           </section>
@@ -137,7 +137,7 @@ export default function SMSPolicyPage({ params }: { params: { lang: string } }) 
             <ul className="list-disc pl-6 space-y-2 text-[var(--textMuted)] mt-4">
               <li>Logging into your account at <a href="https://accounts.oregontowncar.com" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">accounts.oregontowncar.com</a></li>
               <li>Calling us at <a href="tel:5033537755" className="text-[var(--primary)] hover:underline">(503) 353-7755</a></li>
-              <li>Emailing <a href="mailto:info@oregontowncar.com" className="text-[var(--primary)] hover:underline">info@oregontowncar.com</a></li>
+              <li>Emailing <a href="mailto:hello@oregontowncar.com" className="text-[var(--primary)] hover:underline">hello@oregontowncar.com</a></li>
             </ul>
           </section>
 
@@ -159,8 +159,8 @@ export default function SMSPolicyPage({ params }: { params: { lang: string } }) 
               </p>
               <p className="text-[var(--textMuted)]">
                 <strong>Email:</strong>{' '}
-                <a href="mailto:info@oregontowncar.com" className="text-[var(--primary)] hover:underline">
-                  info@oregontowncar.com
+                <a href="mailto:hello@oregontowncar.com" className="text-[var(--primary)] hover:underline">
+                  hello@oregontowncar.com
                 </a>
               </p>
             </div>

@@ -323,7 +323,7 @@ background: white;
 
 If you encounter accessibility barriers on our website:
 
-- **Email:** info@oregontowncar.com
+- **Email:** hello@oregontowncar.com
 - **Phone:** (503) 353-7755
 - **Report:** Use our [Accessibility Statement](https://oregontowncar.com/en/accessibility) feedback form
 

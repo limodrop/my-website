@@ -85,10 +85,10 @@ export default function AccessibilityPage({ params }: { params: { lang: string }
               <p className="text-[var(--text)] mb-2">
                 <strong>Email:</strong>{' '}
                 <a 
-                  href="mailto:info@oregontowncar.com" 
+                  href="mailto:hello@oregontowncar.com" 
                   className="text-[var(--primary)] hover:underline"
                 >
-                  info@oregontowncar.com
+                  hello@oregontowncar.com
                 </a>
               </p>
               <p className="text-[var(--text)] mb-2">
