@@ -121,14 +121,6 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${locale}/countries`}
-                  className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1"
-                >
-                  Countries
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={`/${locale}/worldwide`}
                   className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1"
                 >
@@ -228,14 +220,6 @@ export default function Footer({ locale, dict }: FooterProps) {
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
                 >
                   Cities
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/countries`}
-                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)]"
-                >
-                  Countries
                 </Link>
               </li>
               <li>

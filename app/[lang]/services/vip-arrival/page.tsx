@@ -1,5 +1,6 @@
 import { Locale } from "@/lib/i18n/types";
 import { getDictionary } from "@/app/i18n";
+import { QuoteButton } from "@/app/components/QuoteButton";
 import { Button } from "@/app/ui/buttons/Button";
 import { Icons } from "@/app/components/Icons";
 import { SmartImage } from "@/app/components/SmartImage";
@@ -61,14 +62,7 @@ export default async function VIPArrivalPage({ params }: { params: { lang: Local
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">
-              <Button
-                variant="primary"
-                as="a"
-                href={`/${locale}/contact`}
-                className="w-full sm:w-auto !px-8 !py-3 text-base sm:text-lg"
-              >
-                Request VIP Service
-              </Button>
+              <QuoteButton variant="primary" className="w-full sm:w-auto !px-8 !py-3 text-base sm:text-lg" />
               <Button
                 variant="ghost"
                 as="a"
@@ -274,22 +268,15 @@ export default async function VIPArrivalPage({ params }: { params: { lang: Local
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                variant="primary"
-                as="a"
-                href={`/${locale}/contact`}
-                className="w-full sm:w-auto bg-white text-[var(--text)] hover:bg-white/90 !px-8 !py-3 text-base sm:text-lg font-semibold"
-              >
-                Request VIP Service
-              </Button>
-              <Button
-                variant="ghost"
-                as="a"
+              <a
                 href="https://accounts.oregontowncar.com/"
-                className="w-full sm:w-auto border-white text-white hover:bg-white/10 !px-8 !py-3 text-base sm:text-lg font-semibold"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 text-base sm:text-lg bg-white text-[var(--text)] font-semibold rounded-lg hover:bg-white/90 transition-colors"
               >
                 Book Now
-              </Button>
+              </a>
+              <QuoteButton variant="outline" className="w-full sm:w-auto !px-8 !py-3 text-base sm:text-lg" />
             </div>
           </div>
         </div>
