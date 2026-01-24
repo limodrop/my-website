@@ -31,7 +31,7 @@ export function FleetCard({ name, slug, capacity, luggage, locale, image }: Flee
       <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
         <SmartImage 
           src={fleetImage} 
-          alt={name} 
+          alt={`${name} - luxury chauffeur vehicle for professional transportation service`}
           className="absolute inset-0 w-full h-full object-cover object-center" 
         />
         {/* Subtle overlay for consistency */}

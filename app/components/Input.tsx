@@ -5,12 +5,25 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
 }
 
-export function Input({ label, error, className = "", ...props }: InputProps) {
+export function Input({ label, error, className = "", id, ...props }: InputProps) {
+  // Generate a unique ID if not provided
+  const inputId = id || `input-${label?.toLowerCase().replace(/\s+/g, '-')}-${Math.random().toString(36).substr(2, 9)}`
+  
   return (
     <div className="flex flex-col gap-1">
-      {label && <label className="text-sm text-[var(--textMuted)]">{label}</label>}
+      {label && (
+        <label 
+          htmlFor={inputId}
+          className="text-sm text-[var(--textMuted)]"
+        >
+          {label}
+        </label>
+      )}
       <input
         {...props}
+        id={inputId}
+        aria-invalid={error ? "true" : "false"}
+        aria-describedby={error ? `${inputId}-error` : undefined}
         className={`
           rounded-md px-3 py-2
           bg-[var(--background)]
@@ -22,7 +35,15 @@ export function Input({ label, error, className = "", ...props }: InputProps) {
           ${className}
         `}
       />
-      {error && <span className="text-xs text-red-600">{error}</span>}
+      {error && (
+        <span 
+          id={`${inputId}-error`}
+          className="text-xs text-red-600"
+          role="alert"
+        >
+          {error}
+        </span>
+      )}
     </div>
   )
 }
