@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     // Send email to admin (hello@oregontowncar.com)
     try {
       await transporter.sendMail({
-        from: `"Oregon Town Car" <${process.env.SMTP_USER}>`,
+        from: '"Oregon Town Car" <hello@oregontowncar.com>',
         to: adminEmail,
         replyTo: body.email,
         subject: `New Quote Request from ${body.name}`,
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to customer
     try {
       await transporter.sendMail({
-        from: `"Oregon Town Car" <${process.env.SMTP_USER}>`,
+        from: '"Oregon Town Car" <hello@oregontowncar.com>',
         to: body.email,
         replyTo: adminEmail,
         subject: 'Quote Request Received - Oregon Town Car',

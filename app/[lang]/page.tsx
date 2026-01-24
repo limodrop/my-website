@@ -4,7 +4,6 @@ import { StaticHero } from "@/app/ui/hero/StaticHero"
 import { ClarityBlock } from "@/app/ui/sections/ClarityBlock"
 import { TrustSignals } from "@/app/ui/sections/TrustSignals"
 import { EnhancedServices } from "@/app/ui/sections/EnhancedServices"
-import { Differentiators } from "@/app/ui/sections/Differentiators"
 import { SocialProof } from "@/app/ui/sections/SocialProof"
 import { FleetPreview } from "@/app/ui/sections/FleetPreview"
 import { MobileStickyBar } from "@/app/components/MobileStickyBar"
@@ -32,8 +31,6 @@ export default async function LangHome({
       <FleetPreview locale={locale} />
       
       <WhyChooseUs />
-      
-      <Differentiators />
       
       <SocialProof />
       
