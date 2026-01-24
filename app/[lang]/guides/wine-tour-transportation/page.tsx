@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { JsonLd } from '@/app/components/seo/JsonLd';
 import { buildLocalBusinessSchema, buildArticleSchema } from '@/lib/seo/schema';
-import ContextualFAQ from '@/app/components/seo/ContextualFAQ';
+import { ContextualFAQ } from '@/app/components/seo/ContextualFAQ';
 
 export const metadata: Metadata = {
   title: 'Wine Tour Transportation Guide - Willamette Valley Tours | Oregon Town Car',
