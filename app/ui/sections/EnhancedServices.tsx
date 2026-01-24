@@ -14,22 +14,28 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
       link: `/${locale}/services/airport-transportation`
     },
     {
-      icon: Icons.user,
-      title: "VIP Arrival Service",
-      description: "Meet & greet, guided arrivals, luxury pickup",
-      link: `/${locale}/services/vip-arrival`
-    },
-    {
       icon: Icons.briefcase,
       title: "Corporate Travel",
       description: "Professional transportation for business meetings and events",
       link: `/${locale}/services/corporate-travel`
     },
     {
+      icon: Icons.clock,
+      title: "Hourly Chauffeur",
+      description: "Flexible by-the-hour service for meetings, tours, and events",
+      link: `/${locale}/services/hourly-chauffeur`
+    },
+    {
       icon: Icons.wine,
       title: "Wine Tours",
       description: "Luxury wine tasting tours across Oregon vineyards",
       link: `/${locale}/services/wine-tours`
+    },
+    {
+      icon: Icons.user,
+      title: "VIP Arrival Service",
+      description: "Meet & greet, guided arrivals, luxury pickup",
+      link: `/${locale}/services/vip-arrival`
     },
     {
       icon: Icons.star,

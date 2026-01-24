@@ -4,15 +4,16 @@ export const fleetVehicleContent: Record<string, FleetVehicleContent> = {
   "luxury-sedan": {
     name: "Luxury Sedan",
     subtitle: "Executive comfort for airport & corporate travel",
-    passengers: 3,
-    luggage: "3 large bags",
+    passengers: 2,
+    luggage: "2 large bags",
     recommendedFor: ["Airport", "Corporate", "Executive Travel"],
     bestFor: [
       "Airport transfers",
       "Corporate travel",
       "Executive meetings",
       "Date night / special events",
-      "Business dinners"
+      "Business dinners",
+      "Solo or couple luxury travel"
     ],
     features: [
       "Premium leather seating",
@@ -26,7 +27,9 @@ export const fleetVehicleContent: Record<string, FleetVehicleContent> = {
       "Quiet, smooth ride",
       "Complimentary bottled water",
       "On-time guarantee",
-      "Ideal for business travel"
+      "Ideal for business travel",
+      "Luxury interior finishes",
+      "Ample legroom"
     ],
     typicalTrips: [
       "PDX Airport → Downtown Portland hotels",
@@ -78,7 +81,7 @@ export const fleetVehicleContent: Record<string, FleetVehicleContent> = {
     name: "Executive Van",
     subtitle: "Professional group transport for up to 14 passengers",
     passengers: 14,
-    luggage: "10 large bags",
+    luggage: "14 large bags",
     recommendedFor: ["Large Groups", "Events", "Conferences", "Weddings"],
     bestFor: [
       "Group airport transfers",
@@ -113,9 +116,9 @@ export const fleetVehicleContent: Record<string, FleetVehicleContent> = {
   },
   "mini-coach": {
     name: "Mini Coach",
-    subtitle: "Premium shuttle for large groups up to 30 passengers",
-    passengers: 30,
-    luggage: "20+ large bags",
+    subtitle: "Premium shuttle for groups of 20-27 passengers",
+    passengers: 27,
+    luggage: "20 large bags",
     recommendedFor: ["Large Groups", "Shuttles", "Corporate Events", "Weddings"],
     bestFor: [
       "Large group airport transfers",
