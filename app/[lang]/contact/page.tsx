@@ -2,6 +2,8 @@ import { getDictionary } from "@/app/i18n";
 import { Locale } from "@/lib/i18n/types";
 import { QuoteForm } from "@/app/components/QuoteForm";
 import { Button } from "@/app/ui/buttons/Button";
+import { LocalServiceArea } from "@/app/components/sections/LocalServiceArea";
+import { ReviewCTA } from "@/app/components/sections/ReviewCTA";
 
 export default async function ContactPage({ params }: { params: { lang: Locale } }) {
   const locale = params.lang;
@@ -99,6 +101,16 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
       <div className="max-w-2xl">
         <h2 className="text-2xl font-semibold text-[var(--text)] mb-4">Custom Quote & Special Requests</h2>
         <QuoteForm locale={locale} />
+      </div>
+
+      {/* Local Service Area */}
+      <div className="mt-16">
+        <LocalServiceArea />
+      </div>
+
+      {/* Review CTA */}
+      <div className="mt-8">
+        <ReviewCTA />
       </div>
     </>
   );

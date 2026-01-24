@@ -7,6 +7,7 @@ import { JsonLd } from '@/app/components/seo/JsonLd';
 import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
 import { Breadcrumb } from '@/app/components/seo/Breadcrumb';
 import { ContextualFAQ, buildFAQSchema } from '@/app/components/seo/ContextualFAQ';
+import { WhyChooseUs } from '@/app/components/sections/WhyChooseUs';
 import { buildLocalBusinessSchema, buildAirportServiceSchema } from '@/lib/seo/schema';
 import { getRelatedLinksForAirport } from '@/lib/seo/internalLinks';
 import { defaultLocale } from '@/lib/i18n/locales';
@@ -226,6 +227,9 @@ export default function WorldwideAirportPage({ params }: Props) {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* Why Choose Us */}
+      <WhyChooseUs />
 
       {/* FAQs */}
       <ContextualFAQ 

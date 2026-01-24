@@ -28,6 +28,12 @@ export function buildLocalBusinessSchema(): WithContext<Thing> {
       { '@type': 'Place', name: 'Willamette Valley, OR' },
     ],
     priceRange: '$$$',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-503-555-0100',
+      contactType: 'reservations',
+      availableLanguage: ['English'],
+    } as any,
   };
 }
 

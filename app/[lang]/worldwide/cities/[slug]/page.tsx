@@ -7,6 +7,7 @@ import { WorldwideCTA } from '@/app/components/worldwide/WorldwideCTA';
 import { JsonLd } from '@/app/components/seo/JsonLd';
 import { RelatedLinks } from '@/app/components/seo/RelatedLinks';
 import { Breadcrumb } from '@/app/components/seo/Breadcrumb';
+import { WhyChooseUs } from '@/app/components/sections/WhyChooseUs';
 import { buildLocalBusinessSchema, buildCityServiceSchema } from '@/lib/seo/schema';
 import { getRelatedLinksForCity } from '@/lib/seo/internalLinks';
 import { defaultLocale } from '@/lib/i18n/locales';
@@ -230,6 +231,9 @@ export default function WorldwideCityPage({ params }: Props) {
 
       {/* CTA */}
       <WorldwideCTA />
+
+      {/* Why Choose Us */}
+      <WhyChooseUs />
 
       {/* Related Links */}
       <RelatedLinks

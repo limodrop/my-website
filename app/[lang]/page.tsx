@@ -9,6 +9,8 @@ import { SocialProof } from "@/app/ui/sections/SocialProof"
 import { FleetPreview } from "@/app/ui/sections/FleetPreview"
 import { PrimaryCTA } from "@/app/ui/sections/PrimaryCTA"
 import { MobileStickyBar } from "@/app/components/MobileStickyBar"
+import { LocalServiceArea } from "@/app/components/sections/LocalServiceArea"
+import { WhyChooseUs } from "@/app/components/sections/WhyChooseUs"
 
 export default async function LangHome({
   params
@@ -30,9 +32,13 @@ export default async function LangHome({
       
       <FleetPreview locale={locale} />
       
+      <WhyChooseUs />
+      
       <Differentiators />
       
       <SocialProof />
+      
+      <LocalServiceArea />
       
       <PrimaryCTA />
       
