@@ -38,7 +38,7 @@ export const fleetVehicleContent: Record<string, FleetVehicleContent> = {
       "Professional client transportation",
       "Airport departures with luggage"
     ],
-    image: "/images/fleet/luxury-sedan.jpg"
+    image: "/images/fleet/sedan.jpg"
   },
   "black-suv": {
     name: "Black SUV",
@@ -75,7 +75,7 @@ export const fleetVehicleContent: Record<string, FleetVehicleContent> = {
       "Willamette Valley wine tours",
       "Weddings & special events"
     ],
-    image: "/images/fleet/black-suv.jpg"
+    image: "/images/fleet/suv.jpg"
   },
   "executive-van": {
     name: "Executive Van",
@@ -112,7 +112,7 @@ export const fleetVehicleContent: Record<string, FleetVehicleContent> = {
       "Willamette Valley wine tours (groups)",
       "Special events & celebrations"
     ],
-    image: "/images/fleet/executive-van.jpg"
+    image: "/images/fleet/van.jpg"
   },
   "mini-coach": {
     name: "Mini Coach",
