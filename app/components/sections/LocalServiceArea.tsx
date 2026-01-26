@@ -7,7 +7,7 @@ export function LocalServiceArea() {
     { name: 'Lake Oswego', slug: 'lake-oswego' },
     { name: 'Tigard', slug: 'tigard' },
     { name: 'Hillsboro', slug: 'hillsboro' },
-    { name: 'Vancouver, WA', slug: 'vancouver' },
+    { name: 'Vancouver, WA', slug: 'vancouver-wa' },
   ];
 
   return (
