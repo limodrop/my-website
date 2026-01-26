@@ -2,7 +2,6 @@ import { Locale } from "@/lib/i18n/types"
 import { getDictionary } from "@/app/i18n"
 import { StaticHero } from "@/app/ui/hero/StaticHero"
 import { ClarityBlock } from "@/app/ui/sections/ClarityBlock"
-import { TrustSignals } from "@/app/ui/sections/TrustSignals"
 import { EnhancedServices } from "@/app/ui/sections/EnhancedServices"
 import { SocialProof } from "@/app/ui/sections/SocialProof"
 import { FleetPreview } from "@/app/ui/sections/FleetPreview"
@@ -24,8 +23,6 @@ export default async function LangHome({
       <StaticHero />
       
       <ClarityBlock />
-      
-      <TrustSignals />
       
       <EnhancedServices locale={locale} />
       

@@ -82,11 +82,11 @@ export default async function LangLayout({
           {children}
         </main>
 
-        <footer className="bg-[var(--surface)] border-t border-[var(--border)] mt-10 sm:mt-20">
+        <div className="mt-10 sm:mt-20">
           <div className={containerClass}>
             <Footer locale={params.lang} dict={dict} />
           </div>
-        </footer>
+        </div>
 
         {/* Global Quote Modal - accessible from any page */}
         <GlobalQuoteModal locale={params.lang} />
