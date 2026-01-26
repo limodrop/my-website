@@ -33,7 +33,9 @@ function FooterSection({ title, children, isMobile }: { title: string; children:
             isOpen ? "max-h-[600px] pb-3" : "max-h-0"
           }`}
         >
-          {children}
+          <div className="px-4">
+            {children}
+          </div>
         </div>
       </div>
     );
@@ -61,7 +63,7 @@ export default function Footer({ locale, dict }: FooterProps) {
           isHomepage ? 'hidden md:block' : ''
         }`}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-center sm:text-left">
+            <div className="text-center sm:text-left pl-4 sm:pl-0">
               <p className="text-base sm:text-lg font-semibold text-[var(--text)] mb-1">
                 Ready to book your chauffeur?
               </p>
