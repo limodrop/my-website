@@ -1,295 +1,32 @@
-import { getServices } from "@/lib/data/services";
-import { getCities } from "@/lib/data/cities";
-import { getFleet } from "@/lib/data/fleet";
-import { worldwideCountries } from "@/lib/data/worldwide/countries";
-import { worldwideCities } from "@/lib/data/worldwide/cities";
-import { worldwideAirports } from "@/lib/data/worldwide/airports";
 import type { MetadataRoute } from "next";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const locales = ["en"];
+/**
+ * Main sitemap index
+ * References all sub-sitemaps for better crawl efficiency
+ */
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://oregontowncar.com";
 
-  const [services, fleet, cities] = await Promise.all([
-    getServices(),
-    getFleet(),
-    getCities(),
-  ]);
-
-  const urls: MetadataRoute.Sitemap = [];
-
-  // Homepage for each locale
-  for (const locale of locales) {
-    urls.push({
-      url: `${baseUrl}/${locale}`,
+  return [
+    {
+      url: `${baseUrl}/sitemap-core.xml`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
-    });
-
-    // Services
-    urls.push({
-      url: `${baseUrl}/${locale}/services`,
+    },
+    {
+      url: `${baseUrl}/sitemap-services.xml`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    });
-
-    services.forEach((s: any) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/services/${s.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.8,
-      });
-    });
-
-    // Fleet
-    urls.push({
-      url: `${baseUrl}/${locale}/fleet`,
+    },
+    {
+      url: `${baseUrl}/sitemap-cities.xml`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    });
-
-    fleet.forEach((f: any) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/fleet/${f.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.8,
-      });
-    });
-
-    // Cities
-    urls.push({
-      url: `${baseUrl}/${locale}/cities`,
+    },
+    {
+      url: `${baseUrl}/sitemap-routes.xml`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    });
-
-    cities.forEach((c: any) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/cities/${c.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.7,
-      });
-    });
-
-    // Contact
-    urls.push({
-      url: `${baseUrl}/${locale}/contact`,
+    },
+    {
+      url: `${baseUrl}/sitemap-worldwide.xml`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-
-    // FAQ
-    urls.push({
-      url: `${baseUrl}/${locale}/faq`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-
-    // Resources
-    urls.push({
-      url: `${baseUrl}/${locale}/resources`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    });
-
-    // Partners
-    urls.push({
-      url: `${baseUrl}/${locale}/partners`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-
-    urls.push({
-      url: `${baseUrl}/${locale}/partners/hotels`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
-
-    urls.push({
-      url: `${baseUrl}/${locale}/partners/venues`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
-
-    urls.push({
-      url: `${baseUrl}/${locale}/partners/corporate`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
-
-    // Guides
-    urls.push({
-      url: `${baseUrl}/${locale}/guides/airport-transportation`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-
-    urls.push({
-      url: `${baseUrl}/${locale}/guides/corporate-chauffeur-service`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-
-    urls.push({
-      url: `${baseUrl}/${locale}/guides/wine-tour-transportation`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-
-    // Press
-    urls.push({
-      url: `${baseUrl}/${locale}/press`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    });
-
-    // Worldwide Hub
-    urls.push({
-      url: `${baseUrl}/${locale}/worldwide`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    });
-
-    // Worldwide Country Pages
-    const countries = [
-      'united-states', 'canada', 'united-kingdom', 'germany', 'france', 'uae', 'japan'
-    ];
-    countries.forEach((country) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/worldwide/${country}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.8,
-      });
-    });
-
-    // Worldwide City Pages
-    const worldwideCityPages = [
-      'new-york-jfk', 'los-angeles-lax', 'san-francisco-sfo', 'chicago-ord', 'miami-mia',
-      'toronto-yyz', 'vancouver-yvr', 'montreal-yul',
-      'london-lhr', 'frankfurt-fra', 'paris-cdg',
-      'dubai-dxb', 'abu-dhabi-auh', 'tokyo-nrt'
-    ];
-    worldwideCityPages.forEach((city) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/worldwide/cities/${city}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.7,
-      });
-    });
-
-    // Route Pages
-    const routePages = [
-      'pdx-to-beaverton', 'pdx-to-lake-oswego', 'pdx-to-tigard', 
-      'pdx-to-hillsboro', 'pdx-to-vancouver-wa', 'pdx-to-willamette-valley',
-      'pdx-to-downtown-portland'
-    ];
-    routePages.forEach((route) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/routes/${route}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.7,
-      });
-    });
-
-    // Routes Index
-    urls.push({
-      url: `${baseUrl}/${locale}/routes`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-
-    // Countries
-    worldwideCountries.forEach((country) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/countries/${country.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.7,
-      });
-    });
-
-    // Worldwide Cities
-    worldwideCities.forEach((city) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/worldwide/cities/${city.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.7,
-      });
-    });
-
-    // Airports
-    worldwideAirports.forEach((airport) => {
-      urls.push({
-        url: `${baseUrl}/${locale}/worldwide/airports/${airport.code.toLowerCase()}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.7,
-      });
-    });
-
-    // Privacy & Terms
-    urls.push({
-      url: `${baseUrl}/${locale}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    });
-
-    urls.push({
-      url: `${baseUrl}/${locale}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    });
-
-    // Accessibility Statement
-    urls.push({
-      url: `${baseUrl}/${locale}/accessibility`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    });
-
-    // SMS Messaging Policy
-    urls.push({
-      url: `${baseUrl}/${locale}/sms-policy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    });
-
-    // Cookie Policy
-    urls.push({
-      url: `${baseUrl}/${locale}/cookie-policy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    });
-  }
-
-  return urls;
+    },
+  ];
 }
