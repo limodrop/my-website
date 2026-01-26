@@ -9,6 +9,14 @@ export async function getServices() {
       features: ["Flight tracking", "Meet and greet", "Luggage assistance", "24/7 availability"]
     },
     {
+      slug: "hourly-chauffeur",
+      name: "Hourly Chauffeur",
+      description: "Flexible hourly chauffeur service for business, events, and custom itineraries.",
+      icon: "🕒",
+      price: "From $95/hr",
+      features: ["Flexible booking", "Multiple stops", "Wait & return", "Custom itineraries"]
+    },
+    {
       slug: "vip-arrival",
       name: "VIP Arrival Service",
       description: "Meet & greet, guided airport arrivals, luggage assistance, and luxury chauffeur pickup.",
