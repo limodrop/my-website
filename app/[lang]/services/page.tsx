@@ -157,7 +157,7 @@ export default async function ServicesPage({ params }: { params: { lang: Locale 
         {dict.nav.services}
       </h1>
       <p className="text-sm sm:text-base lg:text-lg text-[var(--textMuted)] mb-6 max-w-2xl">
-        Premium chauffeur services designed for airport travel, corporate needs, and point-to-point transportation worldwide.
+        Premium chauffeur services for airport transfers, corporate travel, events, and hourly bookings throughout Portland and worldwide.
       </p>
 
       {/* SEO Intro Section */}
