@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Locale } from '@/lib/i18n/types';
+import { QuoteButton } from '@/app/components/QuoteButton';
 
 export const metadata: Metadata = {
   title: 'By-the-Hour Chauffeur Service in Portland, Oregon | Oregon Town Car',
@@ -540,18 +541,17 @@ export default function HourlyChauffeurPage({
               Flexible, reliable, and always on time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={`/${locale}`}
+              <a
+                href="https://accounts.oregontowncar.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block px-8 py-4 bg-white text-slate-900 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
               >
                 Book Now
-              </Link>
-              <Link
-                href={`/${locale}/contact`}
-                className="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-slate-900 transition-colors"
-              >
-                Contact Us
-              </Link>
+              </a>
+              <QuoteButton variant="outline" className="px-8 py-4">
+                Get a Quote
+              </QuoteButton>
             </div>
           </section>
 
