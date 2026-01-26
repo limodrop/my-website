@@ -38,6 +38,27 @@ export default function RoutesIndexPage({
       description: 'Residential area and upscale shopping district'
     },
     {
+      slug: 'pdx-to-tigard',
+      title: 'PDX to Tigard',
+      distance: '15 miles',
+      time: '25-35 min',
+      description: 'Business parks and Bridgeport Village shopping'
+    },
+    {
+      slug: 'pdx-to-hillsboro',
+      title: 'PDX to Hillsboro',
+      distance: '22 miles',
+      time: '35-50 min',
+      description: 'Intel campus and Silicon Forest tech corridor'
+    },
+    {
+      slug: 'pdx-to-vancouver-wa',
+      title: 'PDX to Vancouver, WA',
+      distance: '18 miles',
+      time: '30-45 min',
+      description: 'Cross-border service to Washington State'
+    },
+    {
       slug: 'pdx-to-willamette-valley',
       title: 'PDX to Willamette Valley',
       distance: '40-60 miles',

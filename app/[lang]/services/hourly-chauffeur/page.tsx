@@ -8,6 +8,87 @@ export const metadata: Metadata = {
   keywords: 'hourly chauffeur Portland, chauffeur by the hour, hourly car service, Portland hourly driver, executive hourly service',
 };
 
+// FAQ Schema
+function FAQSchema() {
+  const faqData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the minimum booking for hourly chauffeur service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The minimum booking is 2 hours. You can reserve a chauffeur for as long as you need—whether it's a few hours for meetings or a full day of touring."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I make multiple stops during my hourly reservation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! One of the main advantages of hourly chauffeur service is complete flexibility. You can make as many stops as you'd like, change destinations on the fly, and adjust your itinerary as needed during your reserved time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I need more time than I originally booked?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can extend your reservation at the same hourly rate, subject to chauffeur availability. We recommend booking extra time upfront if you're unsure, as same-day extensions aren't always guaranteed during peak periods."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is gratuity included in the hourly rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gratuity is not included in the hourly rate. Tips are appreciated for exceptional service and are typically 15-20% of the total fare."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I book an hourly chauffeur for a wine tour in Willamette Valley?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely! Hourly chauffeur service is perfect for wine country tours. Your chauffeur will wait at each winery while you enjoy tastings, and you can customize your route and timing throughout the day."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of vehicles are available for hourly service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer luxury sedans for 1-3 passengers, SUVs for 4-6 passengers, and executive vans for larger groups. All vehicles are late-model, immaculately maintained, and equipped with premium amenities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer hourly chauffeur service outside of Portland?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our hourly chauffeur service is available throughout the Portland metro area and surrounding regions including Oregon wine country, the coast, and Columbia River Gorge. Contact us for service area confirmation and pricing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How far in advance should I book hourly chauffeur service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We recommend booking at least 24-48 hours in advance to ensure vehicle and chauffeur availability, especially for weekends and peak seasons. Same-day bookings may be available depending on fleet capacity."
+        }
+      }
+    ]
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+    />
+  );
+}
+
 export default function HourlyChauffeurPage({
   params
 }: {
@@ -17,6 +98,7 @@ export default function HourlyChauffeurPage({
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
+      <FAQSchema />
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -352,6 +434,99 @@ export default function HourlyChauffeurPage({
                 </p>
                 <span className="text-[var(--primary)] font-medium">Learn More →</span>
               </Link>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text)] mb-8">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  What is the minimum booking for hourly chauffeur service?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  The minimum booking is 2 hours. You can reserve a chauffeur for as long as you need—whether 
+                  it's a few hours for meetings or a full day of touring.
+                </p>
+              </div>
+
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  Can I make multiple stops during my hourly reservation?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  Yes! One of the main advantages of hourly chauffeur service is complete flexibility. You can make 
+                  as many stops as you'd like, change destinations on the fly, and adjust your itinerary as needed 
+                  during your reserved time.
+                </p>
+              </div>
+
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  What happens if I need more time than I originally booked?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  You can extend your reservation at the same hourly rate, subject to chauffeur availability. We 
+                  recommend booking extra time upfront if you're unsure, as same-day extensions aren't always 
+                  guaranteed during peak periods.
+                </p>
+              </div>
+
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  Is gratuity included in the hourly rate?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  Gratuity is not included in the hourly rate. Tips are appreciated for exceptional service and 
+                  are typically 15-20% of the total fare.
+                </p>
+              </div>
+
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  Can I book an hourly chauffeur for a wine tour in Willamette Valley?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  Absolutely! Hourly chauffeur service is perfect for wine country tours. Your chauffeur will wait 
+                  at each winery while you enjoy tastings, and you can customize your route and timing throughout 
+                  the day.
+                </p>
+              </div>
+
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  What types of vehicles are available for hourly service?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  We offer luxury sedans for 1-3 passengers, SUVs for 4-6 passengers, and executive vans for larger 
+                  groups. All vehicles are late-model, immaculately maintained, and equipped with premium amenities.
+                </p>
+              </div>
+
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  Do you offer hourly chauffeur service outside of Portland?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  Yes, our hourly chauffeur service is available throughout the Portland metro area and surrounding 
+                  regions including Oregon wine country, the coast, and Columbia River Gorge. Contact us for service 
+                  area confirmation and pricing.
+                </p>
+              </div>
+
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--text)] mb-3">
+                  How far in advance should I book hourly chauffeur service?
+                </h3>
+                <p className="text-[var(--textMuted)]">
+                  We recommend booking at least 24-48 hours in advance to ensure vehicle and chauffeur availability, 
+                  especially for weekends and peak seasons. Same-day bookings may be available depending on fleet 
+                  capacity.
+                </p>
+              </div>
             </div>
           </section>
 

@@ -169,6 +169,58 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     });
 
+    // Worldwide Country Pages
+    const countries = [
+      'united-states', 'canada', 'united-kingdom', 'germany', 'france', 'uae', 'japan'
+    ];
+    countries.forEach((country) => {
+      urls.push({
+        url: `${baseUrl}/${locale}/worldwide/${country}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.8,
+      });
+    });
+
+    // Worldwide City Pages
+    const worldwideCityPages = [
+      'new-york-jfk', 'los-angeles-lax', 'san-francisco-sfo', 'chicago-ord', 'miami-mia',
+      'toronto-yyz', 'vancouver-yvr', 'montreal-yul',
+      'london-lhr', 'frankfurt-fra', 'paris-cdg',
+      'dubai-dxb', 'abu-dhabi-auh', 'tokyo-nrt'
+    ];
+    worldwideCityPages.forEach((city) => {
+      urls.push({
+        url: `${baseUrl}/${locale}/worldwide/cities/${city}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    });
+
+    // Route Pages
+    const routePages = [
+      'pdx-to-beaverton', 'pdx-to-lake-oswego', 'pdx-to-tigard', 
+      'pdx-to-hillsboro', 'pdx-to-vancouver-wa', 'pdx-to-willamette-valley',
+      'pdx-to-downtown-portland'
+    ];
+    routePages.forEach((route) => {
+      urls.push({
+        url: `${baseUrl}/${locale}/routes/${route}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    });
+
+    // Routes Index
+    urls.push({
+      url: `${baseUrl}/${locale}/routes`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+
     // Countries
     worldwideCountries.forEach((country) => {
       urls.push({

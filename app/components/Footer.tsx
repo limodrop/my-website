@@ -158,14 +158,6 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${locale}/services/vip-arrival`}
-                  className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1 transition-colors"
-                >
-                  VIP Arrival Service
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={`/${locale}/services/corporate-travel`}
                   className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1 transition-colors"
                 >
@@ -174,10 +166,26 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link
+                  href={`/${locale}/services/hourly-chauffeur`}
+                  className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1 transition-colors"
+                >
+                  Hourly Chauffeur
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={`/${locale}/services/wine-tours`}
                   className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1 transition-colors"
                 >
                   Wine Tours
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/services/vip-arrival`}
+                  className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1 transition-colors"
+                >
+                  VIP Arrival Service
                 </Link>
               </li>
               <li>
@@ -400,14 +408,6 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href={`/${locale}/services/vip-arrival`}
-                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
-                >
-                  VIP Arrival Service
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={`/${locale}/services/corporate-travel`}
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
                 >
@@ -416,10 +416,26 @@ export default function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link
+                  href={`/${locale}/services/hourly-chauffeur`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
+                >
+                  Hourly Chauffeur
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={`/${locale}/services/wine-tours`}
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
                 >
                   Wine Tours
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/services/vip-arrival`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
+                >
+                  VIP Arrival Service
                 </Link>
               </li>
               <li>
