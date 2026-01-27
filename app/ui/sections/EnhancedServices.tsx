@@ -14,6 +14,12 @@ export function EnhancedServices({ locale }: EnhancedServicesProps) {
       link: `/${locale}/services/airport-transportation`
     },
     {
+      icon: Icons.airport,
+      title: "Private Aviation Transportation",
+      description: "Chauffeur service to FBOs, private terminals, and executive airports.",
+      link: `/${locale}/services/private-aviation-transportation`
+    },
+    {
       icon: Icons.briefcase,
       title: "Corporate Travel",
       description: "Professional transportation for business meetings and events",

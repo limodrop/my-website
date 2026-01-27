@@ -56,7 +56,7 @@ export default function Footer({ locale, dict }: FooterProps) {
   
   return (
     <footer className="bg-[var(--surface)] border-t-2 border-[var(--border)]">
-      <div className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="py-8 sm:py-12 px-6 md:px-10 lg:px-12 max-w-7xl mx-auto">
         
         {/* Footer CTA - Compact - Hidden on mobile homepage only */}
         <div className={`mb-10 pb-8 border-b border-[var(--border)] ${
@@ -156,6 +156,14 @@ export default function Footer({ locale, dict }: FooterProps) {
                   className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1 transition-colors"
                 >
                   Airport Transportation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/services/private-aviation-transportation`}
+                  className="text-[var(--textMuted)] hover:text-[var(--primary)] block py-1 transition-colors"
+                >
+                  Private Aviation
                 </Link>
               </li>
               <li>
@@ -406,6 +414,14 @@ export default function Footer({ locale, dict }: FooterProps) {
                   className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
                 >
                   Airport Transportation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/services/private-aviation-transportation`}
+                  className="text-[var(--textMuted)] hover:underline hover:text-[var(--primary)] transition-colors"
+                >
+                  Private Aviation
                 </Link>
               </li>
               <li>

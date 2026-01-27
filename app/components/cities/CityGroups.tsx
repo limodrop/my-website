@@ -118,7 +118,11 @@ function CityGroupSection({
       <h2 className="text-xl sm:text-2xl font-semibold text-[var(--text)] mb-4 sm:mb-6">
         {title}
       </h2>
-      
+      <div className="mb-2">
+        <span className="text-xs sm:text-sm text-[var(--textMuted)]">
+          Popular Services: <Link href={`/${locale}/services/private-aviation-transportation`} className="text-[var(--primary)] hover:underline">Private Aviation Transportation</Link>
+        </span>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4">
         {visibleCities.map((city) => (
           <CityCardCompact key={city.id} city={city} locale={locale} />

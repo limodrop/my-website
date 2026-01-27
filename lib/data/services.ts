@@ -9,6 +9,14 @@ export async function getServices() {
       features: ["Flight tracking", "Meet and greet", "Luggage assistance", "24/7 availability"]
     },
     {
+      slug: "private-aviation-transportation",
+      name: "Private Aviation Transportation",
+      description: "Chauffeur service to FBOs, private terminals, and executive airports.",
+      icon: "🛩️",
+      price: "Custom Quote",
+      features: ["FBO transfers", "Executive airports", "Discreet vehicles", "Flight tracking"]
+    },
+    {
       slug: "hourly-chauffeur",
       name: "Hourly Chauffeur",
       description: "Flexible hourly chauffeur service for business, events, and custom itineraries.",
