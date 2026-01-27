@@ -1,3 +1,4 @@
+"use client";
 import { Metadata } from 'next';
 import { QuoteModal } from '@/app/components/QuoteModal';
 import { useState } from 'react';
