@@ -82,8 +82,12 @@ export function StaticHero() {
               <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-auto lg:h-full overflow-hidden">
                 <SmartImage
                   src="/images/hero/chauffeur-service.jpg"
-                  className="absolute inset-0 w-full h-full object-cover lg:object-[center_20%]"
                   alt="Luxury chauffeur vehicle in Portland, Oregon"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="absolute inset-0 w-full h-full object-cover lg:object-[center_20%]"
+                  placeholder="empty"
                 />
                 {/* Subtle dark overlay for image contrast */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/20"></div>
