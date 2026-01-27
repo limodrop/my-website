@@ -56,7 +56,7 @@ export default function Footer({ locale, dict }: FooterProps) {
   
   return (
     <footer className="bg-[var(--surface)] border-t-2 border-[var(--border)]">
-      <div className="py-8 sm:py-12">
+      <div className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
         {/* Footer CTA - Compact - Hidden on mobile homepage only */}
         <div className={`mb-10 pb-8 border-b border-[var(--border)] ${
