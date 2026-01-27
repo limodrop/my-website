@@ -82,6 +82,7 @@ function FAQSchema() {
     ]
   };
 
+
   return (
     <script
       type="application/ld+json"
