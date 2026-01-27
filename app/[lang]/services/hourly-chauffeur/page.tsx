@@ -87,7 +87,7 @@ function FAQSchema() {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
-    />
+    ></script>
   );
 }
 
@@ -529,7 +529,7 @@ export default function HourlyChauffeurPage({
               Flexible, reliable, and always on time.
             </p>
             {/* CTAs removed as requested; only heading and description remain */}
-
+          </section>
         </div>
       </div>
     </div>

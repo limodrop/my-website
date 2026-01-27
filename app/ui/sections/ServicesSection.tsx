@@ -48,7 +48,6 @@ export function ServicesSection({
             slug={service.slug}
             name={service.name}
             description={service.description}
-            icon={service.icon}
             locale={locale}
           />
         ))}

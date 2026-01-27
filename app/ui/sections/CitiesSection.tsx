@@ -47,7 +47,6 @@ export function CitiesSection({
             key={city.slug}
             slug={city.slug}
             name={city.name}
-            state={city.state}
             locale={locale}
           />
         ))}

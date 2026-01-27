@@ -54,8 +54,8 @@ export function FleetSection({
             name={vehicle.name}
             make={vehicle.make}
             model={vehicle.model}
-            capacity={vehicle.capacity}
-            luggage={vehicle.luggage}
+                capacity={vehicle.capacity?.toString()}
+                luggage={vehicle.luggage?.toString()}
             image={vehicle.image}
             locale={locale}
           />

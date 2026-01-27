@@ -37,6 +37,12 @@ export function WorldwideMapSection({ countries, cities }: WorldwideMapSectionPr
           <Text variant="large" className="text-gray-300 max-w-2xl mx-auto">
             Premium chauffeur service across {countries.length} countries and {cities.length}+ major cities
           </Text>
+            <h2 className="text-3xl font-bold text-white mb-4 text-center">
+              Worldwide Chauffeur Service
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg text-center mb-8">
+              Premium airport transfers and city-to-city rides in 200+ cities worldwide. Book with confidence, 24/7.
+            </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
