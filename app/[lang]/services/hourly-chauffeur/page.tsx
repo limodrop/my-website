@@ -403,7 +403,7 @@ export default function HourlyChauffeurPage({
               </Link>
 
               <Link
-                href={`/${locale}/services/corporate-transportation`}
+                href={`/${locale}/services/corporate-travel`}
                 className="block bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 hover:border-[var(--primary)] transition-colors"
               >
                 <h3 className="text-lg font-semibold text-[var(--text)] mb-2">Corporate Transportation</h3>
