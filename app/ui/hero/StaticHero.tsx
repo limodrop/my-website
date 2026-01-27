@@ -29,7 +29,31 @@ export function StaticHero() {
                 Premium airport transfers, corporate travel, and private chauffeur service
               </p>
 
-              // ...existing code...
+              {/* CTAs - Hidden on mobile, visible on desktop */}
+              <div className="hidden sm:flex flex-row gap-4 mb-6 lg:mb-8">
+                <Button
+                  variant="primary"
+                  as="a"
+                  href="https://accounts.oregontowncar.com/"
+                  className="w-auto !px-10 !py-4 text-base sm:text-lg font-semibold"
+                >
+                  Book Now
+                </Button>
+                <button
+                  onClick={() => setQuoteModalOpen(true)}
+                  className="
+                    w-auto
+                    inline-flex items-center justify-center gap-2
+                    text-[var(--primary)] hover:text-[var(--primaryHover)]
+                    font-medium text-base sm:text-lg
+                    transition-colors
+                    px-4 py-2
+                  "
+                >
+                  <span>Get a Quote</span>
+                  <Icons.arrow className="w-4 h-4" />
+                </button>
+              </div>
 
               {/* Trust Indicators */}
               <div className="flex flex-wrap items-center gap-4 sm:gap-5 text-xs sm:text-sm text-[var(--textMuted)] mb-4">
