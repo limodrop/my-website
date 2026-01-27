@@ -47,19 +47,16 @@ export function ServiceDetailClient({
           <p className="text-lg sm:text-xl text-[var(--textMuted)] max-w-3xl">
             {service.description}
           </p>
-          {/* Remove Book Now and Get a Quote buttons for hourly-chauffeur */}
-          {slug !== "hourly-chauffeur" && (
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Button
-                variant="primary"
-                as="a"
-                href="https://accounts.oregontowncar.com/"
-                className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
-              >
-                Book Now
-              </Button>
-            </div>
-          )}
+          {/* Only show Get a Quote CTA in hero */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Button
+              variant="primary"
+              onClick={() => setQuoteModalOpen(true)}
+              className="w-full sm:w-auto !px-8 !py-3.5 text-base sm:text-lg"
+            >
+              Get a Quote
+            </Button>
+          </div>
         </div>
 
         {/* Service Overview */}
