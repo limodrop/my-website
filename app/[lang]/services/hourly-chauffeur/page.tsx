@@ -111,20 +111,7 @@ export default function HourlyChauffeurPage({
               Flexible hourly chauffeur service for meetings, events, roadshows, and city touring. 
               Your dedicated driver and luxury vehicle, on your schedule.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={`/${locale}`}
-                className="inline-block px-8 py-4 bg-[var(--primary)] text-white font-semibold rounded-lg hover:bg-[var(--primary)]/90 transition-colors"
-              >
-                Book Now
-              </Link>
-              <Link
-                href={`/${locale}/contact`}
-                className="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-slate-900 transition-colors"
-              >
-                Get a Quote
-              </Link>
-            </div>
+            {/* CTAs removed as requested */}
           </div>
         </div>
       </div>
@@ -540,20 +527,7 @@ export default function HourlyChauffeurPage({
               Reserve your professional driver and luxury vehicle for the hours you need. 
               Flexible, reliable, and always on time.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://accounts.oregontowncar.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-8 py-4 bg-white text-slate-900 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
-              >
-                Book Now
-              </a>
-              <QuoteButton variant="outline" className="px-8 py-4">
-                Get a Quote
-              </QuoteButton>
-            </div>
-          </section>
+            {/* CTAs removed as requested; only heading and description remain */}
 
         </div>
       </div>
